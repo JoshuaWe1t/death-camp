@@ -14,3 +14,7 @@ signal day_ended(current_day: int)
 signal ap_changed(current_ap: int)
 @warning_ignore("unused_signal")
 signal game_finished
+
+
+@warning_ignore("unused_signal")
+signal show_restore_popup(build_id: String)
