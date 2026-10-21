@@ -1,13 +1,18 @@
 extends Node
 
-const TOTAL_ACTION_POINTS: int = 10
-var current_action_points: int = 10
+const MAX_ACTION_POINTS: int = 10
+var current_action_points: int = MAX_ACTION_POINTS
+
+func spend_ap(amount: int) -> bool:
+	if current_action_points >= amount:
+		current_action_points -= amount
+		EventBus.ap_changed.emit(current_action_points)
+		return true
+	
+	print("Недостаточно Очков Действия!")
+	return false
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	print('ActionPointsManagere is initialized')
-
-
-func reset_action_points(value: int = 10) -> void:
-	current_action_points = value
+func reset_action_points() -> void:
+	current_action_points = MAX_ACTION_POINTS
+	EventBus.ap_changed.emit(current_action_points)
