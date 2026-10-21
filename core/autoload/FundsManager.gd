@@ -10,3 +10,14 @@ func _ready() -> void:
 
 func reset_funds_value(value: int = 1200):
 	current_funds = value
+
+
+func can_afford_restoration(funds: int) -> bool:
+	if funds <= current_funds:
+		return true
+	
+	return false
+
+
+func spend_resources_for_restoration(funds: int) -> void:
+	current_funds -= funds
