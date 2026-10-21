@@ -1,0 +1,137 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjffndni4p2de"]
+
+[ext_resource type="Script" uid="uid://bitnsmkncjymn" path="res://ui/hud/hud.gd" id="1_xmswo"]
+[ext_resource type="Texture2D" uid="uid://bu4qi7k2kh5er" path="res://icon.svg" id="2_4d6w6"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_xmswo")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DayContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+offset_right = 1.0
+offset_bottom = 23.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="DayLabel" type="Label" parent="UI/DayContainer"]
+layout_mode = 2
+text = "7 days"
+
+[node name="ActionContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 47.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ActionContainer"]
+layout_mode = 2
+
+[node name="APLabel" type="Label" parent="UI/ActionContainer/VBoxContainer"]
+layout_mode = 2
+text = "1/10"
+
+[node name="SpendAPButton" type="Button" parent="UI/ActionContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EndDayButton" type="Button" parent="UI/ActionContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RightPanel" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -409.0
+offset_bottom = 110.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/RightPanel"]
+layout_mode = 2
+
+[node name="ResourcesHBox" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="StaffContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
+layout_mode = 2
+
+[node name="StaffIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/StaffContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_4d6w6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StaffLabel" type="Label" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/StaffContainer"]
+layout_mode = 2
+text = "1000"
+
+[node name="PrisonersContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
+layout_mode = 2
+
+[node name="PrisonersIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/PrisonersContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_4d6w6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PrisonersLabel" type="Label" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/PrisonersContainer"]
+layout_mode = 2
+text = "1000"
+
+[node name="SoulsContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
+layout_mode = 2
+
+[node name="SoulsIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/SoulsContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_4d6w6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SoulsLabel" type="Label" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/SoulsContainer"]
+layout_mode = 2
+text = "1000"
+
+[node name="FundsContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
+layout_mode = 2
+
+[node name="FundsIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/FundsContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_4d6w6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FundsLabel" type="Label" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/FundsContainer"]
+layout_mode = 2
+text = "10000"
+
+[node name="TasksVBox" type="VBoxContainer" parent="UI/RightPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="TaskLabel1" type="Label" parent="UI/RightPanel/VBoxContainer/TasksVBox"]
+layout_mode = 2
+text = "TASK 1"
+horizontal_alignment = 2
+
+[node name="TaskLabel2" type="Label" parent="UI/RightPanel/VBoxContainer/TasksVBox"]
+layout_mode = 2
+text = "TASK 2"
+horizontal_alignment = 2
