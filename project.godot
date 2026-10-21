@@ -21,7 +21,7 @@ EventBus="*res://core/autoload/EventBus.gd"
 ActionPointsManager="*res://core/autoload/ActionPointsManager.gd"
 FundsManager="*res://core/autoload/FundsManager.gd"
 PrisonersManager="*res://core/autoload/PrisonersManager.gd"
-StuffManager="*res://core/autoload/StuffManager.gd"
+StaffManager="*res://core/autoload/StaffManager.gd"
 
 [rendering]
 
