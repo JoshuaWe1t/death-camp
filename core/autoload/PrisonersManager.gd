@@ -10,11 +10,6 @@ func _ready() -> void:
 	print("PrizonersManager is initialized")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func reset_prisoners_count(prisoners_count: int = 400, souls: int = 0) -> void:
 	current_prizoners = prisoners_count
 	prisoners_souls = souls

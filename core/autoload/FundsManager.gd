@@ -8,10 +8,5 @@ func _ready() -> void:
 	print("FundsManager is initialized")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func reset_funds_value(value: int = 1200):
 	current_funds = value
