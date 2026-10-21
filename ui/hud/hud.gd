@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 
 func update_static_resources() -> void:
 	staff_label.text = str(StaffManager.current_stuff)
-	prisoners_label.text = str(PrisonersManager.current_prizoners)
+	prisoners_label.text = str(PrisonersManager.current_prisoners)
 	souls_label.text = str(PrisonersManager.prisoners_souls)
 	funds_label.text = str(FundsManager.current_funds) + "$"
 
