@@ -13,11 +13,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="DayContainer" type="MarginContainer" parent="UI"]
 layout_mode = 1
 offset_right = 1.0
 offset_bottom = 23.0
+mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 
@@ -34,9 +36,11 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 47.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/ActionContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="APLabel" type="Label" parent="UI/ActionContainer/VBoxContainer"]
 layout_mode = 2
@@ -56,23 +60,28 @@ anchor_right = 1.0
 offset_left = -409.0
 offset_bottom = 110.0
 grow_horizontal = 0
+mouse_filter = 2
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/RightPanel"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ResourcesHBox" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 12
 alignment = 2
 
 [node name="StaffContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="StaffIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/StaffContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_4d6w6")
 expand_mode = 1
 stretch_mode = 5
@@ -83,10 +92,12 @@ text = "1000"
 
 [node name="PrisonersContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="PrisonersIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/PrisonersContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_4d6w6")
 expand_mode = 1
 stretch_mode = 5
@@ -97,10 +108,12 @@ text = "1000"
 
 [node name="SoulsContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="SoulsIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/SoulsContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_4d6w6")
 expand_mode = 1
 stretch_mode = 5
@@ -111,10 +124,12 @@ text = "1000"
 
 [node name="FundsContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="FundsIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/FundsContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_4d6w6")
 expand_mode = 1
 stretch_mode = 5
@@ -125,6 +140,7 @@ text = "10000"
 
 [node name="TasksVBox" type="VBoxContainer" parent="UI/RightPanel/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TaskLabel1" type="Label" parent="UI/RightPanel/VBoxContainer/TasksVBox"]
 layout_mode = 2
