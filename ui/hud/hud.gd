@@ -26,6 +26,10 @@ func _ready() -> void:
 	update_static_resources()
 
 
+func _process(_delta: float) -> void:
+	update_static_resources()
+
+
 func update_static_resources() -> void:
 	staff_label.text = str(StaffManager.current_stuff)
 	prisoners_label.text = str(PrisonersManager.current_prizoners)
