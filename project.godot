@@ -22,6 +22,12 @@ ActionPointsManager="*res://core/autoload/ActionPointsManager.gd"
 FundsManager="*res://core/autoload/FundsManager.gd"
 PrisonersManager="*res://core/autoload/PrisonersManager.gd"
 StaffManager="*res://core/autoload/StaffManager.gd"
+BuildingDatabase="*res://core/autoload/BuildingDatabase.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [rendering]
 
