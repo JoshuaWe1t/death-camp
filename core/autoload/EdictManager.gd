@@ -6,6 +6,7 @@ signal edict_accepted(task: Dictionary)  # Когда игрок нажал "В�
 signal edict_refused(task: Dictionary)   # Когда игрок сразу отказался
 signal edict_completed(task: Dictionary) # Когда игрок успешно завершил указ
 signal edict_failed(task: Dictionary)    # Когда время вышло или условия не выполнены
+signal edict_updated(task: Dictionary)   # Вызывается при изменении прогресса задания
 
 
 var edicts_data = {}
@@ -74,6 +75,7 @@ func generate_random_edict() -> Dictionary:
 	
 	if prod_type == "resource":
 		task["required_quantity"] = rng.randi_range(10, 50)
+		task["current_quantity"] = 0 # Добавляем стартовый прогресс
 		task["full_name"] = "Произвести " + str(task["required_quantity"]) + " ед. товара: " + specific_target["name"]
 		
 	active_edicts[instance_id] = task
@@ -88,7 +90,8 @@ func accept_edict(instance_id: String):
 		return
 
 	var task = active_edicts[instance_id]
-	EventBus.ap_changed.emit(task.get("ap_cost"))
+	var ap_left = ActionPointsManager.current_action_points - task.get("ap_cost")
+	EventBus.ap_changed.emit(ap_left)
 
 	print("Указ принят в работу: ", task["full_name"])
 
@@ -153,3 +156,19 @@ func _apply_edict_penalty(task: Dictionary):
 func _on_day_started(_day: int) -> void:
 	generate_random_edict()
 	EventBus.show_edict_popup.emit()
+
+
+func add_progress_to_edict(instance_id: String, amount: int) -> void:
+	if not active_edicts.has(instance_id):
+		return
+		
+	var task = active_edicts[instance_id]
+	if task.has("required_quantity"):
+		task["current_quantity"] += amount
+		
+		# Оповещаем HUD об изменении цифр
+		edict_updated.emit(task)
+		
+		# Если цель достигнута, автоматически завершаем задание
+		if task["current_quantity"] >= task["required_quantity"]:
+			complete_edict(instance_id)
