@@ -1,99 +1,143 @@
 {
-    "edicts": [
-        {
-            "id": "medical_research",
-            "name": "Произвести медицинское исследование",
-            "time_min": 2,
-            "time_max": 2,
-            "reward_min": 200,
-            "reward_max": 350,
-            "penalty_min": 250,
-            "penalty_max": 350,
-            "supervisor_advance_min": 2,
-            "supervisor_advance_max": 3,
-            "ap_cost_min": 1,
-            "ap_cost_max": 5,
-            "production_type": "research"
-        },
-        {
-            "id": "produce_goods",
-            "name": "Произвести единицы товара",
-            "time_min": 3,
-            "time_max": 5,
-            "reward_min": 350,
-            "reward_max": 500,
-            "penalty_min": 400,
-            "penalty_max": 550,
-            "supervisor_advance_min": 3,
-            "supervisor_advance_max": 5,
-            "ap_cost_min": 2,
-            "ap_cost_max": 5,
-            "production_type": "resource"
-        },
-        {
-            "id": "conduct_experiment",
-            "name": "Произвести эксперимент",
-            "time_min": 1,
-            "time_max": 3,
-            "reward_min": 550,
-            "reward_max": 650,
-            "penalty_min": 600,
-            "penalty_max": 650,
-            "supervisor_advance_min": 5,
-            "supervisor_advance_max": 8,
-            "ap_cost_min": 2,
-            "ap_cost_max": 6,
-            "production_type": "experiment"
-        }
-    ],
-    "productions": {
-        "resource": [
-            {
-                "id": "furniture",
-                "name": "Мебель",
-                "base_reward_min": 125,
-                "base_reward_max": 175
-            },
-            {
-                "id": "clothes",
-                "name": "Одежда",
-                "base_reward_min": 75,
-                "base_reward_max": 150
-            }
-        ],
-        "research": [
-            {
-                "id": "strength",
-                "name": "Сила",
-                "base_reward_min": 125,
-                "base_reward_max": 275
-            },
-            {
-                "id": "endurance",
-                "name": "Выносливость",
-                "base_reward_min": 150,
-                "base_reward_max": 325
-            },
-            {
-                "id": "mental",
-                "name": "Умственная активность",
-                "base_reward_min": 250,
-                "base_reward_max": 475
-            }
-        ],
-        "experiment": [
-            {
-                "id": "resistance",
-                "name": "Сопротивление",
-                "base_reward_min": 175,
-                "base_reward_max": 250
-            },
-            {
-                "id": "combinatorics",
-                "name": "Комбинаторика",
-                "base_reward_min": 250,
-                "base_reward_max": 475
-            }
-        ]
-    }
+	"edicts": [
+		{
+			"id": "medical_research",
+			"name": "Произвести медицинское исследование",
+			"time_min": 2,
+			"time_max": 2,
+			"reward_min": 200,
+			"reward_max": 350,
+			"penalty_min": 250,
+			"penalty_max": 350,
+			"supervisor_advance_min": 2,
+			"supervisor_advance_max": 3,
+			"ap_cost_min": 1,
+			"ap_cost_max": 5,
+			"production_type": "research",
+			"required_buildings": ["hospital_small", "hospital_large"]
+		},
+		{
+			"id": "produce_goods",
+			"name": "Произвести единицы товара",
+			"time_min": 3,
+			"time_max": 5,
+			"reward_min": 350,
+			"reward_max": 500,
+			"penalty_min": 400,
+			"penalty_max": 550,
+			"supervisor_advance_min": 3,
+			"supervisor_advance_max": 5,
+			"ap_cost_min": 2,
+			"ap_cost_max": 5,
+			"production_type": "resource",
+			"required_buildings": ["workshop"]
+		},
+		{
+			"id": "conduct_experiment",
+			"name": "Произвести эксперимент",
+			"time_min": 1,
+			"time_max": 3,
+			"reward_min": 550,
+			"reward_max": 650,
+			"penalty_min": 600,
+			"penalty_max": 650,
+			"supervisor_advance_min": 5,
+			"supervisor_advance_max": 8,
+			"ap_cost_min": 2,
+			"ap_cost_max": 6,
+			"production_type": "experiment",
+			"required_buildings": ["laboratory"]
+		},
+		{
+			"id": "restore_infrastructure",
+			"name": "Восстановить здание",
+			"time_min": 4,
+			"time_max": 4,
+			"reward_min": 0,
+			"reward_max": 150,
+			"penalty_min": 50,
+			"penalty_max": 200,
+			"supervisor_advance_min": 2,
+			"supervisor_advance_max": 4,
+			"ap_cost_min": 1,
+			"ap_cost_max": 2,
+			"production_type": "building"
+		}
+	],
+	"productions": {
+		"resource": [
+			{
+				"id": "furniture",
+				"name": "Мебель",
+				"base_reward_min": 125,
+				"base_reward_max": 175
+			},
+			{
+				"id": "clothes",
+				"name": "Одежда",
+				"base_reward_min": 75,
+				"base_reward_max": 150
+			}
+		],
+		"research": [
+			{
+				"id": "strength",
+				"name": "Сила",
+				"base_reward_min": 125,
+				"base_reward_max": 275
+			},
+			{
+				"id": "endurance",
+				"name": "Выносливость",
+				"base_reward_min": 150,
+				"base_reward_max": 325
+			},
+			{
+				"id": "mental",
+				"name": "Умственная активность",
+				"base_reward_min": 250,
+				"base_reward_max": 475
+			}
+		],
+		"experiment": [
+			{
+				"id": "resistance",
+				"name": "Сопротивление",
+				"base_reward_min": 175,
+				"base_reward_max": 250
+			},
+			{
+				"id": "combinatorics",
+				"name": "Комбинаторика",
+				"base_reward_min": 250,
+				"base_reward_max": 475
+			}
+		],
+		"building": [
+			{
+				"id": "barrack",
+				"name": "Барак",
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			},
+			{
+				"id": "hospital_small",
+				"name": "Больница",
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			},
+			{
+				"id": "workshop",
+				"name": "Цех",
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			},
+			{
+				"id": "laboratory",
+				"name": "Лаборатория",
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			}
+		]
+	}
 }
