@@ -22,9 +22,15 @@ var upkeep_cycle_days: int
 
 var days_since_last_upkeep: int = 0
 
+var is_restoring: bool = false
+var days_left_to_restore: int = 0
+
 func _ready() -> void:
 	load_building_data()
+	
 	EventBus.day_ended.connect(_on_day_ended)
+	pressed.connect(_on_building_pressed)
+	
 	update_tooltip()
 
 
@@ -49,8 +55,10 @@ func load_building_data() -> void:
 
 func update_tooltip() -> void:
 	var text = building_name + "\n\n"
-	
-	if is_restored:
+	if is_restoring:
+		text += "[Статус: В процессе восстановления]\n"
+		text += "Осталось дней: " + str(days_left_to_restore)
+	elif is_restored:
 		text += "[Статус: Доступно]\n"
 		if upkeep_cycle_days > 0:
 			text += "Потребление: " + str(upkeep_cost) + "$ каждые " + str(upkeep_cycle_days) + " дн."
@@ -67,13 +75,53 @@ func update_tooltip() -> void:
 
 
 func _on_day_ended(day: int) -> void:
-	if not is_restored:
-		return
+	print("building._on_day_ended")		
+	if is_restoring:
+		days_left_to_restore -= 1
+		update_tooltip()
+		if days_left_to_restore <= 0:
+			finish_restoration()
+		return 
 		
-	# 0+ дней в диздоке означает, что здание потребляет средства только во время работы
 	if upkeep_cycle_days > 0:
 		days_since_last_upkeep += 1
 		if days_since_last_upkeep >= upkeep_cycle_days:
 			FundsManager.current_funds -= upkeep_cost
 			days_since_last_upkeep = 0
 			print(building_name, " потребило ", upkeep_cost, "$")
+	
+	if not is_restored:
+		return
+
+
+func _on_building_pressed() -> void:
+	if not is_restored and not is_restoring:
+		EventBus.emit_signal("show_restore_popup", self)
+		print("Открытие окна восстановления, building_id: ", self)
+	elif is_restored:
+		print("Здание уже восстановлено. Открыть меню здания.")
+
+
+func start_restoration() -> void:
+	is_restoring = true
+	days_left_to_restore = restore_time
+	
+	# Списываем ресурсы и блокируем заключенных
+	FundsManager.spend_resources_for_restoration(restore_cost)
+	PrisonersManager.spend_resources_for_restoration(restore_workers)
+	ActionPointsManager.spend_resources_for_restoration(restore_ap)
+	
+	update_tooltip()
+	print("Начато восстановление: ", building_name)
+
+
+func finish_restoration() -> void:
+	print("finish_restoration()")
+	is_restoring = false
+	is_restored = true
+	
+	# Освобождаем рабочих
+	PrisonersManager.free_workers(restore_workers)
+	
+	update_tooltip()
+	print(building_name, " успешно восстановлено!")
