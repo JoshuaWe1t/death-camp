@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnqf0orjg8ic6"]
+[gd_scene load_steps=7 format=3 uid="uid://dnqf0orjg8ic6"]
 
 [ext_resource type="Script" uid="uid://caacjjgy7kfx3" path="res://ui/popups/task_menu.gd" id="1_c06n1"]
-[ext_resource type="Texture2D" uid="uid://bu4qi7k2kh5er" path="res://icon.svg" id="1_uufmr"]
+[ext_resource type="Texture2D" uid="uid://yinc1tu4g8r3" path="res://assets/textures/ui/decree.png" id="2_bf5od"]
+[ext_resource type="Texture2D" uid="uid://rxr6ujsuykfn" path="res://assets/textures/ui/button_admit1.png" id="3_loe5w"]
+[ext_resource type="Texture2D" uid="uid://bmclmtbpmeceb" path="res://assets/textures/ui/button_admit2.png" id="4_ymons"]
+[ext_resource type="Texture2D" uid="uid://cbbkgynx6w32b" path="res://assets/textures/ui/button_refuse1.png" id="5_gl7tt"]
+[ext_resource type="Texture2D" uid="uid://c77g5src8dlki" path="res://assets/textures/ui/button_refuse2.png" id="6_pr1e4"]
 
 [node name="TaskMenu" type="CanvasLayer"]
 script = ExtResource("1_c06n1")
@@ -27,34 +31,45 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_uufmr")
+texture = ExtResource("2_bf5od")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopUp/TextureRect"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = -1
+anchor_left = 0.090625
+anchor_top = 0.19
+anchor_right = 0.91875
+anchor_bottom = 0.7875
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Description" type="Label" parent="PopUp/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(265, 239)
 layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
 text = "TEST"
+autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PopUp/TextureRect/VBoxContainer"]
-layout_mode = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="PopUp/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.7975
+anchor_right = 0.90625
+anchor_bottom = 0.9575
+grow_horizontal = 2
+grow_vertical = 0
 alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="AdmitButton" type="TextureButton" parent="PopUp/TextureRect/VBoxContainer/HBoxContainer"]
+[node name="AdmitButton" type="TextureButton" parent="PopUp/TextureRect/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_uufmr")
+texture_normal = ExtResource("3_loe5w")
+texture_pressed = ExtResource("4_ymons")
 
-[node name="RefuseButton" type="TextureButton" parent="PopUp/TextureRect/VBoxContainer/HBoxContainer"]
+[node name="RefuseButton" type="TextureButton" parent="PopUp/TextureRect/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_uufmr")
+texture_normal = ExtResource("5_gl7tt")
+texture_pressed = ExtResource("6_pr1e4")
