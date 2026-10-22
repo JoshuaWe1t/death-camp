@@ -149,9 +149,10 @@ func finish_restoration() -> void:
 	is_restoring = false
 	is_restored = true
 	
+	EventBus.building_restored.emit(building_id)
+	
 	# Освобождаем рабочих
 	PrisonersManager.free_workers(restore_workers)
-	print(building_id)
 	
 	match building_id:
 			"dormitory":
@@ -162,6 +163,7 @@ func finish_restoration() -> void:
 				PrisonersManager.free_workers(100)
 			_:
 				print("Неизвестное здание.")
+
+	BuildingDatabase.DATA[building_id]["is_restored"] = true
 	
 	update_tooltip()
-	
