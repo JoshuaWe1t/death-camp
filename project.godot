@@ -23,6 +23,7 @@ FundsManager="*res://core/autoload/FundsManager.gd"
 PrisonersManager="*res://core/autoload/PrisonersManager.gd"
 StaffManager="*res://core/autoload/StaffManager.gd"
 BuildingDatabase="*res://core/autoload/BuildingDatabase.gd"
+EdictManager="*res://core/autoload/EdictManager.gd"
 
 [display]
 
