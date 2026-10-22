@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 @onready var description: Label = $PopUp/TextureRect/VBoxContainer/Description
-@onready var admit_button: TextureButton = $PopUp/TextureRect/VBoxContainer/Buttons/AdmitButton
-@onready var cancel_button: TextureButton = $PopUp/TextureRect/VBoxContainer/Buttons/CancelButton
+@onready var admit_button: TextureButton = $PopUp/TextureRect/Buttons/AdmitButton
+@onready var cancel_button: TextureButton = $PopUp/TextureRect/Buttons/CancelButton
 
 
 var target_building: Building = null
