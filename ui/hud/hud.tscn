@@ -76,7 +76,7 @@ alignment = 2
 
 [node name="StaffContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
 layout_mode = 2
-mouse_filter = 2
+tooltip_text = "Staff"
 
 [node name="StaffIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/StaffContainer"]
 custom_minimum_size = Vector2(48, 48)
@@ -92,7 +92,7 @@ text = "1000"
 
 [node name="PrisonersContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
 layout_mode = 2
-mouse_filter = 2
+tooltip_text = "Prisoners"
 
 [node name="PrisonersIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/PrisonersContainer"]
 custom_minimum_size = Vector2(48, 48)
@@ -108,7 +108,7 @@ text = "1000"
 
 [node name="SoulsContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
 layout_mode = 2
-mouse_filter = 2
+tooltip_text = "Prisoners' souls"
 
 [node name="SoulsIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/SoulsContainer"]
 custom_minimum_size = Vector2(48, 48)
@@ -124,7 +124,7 @@ text = "1000"
 
 [node name="FundsContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
 layout_mode = 2
-mouse_filter = 2
+tooltip_text = "Funds"
 
 [node name="FundsIcon" type="TextureRect" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/FundsContainer"]
 custom_minimum_size = Vector2(48, 48)
