@@ -18,3 +18,5 @@ signal game_finished
 
 @warning_ignore("unused_signal")
 signal show_restore_popup(build_id: String)
+@warning_ignore("unused_signal")
+signal show_edict_popup()
