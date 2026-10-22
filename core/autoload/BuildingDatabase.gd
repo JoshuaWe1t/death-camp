@@ -1,7 +1,7 @@
 extends Node
 
 
-const DATA = {
+var DATA = {
 	"admin": {
 		"name": {
 			"rus": "Администрация",
@@ -125,3 +125,11 @@ func get_building(id: String) -> Dictionary:
 	if DATA.has(id):
 		return DATA[id]
 	return {}
+
+
+func get_unrestored_buildings_count() -> int:
+	var count = 0
+	for key in DATA:
+		if not DATA[key]["is_restored"]:
+			count += 1
+	return count
