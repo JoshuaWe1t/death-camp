@@ -11,3 +11,7 @@ func _ready() -> void:
 
 func reset_stuff_count(value: int = 32) -> void:
 	current_stuff = value
+
+
+func add_new_staff(value: int) -> void:
+	current_stuff += value
