@@ -74,7 +74,7 @@ func update_tooltip() -> void:
 	tooltip_text = text
 
 
-func _on_day_ended(day: int) -> void:
+func _on_day_ended(_day: int) -> void:
 	print("building._on_day_ended")		
 	if is_restoring:
 		days_left_to_restore -= 1
@@ -100,7 +100,36 @@ func _on_building_pressed() -> void:
 		print("Открытие окна восстановления, building_id: ", self)
 	elif is_restored:
 		print("Здание уже восстановлено. Открыть меню здания.")
-
+		match building_id:
+			"komendant":
+				print("Завершаем текущий день")
+				Global.end_day()
+			"admin":
+				print("admin")
+			"dormitory":
+				print("dormitory")
+			"morgue":
+				print("morgue")
+			"canteen":
+				print("canteen")
+			"hospital_small":
+				print("hospital_small")
+			"barrack":
+				print("barrack")
+			"laboratory":
+				print("laboratory")
+			"workshop":
+				print("workshop")
+			"hospital_large":
+				print("hospital_large")
+			"crematorium":
+				print("crematorium")
+			"gas_chamber":
+				print("gas_chamber")
+			"death_wall":
+				print("death_wall")
+			_:
+				print("Неизвестное здание.")
 
 func start_restoration() -> void:
 	is_restoring = true
@@ -122,6 +151,17 @@ func finish_restoration() -> void:
 	
 	# Освобождаем рабочих
 	PrisonersManager.free_workers(restore_workers)
+	print(building_id)
+	
+	match building_id:
+			"dormitory":
+				print(building_name, " успешно восстановлено!")
+				StaffManager.add_new_staff(10)
+			"barrack":
+				print(building_name, " успешно восстановлено!")
+				PrisonersManager.free_workers(100)
+			_:
+				print("Неизвестное здание.")
 	
 	update_tooltip()
-	print(building_name, " успешно восстановлено!")
+	
