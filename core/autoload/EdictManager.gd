@@ -8,29 +8,21 @@ signal edict_completed(task: Dictionary) # Когда игрок успешно 
 signal edict_failed(task: Dictionary)    # Когда время вышло или условия не выполнены
 signal edict_updated(task: Dictionary)   # Вызывается при изменении прогресса задания
 
+const MAIN_QUEST_ID = "main_quest_restore_buildings"
 
 var edicts_data = {}
 var active_edicts = {} 
-var supervisor_list_position: int = 30 # Условное расстояние супервайзера до игрока
-
+var supervisor_list_position: int = 30
+var unrestored_count: int
 
 func _ready():
 	load_edicts_data("res://core/utils/edicts_data.json")
 	
 	EventBus.day_started.connect(_on_day_started)
+	EventBus.building_restored.connect(_on_building_restored)
+	EventBus.research_completed.connect(_on_research_completed)
 	
-	# Пример игрового цикла
-	#var new_task = generate_random_edict()
-	#print("Получен новый указ: ", new_task)
-	
-	# Пример 1: Игрок отказывается от задания сразу
-	# refuse_edict(new_task.instance_id)
-	
-	# Пример 2: Игрок проваливает задание (например, вышел таймер)
-	# fail_edict(new_task.instance_id)
-	
-	# Пример 3: Игрок успешно выполняет задание
-	# complete_edict(new_task.instance_id)
+	call_deferred("_init_main_quest")
 
 
 func load_edicts_data(file_path: String):
@@ -49,38 +41,97 @@ func load_edicts_data(file_path: String):
 
 
 func generate_random_edict() -> Dictionary:
+	var valid_edicts = []
+	
+	# Фильтруем указы по статусу требуемых зданий
+	for edict in edicts_data["edicts"]:
+		if edict.has("required_buildings"):
+			var is_available = false
+			for req_building in edict["required_buildings"]:
+				var building_data = BuildingDatabase.get_building(req_building)
+				if not building_data.is_empty() and building_data.get("is_restored", false):
+					is_available = true
+					break
+			if is_available:
+				valid_edicts.append(edict)
+		else:
+			valid_edicts.append(edict)
+			
+	if valid_edicts.is_empty():
+		push_warning("Нет доступных указов для генерации (требуемые здания не восстановлены)!")
+		return {}
+
+	# Перемешиваем доступные указы, чтобы проверять их в случайном порядке
+	valid_edicts.shuffle()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	
-	var edict_template = edicts_data["edicts"][rng.randi_range(0, edicts_data["edicts"].size() - 1)]
-	var prod_type = edict_template["production_type"]
+	var selected_edict: Dictionary = {}
+	var selected_target: Dictionary = {}
+	var prod_type: String
 	
-	var available_productions = edicts_data["productions"][prod_type]
-	var specific_target = available_productions[rng.randi_range(0, available_productions.size() - 1)]
+	for edict_template in valid_edicts:
+		prod_type = edict_template["production_type"]
+		var available_productions = edicts_data["productions"][prod_type].duplicate()
+		
+		# Фильтруем доступные цели (productions) от дубликатов и уже выполненных
+		for i in range(available_productions.size() - 1, -1, -1):
+			var target_id = available_productions[i]["id"]
+			var is_invalid = false
+			
+			# 1. Проверяем, есть ли уже это задание среди активных
+			for task_key in active_edicts:
+				if active_edicts[task_key].has("target_id") and active_edicts[task_key]["target_id"] == target_id:
+					is_invalid = true
+					break
+			
+			# 2. Если это задание на здание, проверяем, не восстановлено ли оно уже 
+			if not is_invalid and prod_type == "building":
+				var b_data = BuildingDatabase.get_building(target_id)
+				if b_data.is_empty() or b_data.get("is_restored", false):
+					is_invalid = true
+			
+			if is_invalid:
+				available_productions.remove_at(i)
+				
+		# Если после фильтрации остались доступные цели, выбираем этот указ
+		if not available_productions.is_empty():
+			selected_edict = edict_template
+			selected_target = available_productions[rng.randi_range(0, available_productions.size() - 1)]
+			break
+			
+	if selected_edict.is_empty():
+		push_warning("Нет доступных целей для генерации (все задания уже активны или выполнены)!")
+		return {}
 	
-	# Генерируем уникальный ID для конкретного экземпляра задания
+	prod_type = selected_edict["production_type"]
 	var instance_id = str(Time.get_unix_time_from_system()) + "_" + str(rng.randi_range(1000, 9999))
 	
 	var task = {
 		"instance_id": instance_id,
-		"id": edict_template["id"] + "_" + specific_target["id"],
-		"full_name": edict_template["name"] + ": " + specific_target["name"],
-		"time_days": rng.randi_range(edict_template["time_min"], edict_template["time_max"]),
-		"reward": rng.randi_range(edict_template["reward_min"], edict_template["reward_max"]),
-		"penalty": rng.randi_range(edict_template["penalty_min"], edict_template["penalty_max"]),
-		"supervisor_advance": rng.randi_range(edict_template["supervisor_advance_min"], edict_template["supervisor_advance_max"]),
-		"ap_cost": rng.randi_range(edict_template["ap_cost_min"], edict_template["ap_cost_max"]),
-		"target_id": specific_target["id"]
+		"id": selected_edict["id"] + "_" + selected_target["id"],
+		"full_name": selected_edict["name"] + ": " + selected_target["name"],
+		"time_days": rng.randi_range(selected_edict["time_min"], selected_edict["time_max"]),
+		"reward": rng.randi_range(selected_edict["reward_min"], selected_edict["reward_max"]),
+		"penalty": rng.randi_range(selected_edict["penalty_min"], selected_edict["penalty_max"]),
+		"supervisor_advance": rng.randi_range(selected_edict["supervisor_advance_min"], selected_edict["supervisor_advance_max"]),
+		"ap_cost": rng.randi_range(selected_edict["ap_cost_min"], selected_edict["ap_cost_max"]),
+		"target_id": selected_target["id"],
+		"production_type": prod_type
 	}
 	
 	if prod_type == "resource":
 		task["required_quantity"] = rng.randi_range(10, 50)
-		task["current_quantity"] = 0 # Добавляем стартовый прогресс
-		task["full_name"] = "Произвести " + str(task["required_quantity"]) + " ед. товара: " + specific_target["name"]
-		
-	active_edicts[instance_id] = task
+		task["current_quantity"] = 0
+		task["full_name"] = "Произвести " + str(task["required_quantity"]) + " ед. товара: " + selected_target["name"]
+	
+	elif prod_type == "building":
+		var building_data = BuildingDatabase.get_building(selected_target["id"])
+		if not building_data.is_empty():
+			# Устанавливаем время на выполнение задания равным: ВремяВосстановления + 1 день
+			task["time_days"] = building_data["restore_time"] + 1
 
-	# Испускаем сигнал, что появился новый указ (например, для показа POPUP-окна)
+	active_edicts[instance_id] = task
 	edict_generated.emit(task)
 	return task
 
@@ -104,9 +155,12 @@ func complete_edict(instance_id: String):
 		return
 		
 	var task = active_edicts[instance_id]
-	FundsManager.current_funds += task["reward"]
 	
-	print("Указ выполнен успешно! Получено финансирование: ", task["reward"], " ус. ед.")
+	# Используем .get() со значением по умолчанию 0, чтобы избежать краша
+	var reward = task.get("reward", 0)
+	FundsManager.current_funds += reward
+	
+	print("Указ выполнен успешно! Получено финансирование: ", reward, " ус. ед.")
 	print("Текущий баланс: ", FundsManager.current_funds)
 	edict_completed.emit(task)
 	
@@ -114,6 +168,9 @@ func complete_edict(instance_id: String):
 
 
 func refuse_edict(instance_id: String):
+	if instance_id == MAIN_QUEST_ID:
+		return
+	
 	if not active_edicts.has(instance_id):
 		return
 		
@@ -126,6 +183,9 @@ func refuse_edict(instance_id: String):
 
 
 func fail_edict(instance_id: String):
+	if instance_id == MAIN_QUEST_ID:
+		return
+		
 	if not active_edicts.has(instance_id):
 		return
 		
@@ -153,9 +213,10 @@ func _apply_edict_penalty(task: Dictionary):
 		print("GAME OVER: Супервайзер добрался до вас.")
 
 
-func _on_day_started(_day: int) -> void:
-	generate_random_edict()
-	EventBus.show_edict_popup.emit()
+func _on_day_started(day: int) -> void:
+	if day % 2 == 0:
+		generate_random_edict()
+		EventBus.show_edict_popup.emit()
 
 
 func add_progress_to_edict(instance_id: String, amount: int) -> void:
@@ -171,4 +232,66 @@ func add_progress_to_edict(instance_id: String, amount: int) -> void:
 		
 		# Если цель достигнута, автоматически завершаем задание
 		if task["current_quantity"] >= task["required_quantity"]:
+			complete_edict(instance_id)
+
+
+func _init_main_quest() -> void:
+	unrestored_count = BuildingDatabase.get_unrestored_buildings_count()
+	
+	if unrestored_count == 0:
+		return
+		
+	var task = {
+		"instance_id": MAIN_QUEST_ID,
+		"id": "main_restore",
+		"full_name": "Восстановить разрушенные здания",
+		"required_quantity": unrestored_count,
+		"current_quantity": 0,
+		"is_main_quest": true # Флаг, чтобы отличать от обычных указов
+	}
+	
+	active_edicts[MAIN_QUEST_ID] = task
+	# Сразу имитируем принятие задания, чтобы оно появилось в HUD
+	edict_accepted.emit(task)
+
+
+func _on_building_restored(_building_id: String) -> void:
+	# 1. Проверяем главный квест на общее количество восстановленных зданий
+	if active_edicts.has(MAIN_QUEST_ID):
+		add_progress_to_edict(MAIN_QUEST_ID, 1)
+		
+	# 2. Ищем обычные указы, привязанные к этому конкретному зданию
+	var tasks_to_complete = []
+	for instance_id in active_edicts:
+		var task = active_edicts[instance_id]
+		# Если цель задания совпадает с ID только что восстановленного здания
+		if task.has("target_id") and task["target_id"] == _building_id:
+			tasks_to_complete.append(instance_id)
+			
+	# Завершаем найденные задания (в отдельном цикле, чтобы не сломать итерацию словаря)
+	for instance_id in tasks_to_complete:
+		complete_edict(instance_id)
+
+
+func _on_research_completed(research_id: String, research_type: String) -> void:
+	var tasks_to_complete = []
+	
+	# Ищем активные указы, связанные с исследованиями
+	for instance_id in active_edicts:
+		var task = active_edicts[instance_id]
+		
+		# Задание может требовать конкретное исследование (target_id)
+		# или любой проект определенного типа (production_type == "research" или "experiment")
+		if task.has("target_id") and task["target_id"] == research_id:
+			tasks_to_complete.append(instance_id)
+		elif task.has("production_type") and task["production_type"] == research_type:
+			# Если задание количественное
+			if task.has("required_quantity"):
+				add_progress_to_edict(instance_id, 1)
+			else:
+				tasks_to_complete.append(instance_id)
+				
+	# Завершаем найденные задания
+	for instance_id in tasks_to_complete:
+		if active_edicts.has(instance_id):
 			complete_edict(instance_id)
