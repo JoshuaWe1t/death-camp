@@ -1,7 +1,6 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("EventBus is initialized")
 
@@ -24,3 +23,11 @@ signal show_edict_popup()
 
 @warning_ignore("unused_signal")
 signal building_restored(build_id: String)
+
+
+@warning_ignore("unused_signal")
+signal show_research_popup()
+@warning_ignore("unused_signal")
+signal research_started(research_id: String)
+@warning_ignore("unused_signal")
+signal research_completed(research_id: String, type: String)
