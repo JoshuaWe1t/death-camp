@@ -76,10 +76,34 @@ func _on_end_day_pressed() -> void:
 	Global.end_day()
 
 
+#func _on_edict_accepted(task: Dictionary) -> void:
+	#var label = Label.new()
+	## Присваиваем имя узлу, чтобы легко находить его для обновления или удаления
+	#label.name = task["instance_id"]
+	#label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	#
+	#_update_label_text(label, task)
+	#tasks_vbox.add_child(label)
+#
+#
+#func _on_edict_updated(task: Dictionary) -> void:
+	## Ищем узел по уникальному ID задания
+	#var label = tasks_vbox.get_node_or_null(task["instance_id"])
+	#if label:
+		#_update_label_text(label, task)
+#
+#
+#func _remove_edict_from_hud(task: Dictionary) -> void:
+	## Ищем узел задания и удаляем его при завершении/провале
+	#var label = tasks_vbox.get_node_or_null(task["instance_id"])
+	#if label:
+		#label.queue_free()
+
+
 func _on_edict_accepted(task: Dictionary) -> void:
 	var label = Label.new()
-	# Присваиваем имя узлу, чтобы легко находить его для обновления или удаления
-	label.name = task["instance_id"]
+	# validate_node_name() очищает строку от запрещенных символов (включая точки)
+	label.name = str(task["instance_id"]).validate_node_name()
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	
 	_update_label_text(label, task)
@@ -87,15 +111,15 @@ func _on_edict_accepted(task: Dictionary) -> void:
 
 
 func _on_edict_updated(task: Dictionary) -> void:
-	# Ищем узел по уникальному ID задания
-	var label = tasks_vbox.get_node_or_null(task["instance_id"])
+	var safe_name = str(task["instance_id"]).validate_node_name()
+	var label = tasks_vbox.get_node_or_null(safe_name)
 	if label:
 		_update_label_text(label, task)
 
 
 func _remove_edict_from_hud(task: Dictionary) -> void:
-	# Ищем узел задания и удаляем его при завершении/провале
-	var label = tasks_vbox.get_node_or_null(task["instance_id"])
+	var safe_name = str(task["instance_id"]).validate_node_name()
+	var label = tasks_vbox.get_node_or_null(safe_name)
 	if label:
 		label.queue_free()
 
