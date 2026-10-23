@@ -114,6 +114,7 @@ func _on_building_pressed() -> void:
 				print("canteen")
 			"hospital_small":
 				print("hospital_small")
+				EventBus.show_research_popup.emit()
 			"barrack":
 				print("barrack")
 			"laboratory":
@@ -122,6 +123,7 @@ func _on_building_pressed() -> void:
 				print("workshop")
 			"hospital_large":
 				print("hospital_large")
+				EventBus.show_research_popup.emit()
 			"crematorium":
 				print("crematorium")
 			"gas_chamber":
