@@ -24,6 +24,8 @@ PrisonersManager="*res://core/autoload/PrisonersManager.gd"
 StaffManager="*res://core/autoload/StaffManager.gd"
 BuildingDatabase="*res://core/autoload/BuildingDatabase.gd"
 EdictManager="*res://core/autoload/EdictManager.gd"
+ResearchManager="*res://core/autoload/ResearchManager.gd"
+SupervisorManager="*res://core/autoload/SupervisorManager.gd"
 
 [display]
 
