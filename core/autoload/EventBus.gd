@@ -31,3 +31,9 @@ signal show_research_popup()
 signal research_started(research_id: String)
 @warning_ignore("unused_signal")
 signal research_completed(research_id: String, type: String)
+
+
+@warning_ignore("unused_signal")
+signal supervisor_arrived()
+@warning_ignore("unused_signal")
+signal supervisor_report(checked_amount: int, left_unchecked: int)
