@@ -3,8 +3,9 @@ class_name Building
 
 # Выпадающий список в инспекторе для выбора здания
 @export_enum(
-	"admin", "komendant", "dormitory", "morgue", "canteen", "hospital_small", 
-	"barrack", "laboratory", "workshop", "hospital_large", "crematorium", "gas_chamber", "death_wall"
+	"admin", "komendant", "dormitory", "dormitory1", "morgue", "canteen", "hospital_small", 
+	"barrack", "barrack1", "barrack2", "laboratory", "laboratory1", "workshop", "workshop1",
+	"hospital_large", "crematorium", "gas_chamber", "gas_chamber1", "death_wall"
 )
  
 var building_id: String = "barrack"
@@ -75,7 +76,7 @@ func update_tooltip() -> void:
 
 
 func _on_day_ended(_day: int) -> void:
-	print("building._on_day_ended")		
+	print("building._on_day_ended")
 	if is_restoring:
 		days_left_to_restore -= 1
 		update_tooltip()
@@ -108,6 +109,8 @@ func _on_building_pressed() -> void:
 				print("admin")
 			"dormitory":
 				print("dormitory")
+			"dormitory1":
+				print("dormitory1")
 			"morgue":
 				print("morgue")
 			"canteen":
@@ -117,8 +120,14 @@ func _on_building_pressed() -> void:
 				EventBus.show_research_popup.emit()
 			"barrack":
 				print("barrack")
+			"barrack1":
+				print("barrack")
+			"barrack2":
+				print("barrack")
 			"laboratory":
 				print("laboratory")
+			"laboratory1":
+				print("laboratory1")
 			"workshop":
 				print("workshop")
 			"hospital_large":
@@ -128,6 +137,8 @@ func _on_building_pressed() -> void:
 				print("crematorium")
 			"gas_chamber":
 				print("gas_chamber")
+			"gas_chamber1":
+				print("gas_chamber1")
 			"death_wall":
 				print("death_wall")
 			_:
@@ -160,7 +171,16 @@ func finish_restoration() -> void:
 			"dormitory":
 				print(building_name, " успешно восстановлено!")
 				StaffManager.add_new_staff(10)
+			"dormitory1":
+				print(building_name, " успешно восстановлено!")
+				StaffManager.add_new_staff(10)
 			"barrack":
+				print(building_name, " успешно восстановлено!")
+				PrisonersManager.free_workers(100)
+			"barrack1":
+				print(building_name, " успешно восстановлено!")
+				PrisonersManager.free_workers(100)
+			"barrack2":
 				print(building_name, " успешно восстановлено!")
 				PrisonersManager.free_workers(100)
 			_:
