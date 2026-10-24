@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://8fcq866ri4ab"]
+
+[ext_resource type="Script" uid="uid://dnr1658o3clxi" path="res://ui/components/row_staff_member/staff_member_row.gd" id="1_5n0w2"]
+
+[node name="StaffMemberRow" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5n0w2")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 2
+
+[node name="RoleLabel" type="Label" parent="."]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 2
