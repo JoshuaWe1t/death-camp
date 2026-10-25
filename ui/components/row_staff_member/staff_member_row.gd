@@ -25,4 +25,4 @@ func set_data(member: StaffMember) -> void:
 		status_label.text = "Пропущен"
 		modulate = Color(0.663, 0.607, 0.239, 1.0)
 	else:
-		status_label.text = "В работе"
+		status_label.text = ""
