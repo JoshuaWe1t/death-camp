@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://krk4hdpfab15"]
+
+[ext_resource type="AudioStream" uid="uid://c83egryyvoi6b" path="res://assets/audio/sfx/heart_beat.wav" id="1_er35s"]
+[ext_resource type="Script" uid="uid://fkoxcdybggkv" path="res://ui/components/fear_manager/fear_manager.gd" id="1_ihxhx"]
+
+[node name="FearManager" type="Node"]
+script = ExtResource("1_ihxhx")
+
+[node name="HeartbeatAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_er35s")
