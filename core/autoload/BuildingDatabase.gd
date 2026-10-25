@@ -34,8 +34,8 @@ var DATA = {
 			"rus": "Общежитие персонала",
 			"eng": "dormitory"
 		},
-		"is_restored": true,
-		"restore_cost": 0, "restore_time": 0, "restore_workers": 0, "restore_ap": 0,
+		"is_restored": false,
+		"restore_cost": 100, "restore_time": 2, "restore_workers": 25, "restore_ap": 2,
 		"upkeep_cost": 45, "upkeep_cycle": 5
 	},
 	"morgue": {
