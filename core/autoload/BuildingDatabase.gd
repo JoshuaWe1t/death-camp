@@ -9,7 +9,11 @@ var DATA = {
 		},
 		"is_restored": true,
 		"restore_cost": 0, "restore_time": 0, "restore_workers": 0, "restore_ap": 0,
-		"upkeep_cost": 25, "upkeep_cycle": 3
+		"upkeep_cost": 25, "upkeep_cycle": 3,
+		"description": {
+			"rus": "Открывает доступ к списку штата",
+			"eng": ""
+		}
 	},
 	"komendant": {
 		"name": {
@@ -18,7 +22,11 @@ var DATA = {
 		},
 		"is_restored": true,
 		"restore_cost": 0, "restore_time": 0, "restore_workers": 0, "restore_ap": 0,
-		"upkeep_cost": 25, "upkeep_cycle": 5
+		"upkeep_cost": 25, "upkeep_cycle": 5,
+		"description": {
+			"rus": "Позволяет закончить текущий день",
+			"eng": ""
+		}
 	},
 	"dormitory": {
 		"name": {
@@ -27,7 +35,11 @@ var DATA = {
 		},
 		"is_restored": true,
 		"restore_cost": 0, "restore_time": 0, "restore_workers": 0, "restore_ap": 0,
-		"upkeep_cost": 45, "upkeep_cycle": 5
+		"upkeep_cost": 45, "upkeep_cycle": 5,
+		"description": {
+			"rus": "Открывает новых сотрудников",
+			"eng": ""
+		}
 	},
 	"dormitory1": {
 		"name": {
@@ -36,7 +48,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 100, "restore_time": 2, "restore_workers": 25, "restore_ap": 2,
-		"upkeep_cost": 45, "upkeep_cycle": 5
+		"upkeep_cost": 45, "upkeep_cycle": 5,
+		"description": {
+			"rus": "Открывает новых сотрудников",
+			"eng": ""
+		}
 	},
 	"morgue": {
 		"name": {
@@ -45,7 +61,11 @@ var DATA = {
 		},
 		"is_restored": true,
 		"restore_cost": 0, "restore_time": 0, "restore_workers": 0, "restore_ap": 0,
-		"upkeep_cost": 5, "upkeep_cycle": 1
+		"upkeep_cost": 0, "upkeep_cycle": 1,
+		"description": {
+			"rus": "Хранит погибших сотрудников/заключенных",
+			"eng": ""
+		}
 	},
 	"canteen": {
 		"name": {
@@ -54,7 +74,11 @@ var DATA = {
 		},
 		"is_restored": true,
 		"restore_cost": 0, "restore_time": 0, "restore_workers": 0, "restore_ap": 0,
-		"upkeep_cost": 25, "upkeep_cycle": 1 # базовое значение (25-250)
+		"upkeep_cost": 25, "upkeep_cycle": 1,
+		"description": {
+			"rus": "Обеспечивает питание сотрудников/заключенных",
+			"eng": ""
+		}
 	},
 	"hospital_small": {
 		"name": {
@@ -63,7 +87,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 300, "restore_time": 2, "restore_workers": 25, "restore_ap": 3,
-		"upkeep_cost": 50, "upkeep_cycle": 2
+		"upkeep_cost": 50, "upkeep_cycle": 2,
+		"description": {
+			"rus": "Открывает доступ к исследованиям",
+			"eng": ""
+		}
 	},
 	"barrack": {
 		"name": {
@@ -72,7 +100,11 @@ var DATA = {
 		},
 		"is_restored": true,
 		"restore_cost": 150, "restore_time": 1, "restore_workers": 10, "restore_ap": 1,
-		"upkeep_cost": 5, "upkeep_cycle": 1
+		"upkeep_cost": 5, "upkeep_cycle": 1,
+		"description": {
+			"rus": "Открывает доступ к организации побега заключенных",
+			"eng": ""
+		}
 	},
 	"barrack1": {
 		"name": {
@@ -81,7 +113,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 150, "restore_time": 1, "restore_workers": 10, "restore_ap": 1,
-		"upkeep_cost": 5, "upkeep_cycle": 1
+		"upkeep_cost": 5, "upkeep_cycle": 1,
+		"description": {
+			"rus": "Открывает доступ к организации побега заключенных",
+			"eng": ""
+		}
 	},
 	"barrack2": {
 		"name": {
@@ -90,7 +126,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 150, "restore_time": 1, "restore_workers": 10, "restore_ap": 1,
-		"upkeep_cost": 5, "upkeep_cycle": 1
+		"upkeep_cost": 5, "upkeep_cycle": 1,
+		"description": {
+			"rus": "Открывает доступ к организации побега заключенных",
+			"eng": ""
+		}
 	},
 	"laboratory": {
 		"name": {
@@ -99,7 +139,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 250, "restore_time": 3, "restore_workers": 30, "restore_ap": 3,
-		"upkeep_cost": 15, "upkeep_cycle": 0 # 0 значит потребляет только при работе
+		"upkeep_cost": 15, "upkeep_cycle": 0,
+		"description": {
+			"rus": "Открывает доступ к экспериментам",
+			"eng": ""
+		}
 	},
 	"laboratory1": {
 		"name": {
@@ -108,7 +152,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 250, "restore_time": 3, "restore_workers": 30, "restore_ap": 3,
-		"upkeep_cost": 15, "upkeep_cycle": 0 # 0 значит потребляет только при работе
+		"upkeep_cost": 15, "upkeep_cycle": 0,
+		"description": {
+			"rus": "Открывает доступ к экспериментам",
+			"eng": ""
+		}
 	},
 	"workshop": {
 		"name": {
@@ -117,7 +165,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 350, "restore_time": 2, "restore_workers": 30, "restore_ap": 4,
-		"upkeep_cost": 35, "upkeep_cycle": 0
+		"upkeep_cost": 35, "upkeep_cycle": 0,
+		"description": {
+			"rus": "Открывает доступ к производству мебели/одежды",
+			"eng": ""
+		}
 	},
 	"workshop1": {
 		"name": {
@@ -126,7 +178,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 350, "restore_time": 2, "restore_workers": 30, "restore_ap": 4,
-		"upkeep_cost": 35, "upkeep_cycle": 0
+		"upkeep_cost": 35, "upkeep_cycle": 0,
+		"description": {
+			"rus": "Открывает доступ к производству мебели/одежды",
+			"eng": ""
+		}
 	},
 	"hospital_large": {
 		"name": {
@@ -135,7 +191,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 400, "restore_time": 4, "restore_workers": 45, "restore_ap": 3,
-		"upkeep_cost": 75, "upkeep_cycle": 3
+		"upkeep_cost": 75, "upkeep_cycle": 3,
+		"description": {
+			"rus": "Открывает доступ к исследования",
+			"eng": ""
+		}
 	},
 	"crematorium": {
 		"name": {
@@ -144,7 +204,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 250, "restore_time": 2, "restore_workers": 25, "restore_ap": 2,
-		"upkeep_cost": 45, "upkeep_cycle": 5
+		"upkeep_cost": 45, "upkeep_cycle": 5,
+		"description": {
+			"rus": "Позволяет утилизировать заключенных",
+			"eng": ""
+		}
 	},
 	"gas_chamber": {
 		"name": {
@@ -153,7 +217,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 300, "restore_time": 2, "restore_workers": 40, "restore_ap": 2,
-		"upkeep_cost": 125, "upkeep_cycle": 0
+		"upkeep_cost": 125, "upkeep_cycle": 0,
+		"description": {
+			"rus": "Позволяет утилизировать заключенных",
+			"eng": ""
+		}
 	},
 	"gas_chamber1": {
 		"name": {
@@ -162,7 +230,11 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 300, "restore_time": 2, "restore_workers": 40, "restore_ap": 2,
-		"upkeep_cost": 125, "upkeep_cycle": 0
+		"upkeep_cost": 125, "upkeep_cycle": 0,
+		"description": {
+			"rus": "Позволяет утилизировать заключенных",
+			"eng": ""
+		}
 	},
 	"death_wall": {
 		"name": {
@@ -171,9 +243,14 @@ var DATA = {
 		},
 		"is_restored": false,
 		"restore_cost": 50, "restore_time": 1, "restore_workers": 5, "restore_ap": 1,
-		"upkeep_cost": 10, "upkeep_cycle": 0
+		"upkeep_cost": 10, "upkeep_cycle": 0,
+		"description": {
+			"rus": "Позволяет расстреливать заключенных",
+			"eng": ""
+		}
 	}
 }
+
 
 func get_building(id: String) -> Dictionary:
 	if DATA.has(id):
