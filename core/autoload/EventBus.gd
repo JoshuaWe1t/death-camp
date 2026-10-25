@@ -56,3 +56,7 @@ signal counters_updated(staff_count: int, prisoners_count: int)
 
 @warning_ignore("unused_signal")
 signal show_notofocation_letter()
+
+
+@warning_ignore("unused_signal")
+signal show_escaped_popup()
