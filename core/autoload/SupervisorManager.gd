@@ -3,7 +3,7 @@ extends Node
 # Настройки проверок 
 var min_checks_per_day: int = 3
 var max_checks_per_day: int = 5
-var fail_chance: float = 0.2 # Шанс провала проверки (20%)
+var fail_chance: float = 0.15 
 
 var fail_reasons: Array[String] = [
 	"Обнаружены несоответствия в родословной",
@@ -14,8 +14,9 @@ var fail_reasons: Array[String] = [
 
 
 func _ready() -> void:
-	# Подписываемся на старт нового дня из Global/EventBus
 	EventBus.day_started.connect(_on_day_started)
+	# Подписываемся на сигнал саботажа/провала
+	EventBus.task_failed_or_sabotaged.connect(_on_task_failed)
 
 
 func _on_day_started(day: int) -> void:
@@ -33,11 +34,11 @@ func _process_daily_checks() -> void:
 	var unchecked_staff: Array = []
 	var player: StaffMember = null
 	
-	# 1. Фильтруем список: отделяем игрока и находим всех непроверенных
+	# 1. Фильтруем список
 	for member in staff:
 		if member.is_player:
 			player = member
-		elif not member.is_checked and not member.is_neutralized:
+		elif not member.is_checked and not member.is_neutralized and not member.is_skipped:
 			unchecked_staff.append(member)
 			
 	var left_unchecked: int = unchecked_staff.size()
@@ -50,9 +51,8 @@ func _process_daily_checks() -> void:
 		
 	# 3. Выбираем случайное количество сотрудников на сегодня
 	var checks_today = randi_range(min_checks_per_day, max_checks_per_day)
-	checks_today = min(checks_today, left_unchecked) # Защита, если людей меньше, чем квота
+	checks_today = min(checks_today, left_unchecked) 
 	
-	# Перемешиваем массив, чтобы выбрать случайных
 	unchecked_staff.shuffle()
 	
 	# 4. Проводим проверки
@@ -64,10 +64,15 @@ func _process_daily_checks() -> void:
 		if randf() < fail_chance:
 			target.is_neutralized = true
 			target.neutralization_reason = fail_reasons.pick_random()
+			
+			StaffManager.transfer_staff_to_prisoner()
 	
-	# 5. Отправляем сигнал для UI, чтобы показать итоги проверки за день
 	var remaining_after_check = left_unchecked - checks_today
+	print("_process_daily_checks: ", checks_today, remaining_after_check)
 	EventBus.supervisor_report.emit(checks_today, remaining_after_check)
+	
+	# Оповещаем список, что данные изменились
+	EventBus.staff_list_updated.emit()
 
 
 func _check_player(player: StaffMember) -> void:
@@ -75,3 +80,19 @@ func _check_player(player: StaffMember) -> void:
 	print("Супервайзер добрался до игрока!")
 	player.is_checked = true
 	# EventBus.game_over.emit(reason) или переход на сцену поражения
+
+
+func _on_task_failed(skip_amount: int) -> void:
+	var staff = StaffManager.staff_list
+	var skipped_count = 0
+	
+	# Идем по списку и пропускаем первых попавшихся "чистых" сотрудников
+	for member in staff:
+		if not member.is_player and not member.is_checked and not member.is_neutralized and not member.is_skipped:
+			member.is_skipped = true
+			skipped_count += 1
+			if skipped_count >= skip_amount:
+				break
+				
+	print("Супервайзер пропустил ", skipped_count, " сотрудников из-за провала/саботажа.")
+	EventBus.staff_list_updated.emit() # Обновляем UI
