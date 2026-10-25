@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcysvfj2btsee"]
+
+[ext_resource type="Script" uid="uid://c7ckb7c2cpqi3" path="res://ui/popups/escape_window.gd" id="1_bp5bw"]
+[ext_resource type="Texture2D" uid="uid://cji1u54uprnf7" path="res://assets/textures/sprites/escaped_wall.png" id="2_dbqt4"]
+[ext_resource type="Texture2D" uid="uid://glw1ogcdp7q3" path="res://assets/textures/ui/button_rescue_esc1.png" id="3_dbqt4"]
+[ext_resource type="Texture2D" uid="uid://d0yejmddlim2i" path="res://assets/textures/ui/button_rescue_esc2.png" id="4_klox1"]
+[ext_resource type="Texture2D" uid="uid://2yd6mhesgbsa" path="res://assets/textures/ui/button_cancel_esc1.png" id="5_g8hcu"]
+[ext_resource type="Texture2D" uid="uid://uno338l2o6m1" path="res://assets/textures/ui/button_cancel_esc2.png" id="6_klgyb"]
+
+[node name="EscapeWindow" type="CanvasLayer"]
+script = ExtResource("1_bp5bw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -138.0
+offset_right = 156.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dbqt4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -109.5
+offset_right = 140.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="InfoLabel" type="Label" parent="Control/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(280, 120)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6542321, 0.6542321, 0.654232, 1)
+theme_override_font_sizes/font_size = 18
+text = "FKDHFJDHFKJDFHDKJFHDLK"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="EscapeButton" type="TextureButton" parent="Control/TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_dbqt4")
+texture_pressed = ExtResource("4_klox1")
+
+[node name="CancelButton" type="TextureButton" parent="Control/TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_g8hcu")
+texture_pressed = ExtResource("6_klgyb")
