@@ -14,6 +14,8 @@ func _ready() -> void:
 func start_day() -> void:
 	print("День ", current_day, " начался.")
 	EventBus.day_started.emit(current_day)
+	if current_day == 1:
+		EventBus.game_started.emit()
 
 
 func end_day() -> void:
