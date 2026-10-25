@@ -107,6 +107,7 @@ func _on_building_pressed() -> void:
 				Global.end_day()
 			"admin":
 				print("admin")
+				EventBus.show_staff_list.emit()
 			"dormitory":
 				print("dormitory")
 			"dormitory1":
