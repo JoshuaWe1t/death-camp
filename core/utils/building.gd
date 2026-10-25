@@ -121,10 +121,13 @@ func _on_building_pressed() -> void:
 				EventBus.show_research_popup.emit()
 			"barrack":
 				print("barrack")
+				EventBus.show_escaped_popup.emit()
 			"barrack1":
-				print("barrack")
+				print("barrack1")
+				EventBus.show_escaped_popup.emit()
 			"barrack2":
-				print("barrack")
+				print("barrack2")
+				EventBus.show_escaped_popup.emit()
 			"laboratory":
 				print("laboratory")
 			"laboratory1":
