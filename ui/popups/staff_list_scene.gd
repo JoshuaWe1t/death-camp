@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-# Перетащи сюда сцену StaffMemberRow.tscn через инспектор
 @export var row_scene: PackedScene 
 @onready var list_container: VBoxContainer = $Control/MarginContainer/TextureRect/MarginContainer/ScrollContainer/ListContainer
 @onready var close_button: TextureButton = $Control/MarginContainer/CloseButton
