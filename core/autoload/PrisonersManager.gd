@@ -28,3 +28,7 @@ func spend_resources_for_restoration(prisoners: int) -> void:
 
 func free_workers(prisoners: int) -> void:
 	current_prisoners += prisoners
+
+
+func escaped_prisoners(prisoners: int) -> void:
+	current_prisoners -= prisoners
