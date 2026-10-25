@@ -180,6 +180,7 @@ func refuse_edict(instance_id: String):
 	_apply_edict_penalty(task)
 	edict_refused.emit(task)
 	active_edicts.erase(instance_id)
+	EventBus.task_failed_or_sabotaged.emit(task.get("supervisor_advance"))
 
 
 func fail_edict(instance_id: String):
@@ -195,6 +196,7 @@ func fail_edict(instance_id: String):
 	_apply_edict_penalty(task)
 	edict_failed.emit(task)
 	active_edicts.erase(instance_id)
+	EventBus.task_failed_or_sabotaged.emit(task.get("supervisor_advance"))
 
 
 func _apply_edict_penalty(task: Dictionary):
