@@ -1,13 +1,39 @@
 extends Node
 
 var staff_list: Array = []
+var available_names: Array = [] # Массив для хранения загруженных имен
 var total_stuff: int
 var current_stuff: int = 32
-@export var is_skipped: bool = false
+var is_skipped: bool = false
+var lang = "eng"
 
 func _ready() -> void:
+	_load_names_from_json() # Загружаем имена перед генерацией
 	_generate_initial_staff()
 	print(staff_list)
+
+
+# Новая функция для чтения файла german_names.json
+func _load_names_from_json() -> void:
+	# Убедитесь, что путь к файлу верный для вашего проекта
+	var file = FileAccess.open("res://core/utils/german_names.json", FileAccess.READ)
+	if file:
+		var json = JSON.new()
+		var error = json.parse(file.get_as_text())
+		if error == OK:
+			available_names = json.data
+		else:
+			push_error("Ошибка парсинга JSON.")
+	else:
+		push_error("Не удалось найти файл german_names.json.")
+
+
+# Вспомогательная функция для получения случайного имени
+func _get_random_name() -> Dictionary:
+	if available_names.size() > 0:
+		return available_names.pick_random()
+	# Возвращаем заглушку, если файл не загрузился
+	return {"first_name_ru": "Работник", "last_name_ru": "Неизвестный"}
 
 
 func _generate_initial_staff() -> void:
@@ -18,13 +44,18 @@ func _generate_initial_staff() -> void:
 	staff_list.append(player)
 	
 	# 2. Генерируем остальной штат
-	# В будущем имена можно подтягивать из JSON файла
 	for i in range(1, current_stuff):
-		var role = "Охранник"
+		var role = "Охранник" if lang == "rus" else "Security"
 		if i == 1: 
-			role = "Администратор"
+			role = "Администратор" if lang == "rus" else "Administrator"
 			
-		var member = StaffMember.new(i, false, "Работник", str(i), role)
+		var name_data = _get_random_name()
+		var member: StaffMember = null
+		if lang == "eng":
+			member = StaffMember.new(i, false, name_data["first_name_en"], name_data["last_name_en"], role)
+		else:
+			# Подставляем русские версии имени и фамилии
+			member = StaffMember.new(i, false, name_data["first_name_ru"], name_data["last_name_ru"], role)
 		staff_list.append(member)
 
 
@@ -37,8 +68,14 @@ func add_new_staff(value: int) -> void:
 	var start_id = staff_list.size() # Берем текущий размер массива для генерации уникальных ID
 	
 	for i in range(value):
-		# Создаем нового работника. Он не проверен, не пропущен и не нейтрализован
-		var member = StaffMember.new(start_id + i, false, "Новый", "Сотрудник " + str(start_id + i), "Охранник")
+		var name_data = _get_random_name()
+		var role = "Охранник" if lang == "rus" else "Security"
+		var member: StaffMember = null
+		if lang == "eng":
+			member = StaffMember.new(start_id + i, false, name_data["first_name_en"], name_data["last_name_en"], role)
+		else:
+			# Подставляем русские версии имени и фамилии
+			member = StaffMember.new(start_id + i, false, name_data["first_name_ru"], name_data["last_name_ru"], role)
 		staff_list.append(member)
 		
 	current_stuff += value
