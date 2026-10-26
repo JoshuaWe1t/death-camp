@@ -5,13 +5,21 @@ var min_checks_per_day: int = 3
 var max_checks_per_day: int = 5
 var fail_chance: float = 0.15 
 
-var fail_reasons: Array[String] = [
+var fail_reasons_ru: Array[String] = [
 	"Обнаружены несоответствия в родословной",
 	"Саботаж рабочего процесса",
 	"Подозрительные связи с заключенными",
 	"Уличен в сокрытии улик"
 ]
 
+var fail_reasons_en: Array[String] = [
+	"Discrepancies in the family tree discovered",
+	"Workplace sabotage",
+	"Suspicious connections with prisoners",
+	"Found guilty of withholding evidence"
+]
+
+var lang = "eng"
 
 func _ready() -> void:
 	EventBus.day_started.connect(_on_day_started)
@@ -63,7 +71,7 @@ func _process_daily_checks() -> void:
 		# Определяем исход проверки
 		if randf() < fail_chance:
 			target.is_neutralized = true
-			target.neutralization_reason = fail_reasons.pick_random()
+			target.neutralization_reason = fail_reasons_ru.pick_random() if lang == "rus" else fail_reasons_en.pick_random()
 			
 			StaffManager.transfer_staff_to_prisoner()
 	
