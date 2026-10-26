@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7yrxt852wvpi"]
+[gd_scene load_steps=4 format=3 uid="uid://b7yrxt852wvpi"]
 
 [ext_resource type="Script" uid="uid://cwys3jm45cbps" path="res://ui/popups/staff_list_scene.gd" id="1_6cm1a"]
 [ext_resource type="PackedScene" uid="uid://8fcq866ri4ab" path="res://ui/components/row_staff_member/staff_member_row.tscn" id="2_icn3v"]
 [ext_resource type="Texture2D" uid="uid://c6x10ipl8wxm2" path="res://assets/textures/ui/staff_list.png" id="3_smmt5"]
-[ext_resource type="Texture2D" uid="uid://bu4qi7k2kh5er" path="res://icon.svg" id="4_dh0bb"]
 
 [node name="StaffListScene" type="CanvasLayer"]
 script = ExtResource("1_6cm1a")
@@ -53,7 +52,11 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CloseButton" type="TextureButton" parent="Control/MarginContainer"]
-layout_mode = 2
+[node name="CloseButton" type="TextureButton" parent="Control"]
+layout_mode = 0
+anchor_left = 0.3234375
+anchor_top = 0.15277778
+anchor_right = 0.346875
+anchor_bottom = 0.24583334
 size_flags_horizontal = 8
-texture_normal = ExtResource("4_dh0bb")
+metadata/_edit_use_anchors_ = true
