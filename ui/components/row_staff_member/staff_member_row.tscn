@@ -7,14 +7,26 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_5n0w2")
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="NameLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+size_flags_horizontal = 3
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
 
-[node name="RoleLabel" type="Label" parent="."]
+[node name="RoleLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+size_flags_horizontal = 3
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
 
-[node name="StatusLabel" type="Label" parent="."]
+[node name="StatusLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+size_flags_horizontal = 3
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
