@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://byogeka7mfa82"]
+
+[ext_resource type="Script" uid="uid://ql7li7fkfij4" path="res://ui/popups/utilization_menu.gd" id="1_g4wu5"]
+[ext_resource type="Texture2D" uid="uid://cji1u54uprnf7" path="res://assets/textures/sprites/escaped_wall.png" id="1_tgh15"]
+[ext_resource type="Texture2D" uid="uid://ceglj6r11kw1d" path="res://assets/textures/ui/button_utilize1.png" id="3_g4wu5"]
+[ext_resource type="Texture2D" uid="uid://uno338l2o6m1" path="res://assets/textures/ui/button_cancel_esc2.png" id="4_jxmay"]
+[ext_resource type="Texture2D" uid="uid://bpd2ygjk0kk0h" path="res://assets/textures/ui/button_utilize2.png" id="4_kxxhr"]
+[ext_resource type="Texture2D" uid="uid://2yd6mhesgbsa" path="res://assets/textures/ui/button_cancel_esc1.png" id="5_ds0ug"]
+
+[node name="UtilizationMenu" type="CanvasLayer"]
+script = ExtResource("1_g4wu5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tgh15")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.072222225
+anchor_top = 0.1
+anchor_right = 0.9305556
+anchor_bottom = 0.6576923
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="Control/TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Control/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(175, 75)
+layout_mode = 2
+text = "Description"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07083333
+anchor_top = 0.6846154
+anchor_right = 0.9291667
+anchor_bottom = 0.9307692
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="UtilizeButton" type="TextureButton" parent="Control/TextureRect/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_g4wu5")
+texture_pressed = ExtResource("4_kxxhr")
+
+[node name="CancelButton" type="TextureButton" parent="Control/TextureRect/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ds0ug")
+texture_pressed = ExtResource("4_jxmay")
