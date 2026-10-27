@@ -130,8 +130,10 @@ func _on_building_pressed() -> void:
 				EventBus.show_escaped_popup.emit()
 			"laboratory":
 				print("laboratory")
+				EventBus.show_experiment_menu.emit()
 			"laboratory1":
 				print("laboratory1")
+				EventBus.show_experiment_menu.emit()
 			"workshop":
 				print("workshop")
 			"hospital_large":
