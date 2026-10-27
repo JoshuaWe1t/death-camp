@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://cijriabb850s0"]
+
+[ext_resource type="Texture2D" uid="uid://8g3gvay841rw" path="res://assets/textures/ui/research_panel.png" id="1_fx8gy"]
+[ext_resource type="Script" uid="uid://b4g5d6mpa4t1" path="res://ui/popups/experiment_menu.gd" id="1_nfwrf"]
+[ext_resource type="Texture2D" uid="uid://be053p5oe41lt" path="res://assets/textures/ui/button_strength1.png" id="2_nfwrf"]
+[ext_resource type="Texture2D" uid="uid://bvgwnqqbggfx5" path="res://assets/textures/ui/button_strength2.png" id="3_5yhyw"]
+[ext_resource type="Texture2D" uid="uid://s2feymxmkew6" path="res://assets/textures/ui/button_endurance1.png" id="4_bqvw2"]
+[ext_resource type="Texture2D" uid="uid://c68ga2wwrcv8i" path="res://assets/textures/ui/button_endurance2.png" id="5_1b85w"]
+[ext_resource type="Texture2D" uid="uid://6hmf00f8tw8w" path="res://assets/textures/ui/button_mental_activity1.png" id="6_ul3aw"]
+[ext_resource type="Texture2D" uid="uid://c8rnpxsutwnix" path="res://assets/textures/ui/button_mental_activity2.png" id="7_t6q8a"]
+[ext_resource type="Texture2D" uid="uid://rxr6ujsuykfn" path="res://assets/textures/ui/button_admit1.png" id="8_m78wh"]
+
+[node name="ExperimentMenu" type="CanvasLayer"]
+script = ExtResource("1_nfwrf")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="bg" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -136.0
+offset_right = 250.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fx8gy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/bg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -140.25
+offset_right = 231.0
+offset_bottom = 140.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/bg/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonsResearch" type="VBoxContainer" parent="Control/bg/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="ResistButton" type="TextureButton" parent="Control/bg/VBoxContainer/HBoxContainer/ButtonsResearch"]
+layout_mode = 2
+texture_normal = ExtResource("2_nfwrf")
+texture_pressed = ExtResource("3_5yhyw")
+
+[node name="CombinatoriesButton" type="TextureButton" parent="Control/bg/VBoxContainer/HBoxContainer/ButtonsResearch"]
+layout_mode = 2
+texture_normal = ExtResource("4_bqvw2")
+texture_pressed = ExtResource("5_1b85w")
+
+[node name="Mental activityButton" type="TextureButton" parent="Control/bg/VBoxContainer/HBoxContainer/ButtonsResearch"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("6_ul3aw")
+texture_pressed = ExtResource("7_t6q8a")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/bg/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="DescriptionConatiner" type="VBoxContainer" parent="Control/bg/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Titel" type="Label" parent="Control/bg/VBoxContainer/HBoxContainer/MarginContainer/DescriptionConatiner"]
+layout_mode = 2
+text = "TITLE"
+
+[node name="Description" type="Label" parent="Control/bg/VBoxContainer/HBoxContainer/MarginContainer/DescriptionConatiner"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/bg"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/bg/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="ExecuteButton" type="TextureButton" parent="Control/bg/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("8_m78wh")
