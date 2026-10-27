@@ -1,0 +1,145 @@
+[gd_scene load_steps=6 format=3 uid="uid://8le8jf6ehdmc"]
+
+[ext_resource type="Texture2D" uid="uid://dshkgnjco4vru" path="res://assets/textures/sprites/cursed_letter.png" id="1_3d56w"]
+[ext_resource type="Script" uid="uid://deyhxy4yssqb" path="res://ui/notification/mysterious_offer_popup.gd" id="1_akgob"]
+[ext_resource type="Texture2D" uid="uid://c4hwkqmp1sdyt" path="res://assets/textures/sprites/sign-1.png" id="2_3d56w"]
+[ext_resource type="Texture2D" uid="uid://d3j35eybafoug" path="res://assets/textures/sprites/sign.png" id="4_akgob"]
+[ext_resource type="Texture2D" uid="uid://dakaiujo7dbdc" path="res://assets/textures/sprites/cursed-stamp.png" id="4_o7xxr"]
+
+[node name="MysteriousOfferPopup" type="CanvasLayer"]
+script = ExtResource("1_akgob")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3d56w")
+
+[node name="AdmitButton" type="TextureButton" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.8383333
+anchor_right = 0.411
+anchor_bottom = 0.9820833
+offset_right = 18.5
+offset_bottom = 28.75
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("2_3d56w")
+texture_pressed = ExtResource("4_akgob")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="RefusedButton" type="TextureButton" parent="Control/TextureRect"]
+layout_mode = 0
+anchor_left = 0.7
+anchor_top = 0.8666667
+anchor_right = 0.828
+anchor_bottom = 0.97333336
+texture_normal = ExtResource("4_o7xxr")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainerIntro" type="MarginContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.116
+anchor_top = 0.011666667
+anchor_right = 0.854
+anchor_bottom = 0.30666667
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="Introduction" type="Label" parent="Control/TextureRect/MarginContainerIntro"]
+custom_minimum_size = Vector2(345, 150)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08627451, 0.03137255, 0.03137255, 1)
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis  labore et dolore magna aliqua. Ut enim ad minim veniam, quis "
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainerMainPart" type="MarginContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.116
+anchor_top = 0.33166668
+anchor_right = 0.854
+anchor_bottom = 0.62999994
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="MainPart" type="Label" parent="Control/TextureRect/MarginContainerMainPart"]
+custom_minimum_size = Vector2(345, 150)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08627451, 0.03137255, 0.03137255, 1)
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis  labore et dolore magna aliqua. Ut enim ad minim veniam, quis "
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainerConclusion" type="MarginContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.116
+anchor_top = 0.665
+anchor_right = 0.854
+anchor_bottom = 0.8666667
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="Conclusion" type="Label" parent="Control/TextureRect/MarginContainerConclusion"]
+custom_minimum_size = Vector2(345, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08627451, 0.03137255, 0.03137255, 1)
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua. Ut enim ad minim veniam, quis "
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Hint" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -60.0
+offset_right = 176.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0.49019608, 1)
+theme_override_font_sizes/font_size = 12
+text = "Click the SIGN to accepts or CROSS to refused"
+horizontal_alignment = 1
+vertical_alignment = 1
