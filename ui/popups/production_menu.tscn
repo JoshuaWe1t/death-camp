@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdl611xnks6pb"]
+
+[ext_resource type="Texture2D" uid="uid://rxr6ujsuykfn" path="res://assets/textures/ui/button_admit1.png" id="1_7k7pc"]
+[ext_resource type="Texture2D" uid="uid://8g3gvay841rw" path="res://assets/textures/ui/research_panel.png" id="1_jhwr5"]
+[ext_resource type="Script" uid="uid://oul5ylekfo6s" path="res://ui/popups/production_menu.gd" id="1_xn4h6"]
+[ext_resource type="Texture2D" uid="uid://bmclmtbpmeceb" path="res://assets/textures/ui/button_admit2.png" id="2_jhwr5"]
+[ext_resource type="Texture2D" uid="uid://k116tfvs3ldi" path="res://assets/textures/ui/button_cancel1.png" id="3_xn4h6"]
+[ext_resource type="Texture2D" uid="uid://bg3kt4smt87xo" path="res://assets/textures/ui/button_cancel2.png" id="4_spitl"]
+[ext_resource type="Texture2D" uid="uid://be053p5oe41lt" path="res://assets/textures/ui/button_strength1.png" id="7_6sqk7"]
+[ext_resource type="Texture2D" uid="uid://bvgwnqqbggfx5" path="res://assets/textures/ui/button_strength2.png" id="8_yhu13"]
+
+[node name="ProductionMenu" type="CanvasLayer"]
+script = ExtResource("1_xn4h6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jhwr5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -106.0
+offset_right = 134.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title" type="Label" parent="Control/TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Manufacturing Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Control/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(200, 75)
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="FurnitureButton" type="TextureButton" parent="Control/TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_7k7pc")
+texture_pressed = ExtResource("2_jhwr5")
+
+[node name="ClothesButton" type="TextureButton" parent="Control/TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_xn4h6")
+texture_pressed = ExtResource("4_spitl")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TextureRect/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ProduceBtn" type="TextureButton" parent="Control/TextureRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("7_6sqk7")
+texture_pressed = ExtResource("8_yhu13")
+
+[node name="CancelButton" type="TextureButton" parent="Control/TextureRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("3_xn4h6")
+texture_pressed = ExtResource("4_spitl")
