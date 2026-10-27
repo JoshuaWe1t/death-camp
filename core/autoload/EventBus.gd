@@ -74,3 +74,19 @@ signal resource_dispatched(resource_id: String, amount: int)
 # Оповещение об успешной отправке (сколько отправлено и сколько всего учтено в задании)
 @warning_ignore("unused_signal")
 signal resource_dispatch_completed(resource_id: String, amount_sent: int, total_sent: int)
+
+# Сигналы таинственного предложения
+@warning_ignore("unused_signal")
+signal show_mysterious_offer()
+@warning_ignore("unused_signal")
+signal mysterious_offer_accepted()
+@warning_ignore("unused_signal")
+signal mysterious_offer_refused()
+
+# Сигналы утилизации и сбора душ
+@warning_ignore("unused_signal")
+signal show_utilization_menu(building_id: String)
+@warning_ignore("unused_signal")
+signal soul_quota_updated(collected_today: int, required_today: int)
+@warning_ignore("unused_signal")
+signal soul_quota_failed(penalty_multiplier: float)
