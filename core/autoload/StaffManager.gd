@@ -10,7 +10,6 @@ var lang = "eng"
 func _ready() -> void:
 	_load_names_from_json() # Загружаем имена перед генерацией
 	_generate_initial_staff()
-	print(staff_list)
 
 
 # Новая функция для чтения файла german_names.json
