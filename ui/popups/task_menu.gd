@@ -9,6 +9,8 @@ extends CanvasLayer
 var edict_object: Dictionary = {}
 var edict_id: String
 
+var lang = "eng"
+
 func _ready() -> void:
 	hide()
 	
@@ -21,12 +23,14 @@ func _ready() -> void:
 
 func _on_show_popup() -> void:
 	var text: String = ""
-	
-	text = edict_object.get("full_name") + "\n\n"
-	text += "Reward: " + str(edict_object.get("reward")) + "\n"
-	text += "Penalty: " + str(edict_object.get("penalty")) + "\n"
-	text += "Action points requarements: " + str(edict_object.get("ap_cost")) + "\n"
-	text += "Superviser'll skip : " + str(edict_object.get("supervisor_advance")) + " member of staff\n"
+	if lang == "rus":
+		pass
+	else:
+		text = edict_object.get("full_name") + "\n\n"
+		text += "Reward: " + str(edict_object.get("reward")) + "\n"
+		text += "Penalty: " + str(edict_object.get("penalty")) + "\n"
+		text += "Action points requarements: " + str(edict_object.get("ap_cost")) + "\n"
+		text += "Superviser'll skip : " + str(edict_object.get("supervisor_advance")) + " member of staff\n"
 	
 	description.text = text
 	show()
