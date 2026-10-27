@@ -2,7 +2,10 @@
 	"edicts": [
 		{
 			"id": "medical_research",
-			"name": "Произвести медицинское исследование",
+			"name": {
+				"rus": "Произвести медицинское исследование",
+				"eng": "Conduct Medical Research"
+			},
 			"time_min": 2,
 			"time_max": 2,
 			"reward_min": 200,
@@ -18,7 +21,10 @@
 		},
 		{
 			"id": "produce_goods",
-			"name": "Произвести единицы товара",
+			"name": {
+				"rus": "Произвести единицы товара",
+				"eng": "Produce Goods"
+			},
 			"time_min": 3,
 			"time_max": 5,
 			"reward_min": 350,
@@ -34,15 +40,18 @@
 		},
 		{
 			"id": "conduct_experiment",
-			"name": "Произвести эксперимент",
+			"name": {
+				"rus": "Произвести эксперимент",
+				"eng": "Conduct Experiment"
+			},
 			"time_min": 1,
 			"time_max": 3,
 			"reward_min": 550,
 			"reward_max": 650,
 			"penalty_min": 600,
 			"penalty_max": 650,
-			"supervisor_advance_min": 5,
-			"supervisor_advance_max": 8,
+			"supervisor_advance_min": 2,
+			"supervisor_advance_max": 4,
 			"ap_cost_min": 2,
 			"ap_cost_max": 6,
 			"production_type": "experiment",
@@ -50,11 +59,14 @@
 		},
 		{
 			"id": "restore_infrastructure",
-			"name": "Восстановить здание",
+			"name": {
+				"rus": "Восстановить здание",
+				"eng": "Restore Building"
+			},
 			"time_min": 4,
 			"time_max": 4,
-			"reward_min": 0,
-			"reward_max": 150,
+			"reward_min": 200,
+			"reward_max": 350,
 			"penalty_min": 50,
 			"penalty_max": 200,
 			"supervisor_advance_min": 2,
@@ -68,13 +80,19 @@
 		"resource": [
 			{
 				"id": "furniture",
-				"name": "Мебель",
+				"name": {
+					"rus": "Мебель",
+					"eng": "Furniture"
+				},
 				"base_reward_min": 125,
 				"base_reward_max": 175
 			},
 			{
 				"id": "clothes",
-				"name": "Одежда",
+				"name": {
+					"rus": "Одежда",
+					"eng": "Clothes"
+				},
 				"base_reward_min": 75,
 				"base_reward_max": 150
 			}
@@ -82,19 +100,28 @@
 		"research": [
 			{
 				"id": "strength",
-				"name": "Сила",
+				"name": {
+					"rus": "Сила",
+					"eng": "Strength"
+				},
 				"base_reward_min": 125,
 				"base_reward_max": 275
 			},
 			{
 				"id": "endurance",
-				"name": "Выносливость",
+				"name": {
+					"rus": "Выносливость",
+					"eng": "Endurance"
+				},
 				"base_reward_min": 150,
 				"base_reward_max": 325
 			},
 			{
 				"id": "mental",
-				"name": "Умственная активность",
+				"name": {
+					"rus": "Умственная активность",
+					"eng": "Mental activity"
+				},
 				"base_reward_min": 250,
 				"base_reward_max": 475
 			}
@@ -102,13 +129,19 @@
 		"experiment": [
 			{
 				"id": "resistance",
-				"name": "Сопротивление",
+				"name": {
+					"rus": "Сопротивление",
+					"eng": "Resistance"
+				},
 				"base_reward_min": 175,
 				"base_reward_max": 250
 			},
 			{
 				"id": "combinatorics",
-				"name": "Комбинаторика",
+				"name": {
+					"rus": "Комбинаторика",
+					"eng": "Combinatorics"
+				},
 				"base_reward_min": 250,
 				"base_reward_max": 475
 			}
@@ -116,25 +149,100 @@
 		"building": [
 			{
 				"id": "barrack",
-				"name": "Барак",
+				"name": {
+					"rus": "Северный барак",
+					"eng": "North barrack"
+				},
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			},
+			{
+				"id": "barrack1",
+				"name": {
+					"rus": "Западный барак",
+					"eng": "West barrack"
+				},
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			},
+			{
+				"id": "barrack2",
+				"name": {
+					"rus": "Южный барак",
+					"eng": "South barrack"
+				},
 				"base_reward_min": 0,
 				"base_reward_max": 0
 			},
 			{
 				"id": "hospital_small",
-				"name": "Больница",
+				"name": {
+					"rus": "Больница",
+					"eng": "Hospital"
+				},
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			},
+			{
+				"id": "hospital_large",
+				"name": {
+					"rus": "Госпиталь",
+					"eng": "Infirmary"
+				},
 				"base_reward_min": 0,
 				"base_reward_max": 0
 			},
 			{
 				"id": "workshop",
-				"name": "Цех",
+				"name": {
+					"rus": "Южный цех",
+					"eng": "South workshop"
+				},
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			},
+			{
+				"id": "workshop1",
+				"name": {
+					"rus": "Северный цех",
+					"eng": "North workshop"
+				},
 				"base_reward_min": 0,
 				"base_reward_max": 0
 			},
 			{
 				"id": "laboratory",
-				"name": "Лаборатория",
+				"name": {
+					"rus": "Лаборатория",
+					"eng": "Laboratory"
+				},
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			},
+			{
+				"id": "crematorium",
+				"name": {
+					"rus": "Крематорий",
+					"eng": "Crematorium"
+				},
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			},
+			{
+				"id": "gas_chamber",
+				"name": {
+					"rus": "Северная газовая камера",
+					"eng": "North gas chamber"
+				},
+				"base_reward_min": 0,
+				"base_reward_max": 0
+			},
+			{
+				"id": "gas_chamber1",
+				"name": {
+					"rus": "Южная газовая камера",
+					"eng": "South gas chamber"
+				},
 				"base_reward_min": 0,
 				"base_reward_max": 0
 			}
