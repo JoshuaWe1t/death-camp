@@ -26,6 +26,7 @@ BuildingDatabase="*res://core/autoload/BuildingDatabase.gd"
 EdictManager="*res://core/autoload/EdictManager.gd"
 ResearchManager="*res://core/autoload/ResearchManager.gd"
 SupervisorManager="*res://core/autoload/SupervisorManager.gd"
+ResourceManager="*res://core/autoload/ResourceManager.gd"
 
 [display]
 
