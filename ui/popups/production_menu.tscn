@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdl611xnks6pb"]
+[gd_scene load_steps=10 format=3 uid="uid://cdl611xnks6pb"]
 
-[ext_resource type="Texture2D" uid="uid://rxr6ujsuykfn" path="res://assets/textures/ui/button_admit1.png" id="1_7k7pc"]
-[ext_resource type="Texture2D" uid="uid://8g3gvay841rw" path="res://assets/textures/ui/research_panel.png" id="1_jhwr5"]
 [ext_resource type="Script" uid="uid://oul5ylekfo6s" path="res://ui/popups/production_menu.gd" id="1_xn4h6"]
-[ext_resource type="Texture2D" uid="uid://bmclmtbpmeceb" path="res://assets/textures/ui/button_admit2.png" id="2_jhwr5"]
-[ext_resource type="Texture2D" uid="uid://k116tfvs3ldi" path="res://assets/textures/ui/button_cancel1.png" id="3_xn4h6"]
-[ext_resource type="Texture2D" uid="uid://bg3kt4smt87xo" path="res://assets/textures/ui/button_cancel2.png" id="4_spitl"]
-[ext_resource type="Texture2D" uid="uid://be053p5oe41lt" path="res://assets/textures/ui/button_strength1.png" id="7_6sqk7"]
-[ext_resource type="Texture2D" uid="uid://bvgwnqqbggfx5" path="res://assets/textures/ui/button_strength2.png" id="8_yhu13"]
+[ext_resource type="Texture2D" uid="uid://btifm62cei7r5" path="res://assets/textures/sprites/produce_wall.png" id="2_yhu13"]
+[ext_resource type="Texture2D" uid="uid://6eaqur7cfpty" path="res://assets/textures/ui/buttons-furniture1.png" id="3_yhu13"]
+[ext_resource type="Texture2D" uid="uid://bwsbbmfuj1i0i" path="res://assets/textures/ui/buttons-furniture2.png" id="4_bcgts"]
+[ext_resource type="Texture2D" uid="uid://dkw22f11sfc4v" path="res://assets/textures/ui/buttons-clothes1.png" id="5_ayu5m"]
+[ext_resource type="Texture2D" uid="uid://bcrbwuwqayyvk" path="res://assets/textures/ui/buttons-clothes2.png" id="6_fkawu"]
+[ext_resource type="Texture2D" uid="uid://dhj8qvb2kesgl" path="res://assets/textures/ui/buttons-produce1.png" id="7_yhu13"]
+[ext_resource type="Texture2D" uid="uid://d1x54hk73ybyg" path="res://assets/textures/ui/buttons-produce2.png" id="8_bcgts"]
+[ext_resource type="Texture2D" uid="uid://dh8tyduto4qos" path="res://assets/textures/ui/button_escape.png" id="9_yhu13"]
 
 [node name="ProductionMenu" type="CanvasLayer"]
 script = ExtResource("1_xn4h6")
@@ -33,7 +34,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_jhwr5")
+texture = ExtResource("2_yhu13")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
 layout_mode = 1
@@ -43,9 +44,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -134.0
-offset_top = -106.0
+offset_top = -144.0
 offset_right = 134.0
-offset_bottom = 106.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
@@ -53,6 +54,7 @@ alignment = 1
 
 [node name="Title" type="Label" parent="Control/TextureRect/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.0253638, 0.0253638, 0.025363795, 1)
 text = "Manufacturing Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -60,6 +62,7 @@ vertical_alignment = 1
 [node name="Description" type="Label" parent="Control/TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(200, 75)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.0253638, 0.0253638, 0.025363795, 1)
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
 autowrap_mode = 2
 
@@ -69,13 +72,13 @@ theme_override_constants/separation = 12
 
 [node name="FurnitureButton" type="TextureButton" parent="Control/TextureRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_7k7pc")
-texture_pressed = ExtResource("2_jhwr5")
+texture_normal = ExtResource("3_yhu13")
+texture_pressed = ExtResource("4_bcgts")
 
 [node name="ClothesButton" type="TextureButton" parent="Control/TextureRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_xn4h6")
-texture_pressed = ExtResource("4_spitl")
+texture_normal = ExtResource("5_ayu5m")
+texture_pressed = ExtResource("6_fkawu")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/TextureRect/VBoxContainer"]
 layout_mode = 2
@@ -83,10 +86,17 @@ alignment = 1
 
 [node name="ProduceBtn" type="TextureButton" parent="Control/TextureRect/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-texture_normal = ExtResource("7_6sqk7")
-texture_pressed = ExtResource("8_yhu13")
+texture_normal = ExtResource("7_yhu13")
+texture_pressed = ExtResource("8_bcgts")
 
-[node name="CancelButton" type="TextureButton" parent="Control/TextureRect/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-texture_normal = ExtResource("3_xn4h6")
-texture_pressed = ExtResource("4_spitl")
+[node name="CancelButton" type="TextureButton" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.824
+anchor_top = 0.045714285
+anchor_right = 0.952
+anchor_bottom = 0.22857143
+grow_horizontal = 0
+texture_normal = ExtResource("9_yhu13")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true

@@ -5,8 +5,7 @@ extends CanvasLayer
 @onready var furniture_button: TextureButton = $Control/TextureRect/VBoxContainer/HBoxContainer/FurnitureButton
 @onready var clothes_button: TextureButton = $Control/TextureRect/VBoxContainer/HBoxContainer/ClothesButton
 @onready var produce_btn: TextureButton = $Control/TextureRect/VBoxContainer/HBoxContainer2/ProduceBtn
-@onready var cancel_button: TextureButton = $Control/TextureRect/VBoxContainer/HBoxContainer2/CancelButton
-
+@onready var cancel_button: TextureButton = $Control/TextureRect/CancelButton
 
 var current_selected_resource: String = ""
 var lang = "eng"
