@@ -17,6 +17,7 @@ centered = false
 
 [node name="CloudLayer2" type="Parallax2D" parent="."]
 repeat_size = Vector2(2560, 0)
+repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="CloudLayer2"]
 texture = ExtResource("3_bbd0w")
