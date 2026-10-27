@@ -136,6 +136,10 @@ func _on_building_pressed() -> void:
 				EventBus.show_experiment_menu.emit()
 			"workshop":
 				print("workshop")
+				EventBus.show_production_popup.emit("workshop")
+			"workshop1":
+				print("workshop")
+				EventBus.show_production_popup.emit("workshop1")
 			"hospital_large":
 				print("hospital_large")
 				EventBus.show_research_popup.emit()
