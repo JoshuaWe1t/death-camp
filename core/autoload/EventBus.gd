@@ -61,3 +61,16 @@ signal show_notofocation_letter()
 
 @warning_ignore("unused_signal")
 signal show_escaped_popup()
+
+# Вызов меню цеха (передается id цеха, например "workshop" или "workshop1")
+@warning_ignore("unused_signal")
+signal show_production_popup(workshop_id: String)
+# Обновление локального склада ресурсов
+@warning_ignore("unused_signal")
+signal resource_stock_updated(resource_id: String, total_amount: int)
+# Сигнал отправки ресурсов (вызывается из UI отправки на карете / поезде)
+@warning_ignore("unused_signal")
+signal resource_dispatched(resource_id: String, amount: int)
+# Оповещение об успешной отправке (сколько отправлено и сколько всего учтено в задании)
+@warning_ignore("unused_signal")
+signal resource_dispatch_completed(resource_id: String, amount_sent: int, total_sent: int)
