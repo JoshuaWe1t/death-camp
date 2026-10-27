@@ -26,7 +26,8 @@ signal show_edict_popup()
 @warning_ignore("unused_signal")
 signal building_restored(build_id: String)
 
-
+@warning_ignore("unused_signal")
+signal show_experiment_menu()
 @warning_ignore("unused_signal")
 signal show_research_popup()
 @warning_ignore("unused_signal")
