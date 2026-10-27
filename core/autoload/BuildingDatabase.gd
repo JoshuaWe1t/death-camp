@@ -12,7 +12,7 @@ var DATA = {
 		"upkeep_cost": 25, "upkeep_cycle": 3,
 		"description": {
 			"rus": "Открывает доступ к списку штата",
-			"eng": ""
+			"eng": "Unlocks the Staff Roster"
 		}
 	},
 	"komendant": {
@@ -25,33 +25,33 @@ var DATA = {
 		"upkeep_cost": 25, "upkeep_cycle": 5,
 		"description": {
 			"rus": "Позволяет закончить текущий день",
-			"eng": ""
+			"eng": "Allows ending the current day"
 		}
 	},
 	"dormitory": {
 		"name": {
-			"rus": "Общежитие персонала",
-			"eng": "dormitory"
+			"rus": "Западное общежитие",
+			"eng": "West dormitory"
 		},
 		"is_restored": true,
 		"restore_cost": 0, "restore_time": 0, "restore_workers": 0, "restore_ap": 0,
 		"upkeep_cost": 45, "upkeep_cycle": 5,
 		"description": {
 			"rus": "Открывает новых сотрудников",
-			"eng": ""
+			"eng": "Unlocks new staff"
 		}
 	},
 	"dormitory1": {
 		"name": {
-			"rus": "Общежитие персонала",
-			"eng": "dormitory"
+			"rus": "Восточное общежитие",
+			"eng": "East dormitory"
 		},
 		"is_restored": false,
 		"restore_cost": 100, "restore_time": 2, "restore_workers": 25, "restore_ap": 2,
 		"upkeep_cost": 45, "upkeep_cycle": 5,
 		"description": {
 			"rus": "Открывает новых сотрудников",
-			"eng": ""
+			"eng": "Unlocks new staff"
 		}
 	},
 	"morgue": {
@@ -64,7 +64,7 @@ var DATA = {
 		"upkeep_cost": 0, "upkeep_cycle": 1,
 		"description": {
 			"rus": "Хранит погибших сотрудников/заключенных",
-			"eng": ""
+			"eng": "Stores deceased staff / prisoners"
 		}
 	},
 	"canteen": {
@@ -77,7 +77,7 @@ var DATA = {
 		"upkeep_cost": 25, "upkeep_cycle": 1,
 		"description": {
 			"rus": "Обеспечивает питание сотрудников/заключенных",
-			"eng": ""
+			"eng": "Provides food for staff / prisoners"
 		}
 	},
 	"hospital_small": {
@@ -90,46 +90,46 @@ var DATA = {
 		"upkeep_cost": 50, "upkeep_cycle": 2,
 		"description": {
 			"rus": "Открывает доступ к исследованиям",
-			"eng": ""
+			"eng": "Unlocks Research"
 		}
 	},
 	"barrack": {
 		"name": {
-			"rus": "Барак",
-			"eng": "Barrack"
+			"rus": "Северный барак",
+			"eng": "North barrack"
 		},
 		"is_restored": true,
 		"restore_cost": 150, "restore_time": 1, "restore_workers": 10, "restore_ap": 1,
 		"upkeep_cost": 5, "upkeep_cycle": 1,
 		"description": {
 			"rus": "Открывает доступ к организации побега заключенных",
-			"eng": ""
+			"eng": "Unlocks access to prisoner escapes"
 		}
 	},
 	"barrack1": {
 		"name": {
-			"rus": "Барак",
-			"eng": "Barrack"
+			"rus": "Западный барак",
+			"eng": "West barrack"
 		},
 		"is_restored": false,
 		"restore_cost": 150, "restore_time": 1, "restore_workers": 10, "restore_ap": 1,
 		"upkeep_cost": 5, "upkeep_cycle": 1,
 		"description": {
 			"rus": "Открывает доступ к организации побега заключенных",
-			"eng": ""
+			"eng": "Unlocks access to prisoner escapes"
 		}
 	},
 	"barrack2": {
 		"name": {
-			"rus": "Барак",
-			"eng": "Barrack"
+			"rus": "Южный барак",
+			"eng": "South barrack"
 		},
 		"is_restored": false,
 		"restore_cost": 150, "restore_time": 1, "restore_workers": 10, "restore_ap": 1,
 		"upkeep_cost": 5, "upkeep_cycle": 1,
 		"description": {
 			"rus": "Открывает доступ к организации побега заключенных",
-			"eng": ""
+			"eng": "Unlocks access to prisoner escapes"
 		}
 	},
 	"laboratory": {
@@ -142,7 +142,7 @@ var DATA = {
 		"upkeep_cost": 15, "upkeep_cycle": 0,
 		"description": {
 			"rus": "Открывает доступ к экспериментам",
-			"eng": ""
+			"eng": "Unlocks Experiments"
 		}
 	},
 	"laboratory1": {
@@ -155,33 +155,33 @@ var DATA = {
 		"upkeep_cost": 15, "upkeep_cycle": 0,
 		"description": {
 			"rus": "Открывает доступ к экспериментам",
-			"eng": ""
+			"eng": "Unlocks Experiments"
 		}
 	},
 	"workshop": {
 		"name": {
-			"rus": "Цех",
-			"eng": "Workshop"
+			"rus": "Южный цех",
+			"eng": "South workshop"
 		},
 		"is_restored": false,
 		"restore_cost": 350, "restore_time": 2, "restore_workers": 30, "restore_ap": 4,
 		"upkeep_cost": 35, "upkeep_cycle": 0,
 		"description": {
 			"rus": "Открывает доступ к производству мебели/одежды",
-			"eng": ""
+			"eng": "Unlocks furniture / clothing production"
 		}
 	},
 	"workshop1": {
 		"name": {
-			"rus": "Цех",
-			"eng": "Workshop"
+			"rus": "Северный цех",
+			"eng": "North workshop"
 		},
 		"is_restored": false,
 		"restore_cost": 350, "restore_time": 2, "restore_workers": 30, "restore_ap": 4,
 		"upkeep_cost": 35, "upkeep_cycle": 0,
 		"description": {
 			"rus": "Открывает доступ к производству мебели/одежды",
-			"eng": ""
+			"eng": "Unlocks furniture / clothing production"
 		}
 	},
 	"hospital_large": {
@@ -194,7 +194,7 @@ var DATA = {
 		"upkeep_cost": 75, "upkeep_cycle": 3,
 		"description": {
 			"rus": "Открывает доступ к исследования",
-			"eng": ""
+			"eng": "Grants access to research"
 		}
 	},
 	"crematorium": {
@@ -207,33 +207,33 @@ var DATA = {
 		"upkeep_cost": 45, "upkeep_cycle": 5,
 		"description": {
 			"rus": "Позволяет утилизировать заключенных",
-			"eng": ""
+			"eng": "Allows prisoner liquidation"
 		}
 	},
 	"gas_chamber": {
 		"name": {
-			"rus": "Газовая камера",
-			"eng": "Gas chamber"
+			"rus": "Северная газовая камера",
+			"eng": "North gas chamber"
 		},
 		"is_restored": false,
 		"restore_cost": 300, "restore_time": 2, "restore_workers": 40, "restore_ap": 2,
 		"upkeep_cost": 125, "upkeep_cycle": 0,
 		"description": {
 			"rus": "Позволяет утилизировать заключенных",
-			"eng": ""
+			"eng": "Allows prisoner liquidation"
 		}
 	},
 	"gas_chamber1": {
 		"name": {
-			"rus": "Газовая камера",
-			"eng": "Gas chamber"
+			"rus": "Южная газовая камера",
+			"eng": "South gas chamber"
 		},
 		"is_restored": false,
 		"restore_cost": 300, "restore_time": 2, "restore_workers": 40, "restore_ap": 2,
 		"upkeep_cost": 125, "upkeep_cycle": 0,
 		"description": {
 			"rus": "Позволяет утилизировать заключенных",
-			"eng": ""
+			"eng": "Allows prisoner liquidation"
 		}
 	},
 	"death_wall": {
@@ -241,12 +241,12 @@ var DATA = {
 			"rus": "Стена смерти",
 			"eng": "Death wall"
 		},
-		"is_restored": false,
+		"is_restored": true,
 		"restore_cost": 50, "restore_time": 1, "restore_workers": 5, "restore_ap": 1,
 		"upkeep_cost": 10, "upkeep_cycle": 0,
 		"description": {
 			"rus": "Позволяет расстреливать заключенных",
-			"eng": ""
+			"eng": "Allows execution of prisoners"
 		}
 	}
 }

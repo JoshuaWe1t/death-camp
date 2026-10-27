@@ -15,6 +15,8 @@ var active_edicts = {}
 var supervisor_list_position: int = 30
 var unrestored_count: int
 
+var lang = "eng"
+
 func _ready():
 	load_edicts_data("res://core/utils/edicts_data.json")
 	
@@ -107,10 +109,20 @@ func generate_random_edict() -> Dictionary:
 	prod_type = selected_edict["production_type"]
 	var instance_id = str(Time.get_unix_time_from_system()) + "_" + str(rng.randi_range(1000, 9999))
 	
+	var edict_name: String
+	var target_name: String
+	
+	if lang == "rus":
+		edict_name = selected_edict["name"]["rus"]
+		target_name = selected_target["name"]["rus"]
+	else:
+		edict_name = selected_edict["name"]["eng"]
+		target_name = selected_target["name"]["eng"]
+	
 	var task = {
 		"instance_id": instance_id,
 		"id": selected_edict["id"] + "_" + selected_target["id"],
-		"full_name": selected_edict["name"] + ": " + selected_target["name"],
+		"full_name": edict_name + ": " + target_name,
 		"time_days": rng.randi_range(selected_edict["time_min"], selected_edict["time_max"]),
 		"reward": rng.randi_range(selected_edict["reward_min"], selected_edict["reward_max"]),
 		"penalty": rng.randi_range(selected_edict["penalty_min"], selected_edict["penalty_max"]),
@@ -123,7 +135,7 @@ func generate_random_edict() -> Dictionary:
 	if prod_type == "resource":
 		task["required_quantity"] = rng.randi_range(10, 50)
 		task["current_quantity"] = 0
-		task["full_name"] = "Произвести " + str(task["required_quantity"]) + " ед. товара: " + selected_target["name"]
+		task["full_name"] = "Произвести " + str(task["required_quantity"]) + " ед. товара: " + target_name
 	
 	elif prod_type == "building":
 		var building_data = BuildingDatabase.get_building(selected_target["id"])
@@ -146,7 +158,7 @@ func accept_edict(instance_id: String):
 
 	print("Указ принят в работу: ", task["full_name"])
 
-	# Оповещаем другие системы (например, HUD для отображения таймера[cite: 2])
+	# Оповещаем другие системы (например, HUD для отображения таймера)
 	edict_accepted.emit(task)
 
 

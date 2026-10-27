@@ -11,6 +11,7 @@ class_name Building
 var building_id: String = "barrack"
 
 var building_name: String
+var description: String
 var is_restored: bool
 
 var restore_cost: int
@@ -25,6 +26,8 @@ var days_since_last_upkeep: int = 0
 
 var is_restoring: bool = false
 var days_left_to_restore: int = 0
+
+var lang = "eng"
 
 func _ready() -> void:
 	load_building_data()
@@ -42,7 +45,8 @@ func load_building_data() -> void:
 		push_error("Здание с ID " + building_id + " не найдено!")
 		return
 		
-	building_name = data["name"].get("eng")
+	building_name = data["name"].get("eng") if lang == "eng" else data["name"].get("rus")
+	description = data["description"].get("eng") if lang == "eng" else data["description"].get("rus") 
 	is_restored = data["is_restored"]
 	
 	restore_cost = data["restore_cost"]
@@ -56,21 +60,39 @@ func load_building_data() -> void:
 
 func update_tooltip() -> void:
 	var text = building_name + "\n\n"
-	if is_restoring:
-		text += "[Статус: В процессе восстановления]\n"
-		text += "Осталось дней: " + str(days_left_to_restore)
-	elif is_restored:
-		text += "[Статус: Доступно]\n"
-		if upkeep_cycle_days > 0:
-			text += "Потребление: " + str(upkeep_cost) + "$ каждые " + str(upkeep_cycle_days) + " дн."
+	text += description + '\n'
+	if lang == "rus":
+		if is_restoring:
+			text += "[Статус: В процессе восстановления]\n"
+			text += "Осталось дней: " + str(days_left_to_restore)
+		elif is_restored:
+			text += "[Статус: Доступно]\n"
+			if upkeep_cycle_days > 0:
+				text += "Потребление: " + str(upkeep_cost) + "$ каждые " + str(upkeep_cycle_days) + " дн."
+			else:
+				text += "Потребление: зависит от работы"
 		else:
-			text += "Потребление: зависит от работы"
+			text += "[Статус: Требует восстановления]\n"
+			text += "Стоимость: " + str(restore_cost) + "$\n"
+			text += "ОД: " + str(restore_ap) + "\n"
+			text += "Рабочих: " + str(restore_workers) + " чел.\n"
+			text += "Время на ремонт: " + str(restore_time) + " дн."
 	else:
-		text += "[Статус: Требует восстановления]\n"
-		text += "Стоимость: " + str(restore_cost) + "$\n"
-		text += "ОД: " + str(restore_ap) + "\n"
-		text += "Рабочих: " + str(restore_workers) + " чел.\n"
-		text += "Время на ремонт: " + str(restore_time) + " дн."
+		if is_restoring:
+			text += "[Status: Under Restoration]\n"
+			text += "Days Remaining: " + str(days_left_to_restore)
+		elif is_restored:
+			text += "[Status: Operational]\n"
+			if upkeep_cycle_days > 0:
+				text += "Upkeep: $" + str(upkeep_cost) + " every " + str(upkeep_cycle_days) + " d."
+			else:
+				text += "Upkeep: Variable"
+		else:
+			text += "[Status: Needs Restoration]\n"
+			text += "Cost: $" + str(restore_cost) + "\n"
+			text += "AP: " + str(restore_ap) + "\n"
+			text += "Workers: " + str(restore_workers) + "\n"
+			text += "Repair Time: " + str(restore_time) + " d."
 	
 	tooltip_text = text
 
@@ -144,13 +166,14 @@ func _on_building_pressed() -> void:
 				print("hospital_large")
 				EventBus.show_research_popup.emit()
 			"crematorium":
-				print("crematorium")
-			"gas_chamber":
-				print("gas_chamber")
-			"gas_chamber1":
-				print("gas_chamber1")
+				print(building_id)
+				EventBus.show_utilization_menu.emit(building_id)
+			"gas_chamber", "gas_chamber1":
+				print(building_id)
+				EventBus.show_utilization_menu.emit(building_id)
 			"death_wall":
-				print("death_wall")
+				print(building_id)
+				EventBus.show_utilization_menu.emit(building_id)
 			_:
 				print("Неизвестное здание.")
 
