@@ -28,6 +28,7 @@ theme_override_constants/margin_top = 8
 
 [node name="DayLabel" type="Label" parent="UI/DayContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "7 days"
 
 [node name="ActionContainer" type="MarginContainer" parent="UI"]
@@ -47,12 +48,15 @@ mouse_filter = 2
 
 [node name="APLabel" type="Label" parent="UI/ActionContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "1/10"
 
 [node name="SpendAPButton" type="Button" parent="UI/ActionContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="EndDayButton" type="Button" parent="UI/ActionContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="RightPanel" type="MarginContainer" parent="UI"]
@@ -91,6 +95,7 @@ stretch_mode = 5
 
 [node name="StaffLabel" type="Label" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/StaffContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "1000"
 
 [node name="PrisonersContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
@@ -107,6 +112,7 @@ stretch_mode = 5
 
 [node name="PrisonersLabel" type="Label" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/PrisonersContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "1000"
 
 [node name="SoulsContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
@@ -123,6 +129,7 @@ stretch_mode = 5
 
 [node name="SoulsLabel" type="Label" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/SoulsContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "1000"
 
 [node name="FundsContainer" type="HBoxContainer" parent="UI/RightPanel/VBoxContainer/ResourcesHBox"]
@@ -139,6 +146,7 @@ stretch_mode = 5
 
 [node name="FundsLabel" type="Label" parent="UI/RightPanel/VBoxContainer/ResourcesHBox/FundsContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "10000"
 
 [node name="TasksVBox" type="VBoxContainer" parent="UI/RightPanel/VBoxContainer"]

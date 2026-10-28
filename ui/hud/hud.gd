@@ -15,6 +15,8 @@ extends CanvasLayer
 @onready var btn_spend = $UI/ActionContainer/VBoxContainer/SpendAPButton
 @onready var btn_end_day = $UI/ActionContainer/VBoxContainer/EndDayButton
 
+var lang = Global.lang
+
 func _ready() -> void:
 	# Подписываемся на события цикла
 	EventBus.day_started.connect(_on_day_started)
@@ -96,7 +98,10 @@ func _on_soul_quota_updated(collected: int, required: int) -> void:
 		tasks_vbox.add_child(label)
 		
 	# Обновляем текст (например: "Квота душ: (5/15)")
-	label.text = "Квота душ: (" + str(collected) + "/" + str(required) + ")"
+	if lang == "rus":
+		label.text = "Квота душ: (" + str(collected) + "/" + str(required) + ")"
+	else:
+		label.text = "Soul Quota: (" + str(collected) + "/" + str(required) + ")"
 	
 	# Если квота выполнена, можно опционально поменять цвет на зеленый/обычный
 	if collected >= required:
