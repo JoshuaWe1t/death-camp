@@ -1,7 +1,7 @@
 extends Node
 
 
-var current_funds: int = 1200
+var current_funds: int = 1800
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
