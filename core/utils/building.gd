@@ -5,7 +5,7 @@ class_name Building
 @export_enum(
 	"admin", "komendant", "dormitory", "dormitory1", "morgue", "canteen", "hospital_small", 
 	"barrack", "barrack1", "barrack2", "laboratory", "laboratory1", "workshop", "workshop1",
-	"hospital_large", "crematorium", "gas_chamber", "gas_chamber1", "death_wall"
+	"hospital_large", "crematorium", "gas_chamber", "gas_chamber1", "death_wall", "station"
 )
  
 var building_id: String = "barrack"
@@ -27,7 +27,7 @@ var days_since_last_upkeep: int = 0
 var is_restoring: bool = false
 var days_left_to_restore: int = 0
 
-var lang = "eng"
+var lang = Global.lang
 
 func _ready() -> void:
 	load_building_data()
@@ -174,6 +174,8 @@ func _on_building_pressed() -> void:
 			"death_wall":
 				print(building_id)
 				EventBus.show_utilization_menu.emit(building_id)
+			"station":
+				EventBus.show_dispatch_menu.emit()
 			_:
 				print("Неизвестное здание.")
 
