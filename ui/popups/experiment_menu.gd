@@ -8,8 +8,6 @@ extends CanvasLayer
 @onready var description: Label = $Control/bg/VBoxContainer/HBoxContainer/MarginContainer/DescriptionConatiner/Description
 @onready var execute_button: TextureButton = $Control/bg/MarginContainer/HBoxContainer2/ExecuteButton
 
-
-
 var current_research_id: String = "res_strength"
 
 
