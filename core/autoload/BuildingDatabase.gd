@@ -248,6 +248,19 @@ var DATA = {
 			"rus": "Позволяет расстреливать заключенных",
 			"eng": "Allows execution of prisoners"
 		}
+	},
+	"station" : {
+		"name": {
+			"rus": "Станция отправки",
+			"eng": "Dispatch Station"
+		},
+		"is_restored": true,
+		"restore_cost": 50, "restore_time": 1, "restore_workers": 5, "restore_ap": 1,
+		"upkeep_cost": 10, "upkeep_cycle": 0,
+		"description": {
+			"rus": "Позволяет расстреливать заключенных",
+			"eng": "Enables dispatch of manufactured goods"
+		}
 	}
 }
 
