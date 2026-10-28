@@ -4,7 +4,7 @@ extends HBoxContainer
 @onready var role_label: RichTextLabel = $RoleLabel
 @onready var status_label: RichTextLabel = $StatusLabel
 
-var lang = "eng"
+var lang = Global.lang
 
 func set_data(member: StaffMember) -> void:
 	var full_name = member.first_name + " " + member.last_name

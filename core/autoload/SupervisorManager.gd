@@ -19,7 +19,7 @@ var fail_reasons_en: Array[String] = [
 	"Found guilty of withholding evidence"
 ]
 
-var lang = "eng"
+var lang = Global.lang
 
 func _ready() -> void:
 	EventBus.day_started.connect(_on_day_started)

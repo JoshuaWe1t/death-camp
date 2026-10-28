@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var info_label: Label = $Control/TextureRect/VBoxContainer/InfoLabel
 @onready var escape_button: TextureButton = $Control/TextureRect/VBoxContainer/HBoxContainer/EscapeButton
 @onready var cancel_button: TextureButton = $Control/TextureRect/VBoxContainer/HBoxContainer/CancelButton
-var lang = "eng"
+var lang = Global.lang
 
 func _ready() -> void:
 	# Подключаем сигналы кнопок

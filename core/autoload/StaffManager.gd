@@ -5,7 +5,7 @@ var available_names: Array = [] # Массив для хранения загр�
 var total_stuff: int
 var current_stuff: int = 32
 var is_skipped: bool = false
-var lang = "eng"
+var lang = Global.lang
 
 func _ready() -> void:
 	_load_names_from_json() # Загружаем имена перед генерацией

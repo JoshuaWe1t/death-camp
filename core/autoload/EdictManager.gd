@@ -15,7 +15,7 @@ var active_edicts = {}
 var supervisor_list_position: int = 30
 var unrestored_count: int
 
-var lang = "eng"
+var lang = Global.lang
 
 func _ready():
 	load_edicts_data("res://core/utils/edicts_data.json")

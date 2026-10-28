@@ -8,7 +8,7 @@ extends CanvasLayer
 @onready var cancel_button: TextureButton = $Control/TextureRect/CancelButton
 
 var current_selected_resource: String = ""
-var lang = "eng"
+var lang = Global.lang
 
 func _ready() -> void:
 	hide()

@@ -7,7 +7,7 @@ extends CanvasLayer
 @onready var hint: Label = $Control/Hint
 
 var hint_tween: Tween
-var lang: String = "eng"
+var lang: String = Global.lang
 var commandant: String = "Nicola Costa"
 
 func _ready() -> void:

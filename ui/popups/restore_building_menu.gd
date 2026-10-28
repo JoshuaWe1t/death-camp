@@ -17,6 +17,7 @@ var restore_time: int
 var restore_workers: int
 var restore_ap: int
 
+var lang: String = Global.lang
 
 func _ready() -> void:
 	hide()
@@ -45,12 +46,20 @@ func load_building_data(building_id: String) -> void:
 
 func _on_setup_and_show(building: Building) -> void:
 	target_building = building
-	text = target_building.building_name + "\n"
-	text += "[Статус: Требует восстановления]\n"
-	text += "Стоимость: " + str(target_building.restore_cost) + "$\n"
-	text += "ОД: " + str(target_building.restore_ap) + "\n"
-	text += "Рабочих: " + str(target_building.restore_workers) + " чел.\n"
-	text += "Время на ремонт: " + str(target_building.restore_time) + " дн."
+	if lang == "rus":
+		text = target_building.building_name + "\n"
+		text += "[Статус: Требует восстановления]\n"
+		text += "Стоимость: " + str(target_building.restore_cost) + "$\n"
+		text += "ОД: " + str(target_building.restore_ap) + "\n"
+		text += "Рабочих: " + str(target_building.restore_workers) + " чел.\n"
+		text += "Время на ремонт: " + str(target_building.restore_time) + " дн."
+	else:
+		text = target_building.building_name + "\n"
+		text += "[Status: Needs Restoration]\n"
+		text += "Cost: $" + str(target_building.restore_cost) + "\n"
+		text += "AP: " + str(target_building.restore_ap) + "\n"
+		text += "Workers: " + str(target_building.restore_workers) + "\n"
+		text += "Repair Time: " + str(target_building.restore_time) + " d."
 	
 	description.text = text
 	

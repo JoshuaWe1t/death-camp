@@ -11,7 +11,7 @@ var souls_yield: int = 0
 var prisoners_cost: int = 0
 var ap_cost: int = 0
 
-var lang = "eng"
+var lang = Global.lang
 
 func _ready() -> void:
 	hide()

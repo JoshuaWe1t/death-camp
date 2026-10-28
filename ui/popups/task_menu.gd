@@ -9,7 +9,7 @@ extends CanvasLayer
 var edict_object: Dictionary = {}
 var edict_id: String
 
-var lang = "eng"
+var lang = Global.lang
 
 func _ready() -> void:
 	hide()
