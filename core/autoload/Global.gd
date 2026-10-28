@@ -3,6 +3,7 @@ extends Node
 
 const TOTAL_DAYS: int = 30
 var current_day: int = 1
+var lang = "eng"
 
 
 func _ready() -> void:
