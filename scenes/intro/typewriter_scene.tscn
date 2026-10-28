@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnpsqi3w532l0"]
+[gd_scene load_steps=4 format=3 uid="uid://bnpsqi3w532l0"]
 
 [ext_resource type="Script" uid="uid://d141is7a8h48m" path="res://scenes/intro/typewriter_scene.gd" id="1_qq6k0"]
+[ext_resource type="Texture2D" uid="uid://bpmapl6vc6rd2" path="res://assets/textures/menu/menu-letter.png" id="2_0qlwx"]
 [ext_resource type="AudioStream" uid="uid://gosmhlpo2eh5" path="res://assets/audio/sfx/typewriter.wav" id="2_sgudx"]
 
 [node name="TypewriterScene" type="Control"]
@@ -11,6 +12,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qq6k0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0qlwx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -45,3 +55,28 @@ horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_sgudx")
+
+[node name="Hint" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -23.0
+offset_right = 178.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0.49019608, 1)
+theme_override_font_sizes/font_size = 12
+text = "Left-click to reveal full text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerHint" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="TimerHint" to="." method="_on_timer_hint_timeout"]
