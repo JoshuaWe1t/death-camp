@@ -90,3 +90,6 @@ signal show_utilization_menu(building_id: String)
 signal soul_quota_updated(collected_today: int, required_today: int)
 @warning_ignore("unused_signal")
 signal soul_quota_failed(penalty_multiplier: float)
+
+@warning_ignore("unused_signal")
+signal show_dispatch_menu()
