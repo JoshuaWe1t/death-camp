@@ -1,6 +1,7 @@
 extends Node
 
 
+const ESCAPED_PRISONERS: int = 100
 const TOTAL_DAYS: int = 30
 var current_day: int = 1
 var lang: String = "eng"

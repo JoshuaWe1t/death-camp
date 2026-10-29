@@ -22,6 +22,7 @@ func _ready() -> void:
 	EventBus.day_started.connect(_on_day_started)
 	EventBus.ap_changed.connect(_on_ap_changed)
 	EventBus.soul_quota_updated.connect(_on_soul_quota_updated)
+	EventBus.prisoners_escaped_updated.connect(_on_prisoners_escaped_updated)
 	
 	# Подписываемся на сигналы указов
 	EdictManager.edict_accepted.connect(_on_edict_accepted)
@@ -63,6 +64,9 @@ func _on_day_started(day: int) -> void:
 	
 	# Обновляем ОД на старте дня
 	_on_ap_changed(ActionPointsManager.current_action_points)
+	
+	if day >= 2:
+		_update_escape_task_ui(PrisonersManager.total_escaped_prisoners, Global.ESCAPED_PRISONERS)
 
 
 func _on_ap_changed(new_ap: int) -> void:
@@ -147,3 +151,33 @@ func _update_label_text(label: Label, task: Dictionary) -> void:
 		text += " (" + str(current) + "/" + str(required) + ")"
 		
 	label.text = text
+
+
+func _on_prisoners_escaped_updated(current: int, required: int) -> void:
+	# Обновляем HUD только если уже наступил 2-й день
+	if Global.current_day >= 2:
+		_update_escape_task_ui(current, required)
+
+
+func _update_escape_task_ui(current: int, required: int) -> void:
+	var task_node_name = "EscapePrisonersTask"
+	var label = tasks_vbox.get_node_or_null(task_node_name)
+	
+	# Если метки еще нет, создаем ее
+	if not label:
+		label = Label.new()
+		label.name = task_node_name
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		tasks_vbox.add_child(label)
+		
+	# Обновляем текст
+	if lang == "rus":
+		label.text = "Спасти невиновных (" + str(current) + "/" + str(required) + ")"
+	else:
+		label.text = "Save the innocent (" + str(current) + "/" + str(required) + ")"
+	
+	# Опционально: красим в зеленый, если цель достигнута
+	if current >= required:
+		label.add_theme_color_override("font_color", Color.WEB_GREEN)
+	else:
+		label.add_theme_color_override("font_color", Color.WHITE)

@@ -128,6 +128,8 @@ func escaped_prisoners(prisoners: int) -> void:
 	current_prisoners -= prisoners
 	total_escaped_prisoners += prisoners # Учитываем новых сбежавших
 	
+	EventBus.prisoners_escaped_updated.emit(total_escaped_prisoners, Global.ESCAPED_PRISONERS)
+	
 	# Проверяем условие победы
 	if total_escaped_prisoners >= 150:
 		EventBus.prisoners_escaped_quota_reached.emit()
