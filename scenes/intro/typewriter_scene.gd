@@ -15,23 +15,38 @@ var is_text_skipped: bool = false
 var lang = Global.lang
 
 # Текст, который мы хотим напечатать
+#var text_to_type = {
+	#"rus": """
+	#Жертва родителей подарила мне фальшивые документы и шанс выжить в разгар чисток. Годами я прятался у всех на виду под маской верного офицера, но новые проверки прижали меня к стенке. Единственным шансом избежать неминуемой казни стало назначение комендантом в заброшенный лагерь.   
+#
+	#Я бежал сюда ради спасения, но шагнул в худший кошмар. Смертельная угроза не отступила — она дышит мне в спину каждым шагом и каждым доносом. Здесь, среди ржавой проволоки и чужой агонии, воздух пропитан не только ужасом: сама тьма этого места шепчет о сделках, способных подарить спасение ценой чужих душ.   
+#
+	#Приказ подписан. И это определенно был ПЛОХОЙ ПЛАН.
+	#""",
+	#"eng": """
+	#My parents sacrificed everything to buy me forged papers and a chance to survive the purges. For years, I hid in plain sight as a dutiful officer, until ruthless audits backed me into a corner. My only desperate escape from the gallows was accepting command over an abandoned camp.   
+#
+	#I fled here to survive, only to step into an even darker nightmare. Doom is still breathing down my neck, waiting for a single misstep. Yet behind the rusted barbed wire, fear isn't the only thing lingering in the cold: something ancient and unnatural stirs in the shadows, offering salvation in exchange for the souls of the condemned.   
+#
+	#The order is signed. Truly a BAD PLAN.
+	#"""
+#}
 var text_to_type = {
 	"rus": """
-	Жертва родителей подарила мне фальшивые документы и шанс выжить в разгар чисток. Годами я прятался у всех на виду под маской верного офицера, но новые проверки прижали меня к стенке. Единственным шансом избежать неминуемой казни стало назначение комендантом в заброшенный лагерь.   
+    Фальшивые документы скрывали меня годами, но новые чистки прижали к стенке. Чтобы избежать петли, я вызвался комендантом в этот заброшенный лагерь.
 
-	Я бежал сюда ради спасения, но шагнул в худший кошмар. Смертельная угроза не отступила — она дышит мне в спину каждым шагом и каждым доносом. Здесь, среди ржавой проволоки и чужой агонии, воздух пропитан не только ужасом: сама тьма этого места шепчет о сделках, способных подарить спасение ценой чужих душ.   
+    Я искал убежище, но шагнул в кошмар. Смерть всё ещё дышит в спину, а местная тьма предлагает сделку: моё спасение ценой чужих душ.
 
-	Приказ подписан. И это определенно был ПЛОХОЙ ПЛАН.
+    Приказ подписан. Это был определенно ПЛОХОЙ ПЛАН.
 	""",
 	"eng": """
-	My parents sacrificed everything to buy me forged papers and a chance to survive the purges. For years, I hid in plain sight as a dutiful officer, until ruthless audits backed me into a corner. My only desperate escape from the gallows was accepting command over an abandoned camp.   
+    Forged papers kept me hidden for years, but new purges backed me into a corner. To escape the gallows, I took command of this abandoned camp.
 
-	I fled here to survive, only to step into an even darker nightmare. Doom is still breathing down my neck, waiting for a single misstep. Yet behind the rusted barbed wire, fear isn't the only thing lingering in the cold: something ancient and unnatural stirs in the shadows, offering salvation in exchange for the souls of the condemned.   
+    I sought refuge, but stepped into a nightmare. Doom still breathes down my neck, while the shadows whisper a deal: my salvation for the souls of others.
 
-	The order is signed. Truly a BAD PLAN.
-	"""
+    The order is signed. Truly a BAD PLAN.
+    """
 }
-
 
 
 
@@ -64,6 +79,12 @@ func _on_timer_timeout():
 	# Останавливаем таймер, если весь текст напечатан
 	if rich_text_label.visible_characters >= rich_text_label.text.length():
 		timer.stop()
+		
+	# Останавливаем таймер, если весь текст напечатан
+	if rich_text_label.visible_characters >= rich_text_label.text.length():
+		timer.stop()
+		is_text_skipped = true # Позволит нажать SPACE, даже если игрок досмотрел текст до конца
+		_on_show_hint_start_game()
 
 
 func _input(event):
