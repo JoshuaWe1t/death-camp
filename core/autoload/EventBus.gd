@@ -96,3 +96,13 @@ signal show_dispatch_menu()
 
 @warning_ignore("unused_signal")
 signal global_quota_completed()
+
+@warning_ignore("unused_signal")
+signal game_won(reason: String)
+@warning_ignore("unused_signal")
+signal game_lost(reason: String)
+
+@warning_ignore("unused_signal")
+signal supervisor_reached_player()
+@warning_ignore("unused_signal")
+signal funds_changed(current_funds: int)
