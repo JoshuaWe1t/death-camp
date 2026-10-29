@@ -8,6 +8,7 @@ func _ready() -> void:
 	# События победы
 	EventBus.global_quota_completed.connect(_on_global_quota_completed)
 	EventBus.building_restored.connect(_on_building_restored)
+	EventBus.prisoners_escaped_quota_reached.connect(_on_prisoners_escaped_quota_reached)
 	
 	# События поражения
 	EventBus.day_ended.connect(_on_day_ended)
@@ -60,3 +61,8 @@ func _on_day_ended(day: int) -> void:
 		if BuildingDatabase.get_unrestored_buildings_count() > 0:
 			print("Время вышло: дни закончились, а здания не были восстановлены.")
 			lose("cons5")
+
+
+func _on_prisoners_escaped_quota_reached() -> void:
+	print("Спасен 150-й заключенный! Запущена концовка побега.")
+	win("cons6") # Можно использовать любой новый ID концовки, например "cons6"
