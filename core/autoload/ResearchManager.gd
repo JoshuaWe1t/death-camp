@@ -3,11 +3,61 @@ extends Node
 
 
 var research_db = {
-	"res_strength": {"name": "Сила", "desc": {"eng": "", "rus": "Исследование силовых способностей человека"}, "type": "research", "duration": 2, "ap_cost": 2, "reward": 150},
-	"res_stamina": {"name": "Выносливость", "desc": {"eng": "", "rus": "Исследование выносливости человека"}, "type": "research", "duration": 2, "ap_cost": 2, "reward": 200},
-	"res_mental_activity": {"name": "Умственная активность", "desc": {"eng": "", "rus": "Исследование пределов умственной активности человека"}, "type": "research", "duration": 2, "ap_cost": 2, "reward": 200},
-	"exp_resistance": {"name": "Сопротивление", "desc": {"eng": "", "rus": "Эксперимент по сопротивлению человека физическим и биологическим угрозам"}, "type": "experiment", "duration": 3, "ap_cost": 3, "reward": 250},
-	"exp_combinatorics": {"name": "Комбинаторика", "desc": {"eng": "", "rus": "Эксперимент по комбинированию различных вредоносных факторов для человека"}, "type": "experiment", "duration": 1, "ap_cost": 4, "reward": 300}
+	"res_strength": {
+		"name": {"rus": "Сила", "eng": "Strength"},
+		"desc": {
+			"rus": "Исследование силовых способностей человека",
+			"eng": "Research into human physical power and capabilities."
+		},
+		"type": "research",
+		"duration": 2,
+		"ap_cost": 2,
+		"reward": 150
+	},
+	"res_stamina": {
+		"name": {"rus": "Выносливость", "eng": "Endurance"},
+		"desc": {
+			"rus": "Исследование выносливости человека",
+			"eng": "Research into human physical endurance and stamina limits."
+		},
+		"type": "research",
+		"duration": 2,
+		"ap_cost": 2,
+		"reward": 200
+	},
+	"res_mental_activity": {
+		"name": {"rus": "Умственная активность", "eng": "Cognitive Capacity"},
+		"desc": {
+			"rus": "Исследование пределов умственной активности человека",
+			"eng": "Research into the limits of human mental and cognitive function."
+		},
+		"type": "research",
+		"duration": 2,
+		"ap_cost": 2,
+		"reward": 200
+	},
+	"exp_resistance": {
+		"name": {"rus": "Сопротивление", "eng": "Resistance Testing"},
+		"desc": {
+			"rus": "Эксперимент по сопротивлению человека физическим и биологическим угрозам",
+			"eng": "Experimental testing of human tolerance to physical and biological hazards."
+		},
+		"type": "experiment",
+		"duration": 3,
+		"ap_cost": 3,
+		"reward": 250
+	},
+	"exp_combinatorics": {
+		"name": {"rus": "Комбинаторика", "eng": "Factor Synthesis"},
+		"desc": {
+			"rus": "Эксперимент по комбинированию различных вредоносных факторов для человека",
+			"eng": "Experimental trials combining multiple hazardous agents on human subjects."
+		},
+		"type": "experiment",
+		"duration": 1,
+		"ap_cost": 4,
+		"reward": 300
+	}
 }
 
 
