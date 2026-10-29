@@ -7,6 +7,18 @@ var current_stuff: int = 32
 var is_skipped: bool = false
 var lang = Global.lang
 
+var user_name: Dictionary = {
+	"rus": {
+		"first_name": "Леон",
+		"last_name": "Вольф"
+	},
+	"eng": {
+		"first_name": "Leon",
+		"last_name": "Wolf",
+		
+	}
+}
+
 func _ready() -> void:
 	_load_names_from_json() # Загружаем имена перед генерацией
 	_generate_initial_staff()
@@ -39,7 +51,11 @@ func _generate_initial_staff() -> void:
 	staff_list.clear()
 	
 	# 1. Игрок всегда добавляется первым
-	var player = StaffMember.new(0, true, "Имя", "Фамилия", "Управляющий")
+	var player = StaffMember.new(0, 
+		true, 
+		Global.user_name.get(lang).get("first_name"), 
+		Global.user_name.get(lang).get("last_name"), 
+		"Управляющий" if lang == "rus" else "Komendant")
 	staff_list.append(player)
 	
 	# 2. Генерируем остальной штат
