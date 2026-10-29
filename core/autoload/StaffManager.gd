@@ -3,7 +3,7 @@ extends Node
 var staff_list: Array = []
 var available_names: Array = [] # Массив для хранения загруженных имен
 var total_stuff: int
-var current_stuff: int = 32
+var current_stuff: int = 54
 var is_skipped: bool = false
 var lang = Global.lang
 
