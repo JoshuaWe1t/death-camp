@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cj41x0f17p6lb"]
+[gd_scene load_steps=11 format=3 uid="uid://cj41x0f17p6lb"]
 
 [ext_resource type="Script" uid="uid://31ceyqp2427x" path="res://ui/popups/research_menu.gd" id="1_yl5t8"]
 [ext_resource type="Texture2D" uid="uid://8g3gvay841rw" path="res://assets/textures/ui/research_panel.png" id="2_cwmn2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c68ga2wwrcv8i" path="res://assets/textures/ui/button_endurance2.png" id="6_bjvsn"]
 [ext_resource type="Texture2D" uid="uid://6hmf00f8tw8w" path="res://assets/textures/ui/button_mental_activity1.png" id="7_urlxb"]
 [ext_resource type="Texture2D" uid="uid://c8rnpxsutwnix" path="res://assets/textures/ui/button_mental_activity2.png" id="8_x47ox"]
+[ext_resource type="Texture2D" uid="uid://dh8tyduto4qos" path="res://assets/textures/ui/button_escape.png" id="10_mst7q"]
 
 [node name="ResearchMenu" type="CanvasLayer"]
 script = ExtResource("1_yl5t8")
@@ -111,3 +112,12 @@ alignment = 2
 [node name="ExecuteButton" type="TextureButton" parent="Control/bg/MarginContainer/HBoxContainer2"]
 layout_mode = 2
 texture_normal = ExtResource("3_c3s4l")
+
+[node name="CloseBtn" type="TextureButton" parent="Control/bg"]
+layout_mode = 0
+anchor_left = 0.844
+anchor_top = 0.034285713
+anchor_right = 0.972
+anchor_bottom = 0.21714285
+texture_normal = ExtResource("10_mst7q")
+metadata/_edit_use_anchors_ = true
