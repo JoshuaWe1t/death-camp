@@ -3,6 +3,7 @@ extends Node
 var total_prizoners: int
 var current_prisoners: int = 400
 var prisoners_souls: int = 0
+var total_escaped_prisoners: int = 0
 
 var global_soul_quota: int = 150
 var global_souls_collected: int = 0
@@ -125,3 +126,8 @@ func free_workers(prisoners: int) -> void:
 
 func escaped_prisoners(prisoners: int) -> void:
 	current_prisoners -= prisoners
+	total_escaped_prisoners += prisoners # Учитываем новых сбежавших
+	
+	# Проверяем условие победы
+	if total_escaped_prisoners >= 150:
+		EventBus.prisoners_escaped_quota_reached.emit()
