@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://c27ymiku0cvdo"]
+
+[ext_resource type="Script" uid="uid://dlasdx3g34v8w" path="res://core/autoload/music_manager.gd" id="1_eofto"]
+[ext_resource type="AudioStream" uid="uid://lu2n8x2576s2" path="res://assets/audio/music/established_plane.wav" id="2_k6wd2"]
+[ext_resource type="AudioStream" uid="uid://dlj2tq1wjrnmd" path="res://assets/audio/music/industrial-creepy-ambience.wav" id="3_sexdq"]
+[ext_resource type="AudioStream" uid="uid://c736wl2oeq2et" path="res://assets/audio/music/industrial-abyss-drone-paulxstretch-transformation.mp3" id="4_vym6f"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_eofto")
+playlist = Array[AudioStream]([ExtResource("2_k6wd2"), ExtResource("3_sexdq"), ExtResource("4_vym6f")])
+
+[node name="PlayerA" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="PlayerB" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
