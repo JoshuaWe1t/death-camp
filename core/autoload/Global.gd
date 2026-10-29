@@ -19,7 +19,7 @@ var user_name: Dictionary = {
 func _ready() -> void:
 	print("Global is initialized")
 	# Опционально: автоматический старт первого дня при запуске игры
-	call_deferred("start_day")
+	#call_deferred("start_day")
 
 
 func start_day() -> void:
