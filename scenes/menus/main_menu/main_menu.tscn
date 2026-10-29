@@ -1,0 +1,179 @@
+[gd_scene load_steps=15 format=3 uid="uid://de6gyvvrdowrb"]
+
+[ext_resource type="Texture2D" uid="uid://bpmapl6vc6rd2" path="res://assets/textures/menu/menu-letter.png" id="1_flk2s"]
+[ext_resource type="Script" uid="uid://dxb6ybrsxgrdo" path="res://scenes/menus/main_menu/main_menu.gd" id="1_gm7d7"]
+[ext_resource type="Texture2D" uid="uid://cxgklh3l280y7" path="res://assets/textures/ui/lang-start1.png" id="3_88r3n"]
+[ext_resource type="Texture2D" uid="uid://vookpirdjbax" path="res://assets/textures/ui/lang-start2.png" id="4_dc6ug"]
+[ext_resource type="Texture2D" uid="uid://5sd8ewswbxax" path="res://assets/textures/ui/lang-settings1.png" id="5_3nv00"]
+[ext_resource type="Texture2D" uid="uid://th68vroylj3f" path="res://assets/textures/ui/lang-settings2.png" id="6_8xfgt"]
+[ext_resource type="Texture2D" uid="uid://dx7hf7wd6xoba" path="res://assets/textures/ui/button_credits1.png" id="7_7ufuu"]
+[ext_resource type="Texture2D" uid="uid://7atsleqt6gu1" path="res://assets/textures/ui/button_credits2.png" id="8_4ve6m"]
+[ext_resource type="Texture2D" uid="uid://rirk0ld85gjk" path="res://assets/textures/ui/lang-eng1.png" id="9_7fq28"]
+[ext_resource type="Texture2D" uid="uid://bl07r00bcqqjr" path="res://assets/textures/ui/lang-eng2.png" id="10_qekug"]
+[ext_resource type="Texture2D" uid="uid://b31wyuqmcabju" path="res://assets/textures/ui/lang-rus1.png" id="11_sk57j"]
+[ext_resource type="Texture2D" uid="uid://dqhmiufcdec5y" path="res://assets/textures/ui/lang-rus2.png" id="12_iv235"]
+[ext_resource type="Texture2D" uid="uid://cp67q4akkdijb" path="res://assets/textures/ui/button_back1.png" id="13_dc6ug"]
+[ext_resource type="Texture2D" uid="uid://b502vrekv8ch0" path="res://assets/textures/ui/button_back2.png" id="14_3nv00"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gm7d7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_flk2s")
+
+[node name="MainBtns" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="StartButton" type="TextureButton" parent="MainBtns"]
+layout_mode = 2
+texture_normal = ExtResource("3_88r3n")
+texture_pressed = ExtResource("4_dc6ug")
+
+[node name="SettingsButton" type="TextureButton" parent="MainBtns"]
+layout_mode = 2
+texture_normal = ExtResource("5_3nv00")
+texture_pressed = ExtResource("6_8xfgt")
+
+[node name="CreditsButton" type="TextureButton" parent="MainBtns"]
+layout_mode = 2
+texture_normal = ExtResource("7_7ufuu")
+texture_pressed = ExtResource("8_4ve6m")
+
+[node name="SettingsBtns" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -42.0
+offset_right = 130.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Language" type="Label" parent="SettingsBtns"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Language"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LangBtns" type="HBoxContainer" parent="SettingsBtns"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="EngButton" type="TextureButton" parent="SettingsBtns/LangBtns"]
+layout_mode = 2
+texture_normal = ExtResource("9_7fq28")
+texture_pressed = ExtResource("10_qekug")
+
+[node name="RusButton" type="TextureButton" parent="SettingsBtns/LangBtns"]
+layout_mode = 2
+texture_normal = ExtResource("11_sk57j")
+texture_pressed = ExtResource("12_iv235")
+
+[node name="Volume" type="Label" parent="SettingsBtns"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeSlider" type="HSlider" parent="SettingsBtns"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsBtns"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="SettingsBtns/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_dc6ug")
+texture_pressed = ExtResource("14_3nv00")
+
+[node name="CreditsPlate" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = -215.5
+offset_right = 198.5
+offset_bottom = 215.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CreditsPlate"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Credits" type="RichTextLabel" parent="CreditsPlate/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center]
+[b]Создатель[/b]
+Иван Иванов
+
+[b]Программирование[/b]
+Петр Петров
+Анна Смирнова
+
+[b]Музыка[/b]
+Алексей Сидоров
+[/center]
+
+[center]
+[b]Создатель[/b]
+Иван Иванов
+
+[b]Программирование[/b]
+Петр Петров
+Анна Смирнова
+
+[b]Музыка[/b]
+Алексей Сидоров
+[/center]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreditsPlate"]
+layout_mode = 2
+alignment = 1
+
+[node name="CreditBackButton" type="TextureButton" parent="CreditsPlate/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_dc6ug")
+texture_pressed = ExtResource("14_3nv00")
