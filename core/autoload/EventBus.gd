@@ -93,3 +93,6 @@ signal soul_quota_failed(penalty_multiplier: float)
 
 @warning_ignore("unused_signal")
 signal show_dispatch_menu()
+
+@warning_ignore("unused_signal")
+signal global_quota_completed()

@@ -4,6 +4,10 @@ var total_prizoners: int
 var current_prisoners: int = 400
 var prisoners_souls: int = 0
 
+var global_soul_quota: int = 150
+var global_souls_collected: int = 0
+var is_global_quota_reached: bool = false
+
 var is_pact_accepted: bool = false
 var daily_soul_quota: int = 0
 var souls_collected_today: int = 0
@@ -19,12 +23,12 @@ func _ready() -> void:
 func _on_day_started(day: int) -> void:
 	if day == 4 and not is_pact_accepted:
 		EventBus.show_mysterious_offer.emit()
-	elif is_pact_accepted:
+	elif is_pact_accepted and not is_global_quota_reached:
 		_generate_daily_quota()
 
 
 func _on_day_ended(_day: int) -> void:
-	if is_pact_accepted:
+	if is_pact_accepted and not is_global_quota_reached:
 		if souls_collected_today < daily_soul_quota:
 			# Игрок не выполнил квоту: увеличиваем множитель на следующий день
 			quota_penalty_multiplier += 0.5
@@ -59,7 +63,12 @@ func _generate_daily_quota() -> void:
 		if daily_soul_quota > max_capacity:
 			daily_soul_quota = max_capacity
 			
-	print("Новое задание по душам на сегодня: ", daily_soul_quota)
+	# Ежедневная квота не должна превышать остаток глобальной квоты
+	var remaining_global_quota = global_soul_quota - global_souls_collected
+	if daily_soul_quota > remaining_global_quota:
+		daily_soul_quota = remaining_global_quota
+			
+	print("Новое задание по душам на сегодня: ", daily_soul_quota, " | Осталось собрать глобально: ", remaining_global_quota)
 	EventBus.soul_quota_updated.emit(souls_collected_today, daily_soul_quota)
 
 
@@ -78,11 +87,20 @@ func collect_souls(amount: int, prisoners_spent: int) -> void:
 	current_prisoners -= prisoners_spent
 	prisoners_souls += amount
 	
-	if is_pact_accepted:
+	if is_pact_accepted and not is_global_quota_reached:
 		souls_collected_today += amount
+		global_souls_collected += amount
+		
 		EventBus.soul_quota_updated.emit(souls_collected_today, daily_soul_quota)
+		
 		if souls_collected_today >= daily_soul_quota:
 			print("Квота душ на сегодня выполнена!")
+			
+		# Проверка выполнения глобальной квоты
+		if global_souls_collected >= global_soul_quota:
+			is_global_quota_reached = true
+			print("Глобальная квота душ выполнена!")
+			EventBus.global_quota_completed.emit()
 
 
 func reset_prisoners_count(prisoners_count: int = 400, souls: int = 0) -> void:
