@@ -114,7 +114,7 @@ func _process(_delta):
 # Обработка ввода
 func _input(event):
 	# Нажатие на Escape (в Godot экшен ui_cancel по умолчанию привязан к Esc)
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ESCAPE"):
 		if is_tutorial_active:
 			hide_tutorial()
 		else:
@@ -124,9 +124,9 @@ func _input(event):
 
 	# Управление кликами мыши
 	if is_tutorial_active and event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_action_pressed("LBM"):
 			next_step()
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
+		elif event.is_action_pressed("RBM"):
 			prev_step()
 
 
