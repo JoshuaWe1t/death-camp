@@ -49,7 +49,7 @@ mouse_filter = 2
 [node name="APLabel" type="Label" parent="UI/ActionContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "1/10"
+text = "10/10"
 
 [node name="SpendAPButton" type="Button" parent="UI/ActionContainer/VBoxContainer"]
 visible = false
