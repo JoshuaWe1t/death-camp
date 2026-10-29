@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://yinc1tu4g8r3" path="res://assets/textures/ui/decree.png" id="2_bf5od"]
 [ext_resource type="Texture2D" uid="uid://rxr6ujsuykfn" path="res://assets/textures/ui/button_admit1.png" id="3_loe5w"]
 [ext_resource type="Texture2D" uid="uid://bmclmtbpmeceb" path="res://assets/textures/ui/button_admit2.png" id="4_ymons"]
-[ext_resource type="Texture2D" uid="uid://cbbkgynx6w32b" path="res://assets/textures/ui/button_refuse1.png" id="5_gl7tt"]
-[ext_resource type="Texture2D" uid="uid://c77g5src8dlki" path="res://assets/textures/ui/button_refuse2.png" id="6_pr1e4"]
+[ext_resource type="Texture2D" uid="uid://dohubohs2qqt4" path="res://assets/textures/ui/button_diclaim1.png" id="5_loe5w"]
+[ext_resource type="Texture2D" uid="uid://b5lyyiv0guffi" path="res://assets/textures/ui/button_diclaim2.png" id="6_ymons"]
 
 [node name="TaskMenu" type="CanvasLayer"]
 script = ExtResource("1_c06n1")
@@ -71,5 +71,5 @@ texture_pressed = ExtResource("4_ymons")
 
 [node name="RefuseButton" type="TextureButton" parent="PopUp/TextureRect/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("5_gl7tt")
-texture_pressed = ExtResource("6_pr1e4")
+texture_normal = ExtResource("5_loe5w")
+texture_pressed = ExtResource("6_ymons")
