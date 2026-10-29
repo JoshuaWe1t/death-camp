@@ -254,11 +254,13 @@ func _init_main_quest() -> void:
 	
 	if unrestored_count == 0:
 		return
-		
+	
+	var name_task = "Восстановить разрушенные здания" if lang == "rus" else "Restore the destroyed buildings"
+	
 	var task = {
 		"instance_id": MAIN_QUEST_ID,
 		"id": "main_restore",
-		"full_name": "Восстановить разрушенные здания",
+		"full_name": name_task,
 		"required_quantity": unrestored_count,
 		"current_quantity": 0,
 		"is_main_quest": true # Флаг, чтобы отличать от обычных указов
