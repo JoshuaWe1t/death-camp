@@ -7,18 +7,6 @@ var current_stuff: int = 32
 var is_skipped: bool = false
 var lang = Global.lang
 
-var user_name: Dictionary = {
-	"rus": {
-		"first_name": "Леон",
-		"last_name": "Вольф"
-	},
-	"eng": {
-		"first_name": "Leon",
-		"last_name": "Wolf",
-		
-	}
-}
-
 func _ready() -> void:
 	_load_names_from_json() # Загружаем имена перед генерацией
 	_generate_initial_staff()
