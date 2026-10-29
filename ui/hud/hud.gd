@@ -38,6 +38,9 @@ func _ready() -> void:
 	for child in tasks_vbox.get_children():
 		child.queue_free()	
 	
+	for task_id in EdictManager.active_edicts:
+		_on_edict_accepted(EdictManager.active_edicts[task_id])
+	
 	# Первичная отрисовка статических ресурсов
 	update_static_resources()
 
