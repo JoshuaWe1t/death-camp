@@ -3,8 +3,18 @@ extends Node
 
 const TOTAL_DAYS: int = 30
 var current_day: int = 1
-var lang = "eng"
-
+var lang: String = "eng"
+var user_name: Dictionary = {
+	"rus": {
+		"first_name": "Леон",
+		"last_name": "Вольф"
+	},
+	"eng": {
+		"first_name": "Leon",
+		"last_name": "Wolf",
+		
+	}
+}
 
 func _ready() -> void:
 	print("Global is initialized")
