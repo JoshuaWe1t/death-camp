@@ -1,6 +1,6 @@
 extends Control
 
-const MAIN_GAME = preload("res://scenes/levels/test/main.tscn")
+const MENU = preload("res://scenes/menus/main_menu/main_menu.tscn")
 
 signal show_hint_go_menu()
 
@@ -85,7 +85,7 @@ func _input(event):
 	
 	if event.is_action_pressed("SPACE") and is_text_skipped:
 		print("Переход в игру")
-		get_tree().change_scene_to_packed(MAIN_GAME)
+		get_tree().change_scene_to_packed(MENU)
 
 
 func _animate_hint() -> void:
