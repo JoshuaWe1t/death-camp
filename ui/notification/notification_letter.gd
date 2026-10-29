@@ -8,10 +8,13 @@ extends CanvasLayer
 
 var hint_tween: Tween
 var lang: String = Global.lang
-var commandant: String = "Nicola Costa"
+var commandant: String
 
 func _ready() -> void:
 	hide()
+	
+	commandant = Global.user_name.get(lang).first_name + " " +  Global.user_name.get(lang).last_name
+	
 	hint.modulate.a = 0.0 # Изначально делаем надпись прозрачной
 	
 	# Подключаем сигнал, который срабатывает при вызове show() или hide()
