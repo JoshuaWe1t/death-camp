@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnksnobduetv0"]
+
+[ext_resource type="Script" uid="uid://dhdhwo1213b1u" path="res://scenes/tutorial/tutorial_manager.gd" id="1_vxwfl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3cp1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.71482706, 0.19630584, 0.10261106, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxwfl"]
+bg_color = Color(0.3515629, 0.3515629, 0.35156283, 0.42352942)
+
+[node name="TutorialManager" type="CanvasLayer"]
+script = ExtResource("1_vxwfl")
+
+[node name="TutorialUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HighlightFrame" type="Panel" parent="TutorialUI"]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 403.0
+offset_right = 914.0
+offset_bottom = 485.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m3cp1")
+
+[node name="TextBox" type="PanelContainer" parent="TutorialUI"]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 113.0
+offset_right = 397.0
+offset_bottom = 238.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vxwfl")
+
+[node name="TextLabel" type="Label" parent="TutorialUI/TextBox"]
+custom_minimum_size = Vector2(275, 125)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7575174, 0.8580736, 0.9865977, 1)
+text = "LABEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
