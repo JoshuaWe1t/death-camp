@@ -109,3 +109,7 @@ signal funds_changed(current_funds: int)
 
 @warning_ignore("unused_signal")
 signal prisoners_escaped_quota_reached()
+
+
+@warning_ignore("unused_signal")
+signal prisoners_escaped_updated(current: int, total: int)
