@@ -1,7 +1,11 @@
 extends Node
 
 
-var current_funds: int = 1800
+var current_funds: int = 1800:
+	set(value):
+		current_funds = value
+		EventBus.funds_changed.emit(current_funds)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

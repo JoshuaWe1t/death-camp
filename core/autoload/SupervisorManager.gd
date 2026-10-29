@@ -87,7 +87,7 @@ func _check_player(player: StaffMember) -> void:
 	# Здесь логика финала игры или смертельного выбора
 	print("Супервайзер добрался до игрока!")
 	player.is_checked = true
-	# EventBus.game_over.emit(reason) или переход на сцену поражения
+	EventBus.supervisor_reached_player.emit()
 
 
 func _on_task_failed(skip_amount: int) -> void:

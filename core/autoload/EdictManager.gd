@@ -225,6 +225,7 @@ func _apply_edict_penalty(task: Dictionary):
 		
 	if supervisor_list_position <= 0:
 		print("GAME OVER: Супервайзер добрался до вас.")
+		EventBus.supervisor_reached_player.emit()
 
 
 func _on_day_started(day: int) -> void:
