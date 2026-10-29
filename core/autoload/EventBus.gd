@@ -106,3 +106,6 @@ signal game_lost(reason: String)
 signal supervisor_reached_player()
 @warning_ignore("unused_signal")
 signal funds_changed(current_funds: int)
+
+@warning_ignore("unused_signal")
+signal prisoners_escaped_quota_reached()
