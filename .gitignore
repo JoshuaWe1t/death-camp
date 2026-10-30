@@ -10,6 +10,7 @@
 export.cfg
 export_credentials.cfg
 *.tmp
+export_presets.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -21,6 +22,7 @@ mono_crash.*.json
 
 # Export outputs
 *.exe
+builds/
 # Uncomment if your project does not version PCK files as runtime dependencies.
 # *.pck
 _*
