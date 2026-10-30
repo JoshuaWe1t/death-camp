@@ -45,7 +45,7 @@ var text_to_type = {
     I sought refuge, but stepped into a nightmare. Doom still breathes down my neck, while the shadows whisper a deal: my salvation for the souls of others.
 
     The order is signed. Truly a BAD PLAN.
-    """
+	"""
 }
 
 
