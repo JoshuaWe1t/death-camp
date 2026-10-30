@@ -1,13 +1,16 @@
-extends Control
+extends CanvasLayer
 
 const MENU = preload("res://scenes/menus/main_menu/main_menu.tscn")
 
 signal show_hint_go_menu()
 
-@onready var rich_text_label: RichTextLabel = $MarginContainer/RichTextLabel
-@onready var timer: Timer = $Timer
-@onready var hint: Label = $Hint
-@onready var timer_hint: Timer = $TimerHint
+@onready var rich_text_label: RichTextLabel = $Control/MarginContainer/RichTextLabel
+@onready var timer: Timer = $Control/Timer
+@onready var hint: Label = $Control/Hint
+@onready var timer_hint: Timer = $Control/TimerHint
+@onready var audio_stream_player: AudioStreamPlayer = $Control/AudioStreamPlayer
+
+
 
 var hint_tween: Tween
 var is_text_skipped: bool = false
@@ -44,6 +47,7 @@ var text_to_type = {
 
 
 func _ready():
+	hide()
 	hint.text = "Левый клик, чтобы показать весь текст" if lang == "rus" else "Left-click to reveal full text"
 	show_hint_go_menu.connect(_on_show_hint_go_menu)
 	timer_hint.timeout.connect(_on_timer_hint)
@@ -53,7 +57,6 @@ func _ready():
 	EventBus.game_won.connect(_on_game_end)
 	EventBus.game_lost.connect(_on_game_end)
 	
-	_on_game_end("cons4")
 
 
 func _on_timer_timeout():
@@ -65,8 +68,8 @@ func _on_timer_timeout():
 
 	if current_char != " " and current_char != "\n":
 		# Случайная высота тона от 0.9 (чуть ниже) до 1.1 (чуть выше)
-		$AudioStreamPlayer.pitch_scale = randf_range(0.9, 1.1) 
-		$AudioStreamPlayer.play()
+		audio_stream_player.pitch_scale = randf_range(0.9, 1.1) 
+		audio_stream_player.play()
 	
 	# Останавливаем таймер, если весь текст напечатан
 	if rich_text_label.visible_characters >= rich_text_label.text.length():
@@ -109,6 +112,7 @@ func _on_show_hint_go_menu() -> void:
 
 
 func _on_game_end(id: String) -> void:
+	show()
 	var cons = id
 	text_to_type = text_to_type.get(cons).get(lang)
 	# Инициализируем текст, но скрываем все символы
