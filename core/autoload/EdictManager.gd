@@ -220,7 +220,7 @@ func _apply_edict_penalty(task: Dictionary):
 	print("Осталось до проверки игрока: ", max(0, supervisor_list_position), " позиций.")
 	
 	if FundsManager.current_funds < 0:
-		FundsManager.current_funds = 0
+		#FundsManager.current_funds = 0
 		print("Внимание! Финансирование исчерпано.")
 		
 	if supervisor_list_position <= 0:
