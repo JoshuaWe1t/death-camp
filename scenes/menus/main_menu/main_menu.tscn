@@ -34,7 +34,6 @@ grow_vertical = 2
 texture = ExtResource("1_flk2s")
 
 [node name="MainBtns" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -121,6 +120,7 @@ texture_normal = ExtResource("13_dc6ug")
 texture_pressed = ExtResource("14_3nv00")
 
 [node name="CreditsPlate" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -177,3 +177,14 @@ alignment = 1
 layout_mode = 2
 texture_normal = ExtResource("13_dc6ug")
 texture_pressed = ExtResource("14_3nv00")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.5689727, 0.56897277, 0.5689727, 1)
+text = "ver. 0.1.0-demo"

@@ -1,6 +1,291 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbbjskcjiqyya"]
+[gd_scene load_steps=20 format=3 uid="uid://bbbjskcjiqyya"]
 
 [ext_resource type="Script" uid="uid://gywsbosmmb6s" path="res://scenes/levels/test/main.gd" id="1_jnirk"]
+[ext_resource type="Texture2D" uid="uid://ch022leqg0d11" path="res://assets/textures/background/demo.png" id="2_011y3"]
+[ext_resource type="PackedScene" uid="uid://bnksnobduetv0" path="res://scenes/tutorial/tutorial_manager.tscn" id="2_j2vqb"]
+[ext_resource type="PackedScene" uid="uid://cjffndni4p2de" path="res://ui/hud/hud.tscn" id="3_uerpc"]
+[ext_resource type="Script" uid="uid://cxqvrqtbilg2a" path="res://core/utils/building.gd" id="4_52ut7"]
+[ext_resource type="PackedScene" uid="uid://b2cg0ujfyk3gj" path="res://ui/popups/restore_building_menu.tscn" id="5_d03dv"]
+[ext_resource type="PackedScene" uid="uid://dnqf0orjg8ic6" path="res://ui/popups/task_menu.tscn" id="6_2pdf4"]
+[ext_resource type="PackedScene" uid="uid://cj41x0f17p6lb" path="res://ui/popups/research_menu.tscn" id="7_uerpc"]
+[ext_resource type="PackedScene" uid="uid://b7yrxt852wvpi" path="res://ui/popups/staff_list_scene.tscn" id="8_52ut7"]
+[ext_resource type="PackedScene" uid="uid://cope30snrmkvw" path="res://ui/notification/notification_letter.tscn" id="9_d03dv"]
+[ext_resource type="PackedScene" uid="uid://bcysvfj2btsee" path="res://ui/popups/escape_window.tscn" id="10_2pdf4"]
+[ext_resource type="PackedScene" uid="uid://8le8jf6ehdmc" path="res://ui/notification/mysterious_offer_popup.tscn" id="10_fcsng"]
+[ext_resource type="PackedScene" uid="uid://krk4hdpfab15" path="res://ui/components/fear_manager/fear_manager.tscn" id="11_j32m8"]
+[ext_resource type="PackedScene" uid="uid://donqvcu7b586o" path="res://scenes/parallax/cloud_background.tscn" id="12_8lrx3"]
+[ext_resource type="PackedScene" uid="uid://cdl611xnks6pb" path="res://ui/popups/production_menu.tscn" id="13_5gfr6"]
+[ext_resource type="PackedScene" uid="uid://byogeka7mfa82" path="res://ui/popups/utilization_menu.tscn" id="14_011y3"]
+[ext_resource type="PackedScene" uid="uid://b6pui7qa6pk2t" path="res://ui/popups/delivery_menu.tscn" id="15_fv3by"]
+[ext_resource type="PackedScene" uid="uid://2k5s6ysdq636" path="res://ui/hints/hint_labels.tscn" id="17_qgln3"]
+[ext_resource type="PackedScene" uid="uid://c23qv3qmjpgmy" path="res://scenes/menus/result_menu/result_game_menu.tscn" id="19_auxvk"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jnirk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_011y3")
+metadata/_edit_lock_ = true
+
+[node name="HUD" parent="." instance=ExtResource("3_uerpc")]
+
+[node name="TutorialManager" parent="." instance=ExtResource("2_j2vqb")]
+
+[node name="Buildings" type="Node" parent="."]
+
+[node name="House" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.14500001
+anchor_top = 0.018000001
+anchor_right = 0.23
+anchor_bottom = 0.11100001
+offset_left = -0.6000061
+offset_top = 0.03999901
+offset_right = 0.6000061
+offset_bottom = 0.0799942
+script = ExtResource("4_52ut7")
+building_id = "komendant"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Admin" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.171875
+anchor_top = 0.15
+anchor_right = 0.33828124
+anchor_bottom = 0.3013889
+script = ExtResource("4_52ut7")
+building_id = "admin"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Dormitory1" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.35390624
+anchor_top = 0.14861111
+anchor_right = 0.51171875
+anchor_bottom = 0.25694445
+script = ExtResource("4_52ut7")
+building_id = "dormitory"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Dormitory2" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.5296875
+anchor_top = 0.15277778
+anchor_right = 0.6875
+anchor_bottom = 0.2611111
+script = ExtResource("4_52ut7")
+building_id = "dormitory1"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Canteen" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.7140625
+anchor_top = 0.14583333
+anchor_right = 0.8335937
+anchor_bottom = 0.2625
+offset_bottom = 1.5258789e-05
+script = ExtResource("4_52ut7")
+building_id = "canteen"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Barrack" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.35703126
+anchor_top = 0.30972221
+anchor_right = 0.5140625
+anchor_bottom = 0.42083332
+script = ExtResource("4_52ut7")
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Barrack1" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.28125
+anchor_top = 0.36527777
+anchor_right = 0.35
+anchor_bottom = 0.58472216
+script = ExtResource("4_52ut7")
+building_id = "barrack1"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Barrack2" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.359375
+anchor_top = 0.5902778
+anchor_right = 0.51640624
+anchor_bottom = 0.7013889
+script = ExtResource("4_52ut7")
+building_id = "barrack2"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Workshop1" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.5671875
+anchor_top = 0.56527776
+anchor_right = 0.7046875
+anchor_bottom = 0.67777777
+offset_top = 3.0517578e-05
+script = ExtResource("4_52ut7")
+building_id = "workshop"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Workshop2" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.31111112
+anchor_right = 0.725
+anchor_bottom = 0.41805556
+offset_top = -1.5258789e-05
+script = ExtResource("4_52ut7")
+building_id = "workshop1"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Laboratory" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.5390625
+anchor_top = 0.43472221
+anchor_right = 0.66875
+anchor_bottom = 0.54583335
+script = ExtResource("4_52ut7")
+building_id = "laboratory"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="GasChamber1" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.746875
+anchor_top = 0.53333336
+anchor_right = 0.83203125
+anchor_bottom = 0.64444447
+offset_top = -3.0517578e-05
+script = ExtResource("4_52ut7")
+building_id = "gas_chamber"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="GasChamber2" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.653125
+anchor_top = 0.74027777
+anchor_right = 0.73828125
+anchor_bottom = 0.8333333
+script = ExtResource("4_52ut7")
+building_id = "gas_chamber1"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Crematorium" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.78984374
+anchor_top = 0.64444447
+anchor_right = 0.8929688
+anchor_bottom = 0.78333336
+script = ExtResource("4_52ut7")
+building_id = "crematorium"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Morgue" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.4546875
+anchor_top = 0.7652778
+anchor_right = 0.5367187
+anchor_bottom = 0.86388886
+script = ExtResource("4_52ut7")
+building_id = "morgue"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hospital" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.7992188
+anchor_top = 0.27222222
+anchor_right = 0.90546876
+anchor_bottom = 0.36527777
+script = ExtResource("4_52ut7")
+building_id = "hospital_small"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Infirmary" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.7945312
+anchor_top = 0.39444444
+anchor_right = 0.9109375
+anchor_bottom = 0.46944445
+script = ExtResource("4_52ut7")
+building_id = "hospital_large"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="DeathWall" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.3203125
+anchor_top = 0.7416667
+anchor_right = 0.41953126
+anchor_bottom = 0.79583335
+script = ExtResource("4_52ut7")
+building_id = "death_wall"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="Station" type="TextureButton" parent="Buildings"]
+anchors_preset = -1
+anchor_left = 0.12109375
+anchor_top = 0.51666665
+anchor_right = 0.1703125
+anchor_bottom = 0.59305555
+script = ExtResource("4_52ut7")
+building_id = "station"
+metadata/_custom_type_script = "uid://cxqvrqtbilg2a"
+metadata/_edit_use_anchors_ = true
+
+[node name="RestoreBuildingMenu" parent="." instance=ExtResource("5_d03dv")]
+visible = false
+
+[node name="TaskMenu" parent="." instance=ExtResource("6_2pdf4")]
+visible = false
+
+[node name="ResearchMenu" parent="." instance=ExtResource("7_uerpc")]
+visible = false
+
+[node name="StaffListScene" parent="." instance=ExtResource("8_52ut7")]
+visible = false
+
+[node name="NotificationLetter" parent="." instance=ExtResource("9_d03dv")]
+visible = false
+
+[node name="MysteriousOfferPopup" parent="." instance=ExtResource("10_fcsng")]
+visible = false
+
+[node name="EscapeWindow" parent="." instance=ExtResource("10_2pdf4")]
+visible = false
+
+[node name="FearManager" parent="." instance=ExtResource("11_j32m8")]
+
+[node name="ProductionMenu" parent="." instance=ExtResource("13_5gfr6")]
+visible = false
+
+[node name="UtilizationMenu" parent="." instance=ExtResource("14_011y3")]
+visible = false
+
+[node name="DeliveryMenu" parent="." instance=ExtResource("15_fv3by")]
+visible = false
+
+[node name="CloudBackground" parent="." instance=ExtResource("12_8lrx3")]
+
+[node name="HintLabels" parent="." instance=ExtResource("17_qgln3")]
+
+[node name="ResultGameMenu" parent="." instance=ExtResource("19_auxvk")]
+visible = false
