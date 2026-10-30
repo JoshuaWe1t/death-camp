@@ -24,7 +24,11 @@ func _ready() -> void:
 func _on_show_popup() -> void:
 	var text: String = ""
 	if lang == "rus":
-		pass
+		text = edict_object.get("full_name") + "\n\n"
+		text += "Награда: " + str(edict_object.get("reward")) + "\n"
+		text += "Штраф: " + str(edict_object.get("penalty")) + "\n"
+		text += "Требуется очков действий: " + str(edict_object.get("ap_cost")) + "\n"
+		text += "Супервайзер пропустит: " + str(edict_object.get("supervisor_advance")) + " членов штата\n"
 	else:
 		text = edict_object.get("full_name") + "\n\n"
 		text += "Reward: " + str(edict_object.get("reward")) + "\n"
