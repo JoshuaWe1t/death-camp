@@ -5,11 +5,10 @@ var available_names: Array = [] # Массив для хранения загр�
 var total_stuff: int
 var current_stuff: int = 54
 var is_skipped: bool = false
-var lang = Global.lang
 
 func _ready() -> void:
+	print("StaffManager is initialized")
 	_load_names_from_json() # Загружаем имена перед генерацией
-	_generate_initial_staff()
 
 
 # Новая функция для чтения файла german_names.json
@@ -41,20 +40,20 @@ func _generate_initial_staff() -> void:
 	# 1. Игрок всегда добавляется первым
 	var player = StaffMember.new(0, 
 		true, 
-		Global.user_name.get(lang).get("first_name"), 
-		Global.user_name.get(lang).get("last_name"), 
-		"Управляющий" if lang == "rus" else "Komendant")
+		Global.user_name.get(Global.lang ).get("first_name"), 
+		Global.user_name.get(Global.lang ).get("last_name"), 
+		"Управляющий" if Global.lang  == "rus" else "Komendant")
 	staff_list.append(player)
 	
 	# 2. Генерируем остальной штат
 	for i in range(1, current_stuff):
-		var role = "Охранник" if lang == "rus" else "Security"
+		var role = "Охранник" if Global.lang  == "rus" else "Security"
 		if i == 1: 
-			role = "Администратор" if lang == "rus" else "Administrator"
+			role = "Администратор" if Global.lang  == "rus" else "Administrator"
 			
 		var name_data = _get_random_name()
 		var member: StaffMember = null
-		if lang == "eng":
+		if Global.lang  == "eng":
 			member = StaffMember.new(i, false, name_data["first_name_en"], name_data["last_name_en"], role)
 		else:
 			# Подставляем русские версии имени и фамилии
@@ -72,9 +71,9 @@ func add_new_staff(value: int) -> void:
 	
 	for i in range(value):
 		var name_data = _get_random_name()
-		var role = "Охранник" if lang == "rus" else "Security"
+		var role = "Охранник" if Global.lang  == "rus" else "Security"
 		var member: StaffMember = null
-		if lang == "eng":
+		if Global.lang  == "eng":
 			member = StaffMember.new(start_id + i, false, name_data["first_name_en"], name_data["last_name_en"], role)
 		else:
 			# Подставляем русские версии имени и фамилии

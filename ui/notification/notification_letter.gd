@@ -7,13 +7,12 @@ extends CanvasLayer
 @onready var hint: Label = $Control/Hint
 
 var hint_tween: Tween
-var lang: String = Global.lang
 var commandant: String
 
 func _ready() -> void:
 	hide()
 	
-	commandant = Global.user_name.get(lang).first_name + " " +  Global.user_name.get(lang).last_name
+	commandant = Global.user_name.get(Global.lang).first_name + " " +  Global.user_name.get(Global.lang).last_name
 	
 	hint.modulate.a = 0.0 # Изначально делаем надпись прозрачной
 	
@@ -65,7 +64,7 @@ func _on_admit_button_pressed() -> void:
 
 
 func _on_game_started() -> void:
-	match lang:
+	match Global.lang:
 		"rus":
 			introduction.text = "Товарищ комендант,\n %s\n\nУправление назначило вас восстановить лагерь Mod'Gerh после саботажа предыдущего коменданта." % [commandant]
 			main_part.text = "Управление ожидает, что лагерь будет восстановлен в срок не позднее одного месяца. Вам выделили для этого финансирование"
@@ -81,13 +80,13 @@ func _on_game_started() -> void:
 
 
 func _on_superviser_arrived() -> void:
-	match lang:
+	match Global.lang:
 		"rus":
-			introduction.text = "Товарищ комендант,\n %s\n\nУправление направило к вам Супервайзера для проверки вашего штата." % ["Nicola Costa"]
+			introduction.text = "Товарищ комендант,\n %s\n\nУправление направило к вам Супервайзера для проверки вашего штата." % [commandant]
 			main_part.text = "Его главная задача проверить ваш персонал, в том числе и вас, когда весь персонал будет проверен."
 			conclusion.text = "Заметьте, что он прямой подчиненный Управления и если вы допустите ошибку - он непременно захочет быстрее приблизиться к вам."
 		"eng":
-			introduction.text = "Comrade Commandant,\n %s\n\nThe Directorate has dispatched a Supervisor to inspect your staff." % [""]
+			introduction.text = "Comrade Commandant,\n %s\n\nThe Directorate has dispatched a Supervisor to inspect your staff." % [commandant]
 			main_part.text = "His primary objective is to inspect your personnel, including yourself once all other staff have been inspected."
 			conclusion.text = "Note that he reports directly to The Directorate, and should you make a mistake, he will surely want to close in on you sooner."
 		_:

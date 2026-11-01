@@ -21,12 +21,9 @@ extends CanvasLayer
 @onready var infirmary: Label = $Control/Infirmary
 
 
-var lang: String = Global.lang
-
-
 func _ready() -> void:
 	hide()
-	if lang == "rus":
+	if Global.lang  == "rus":
 		house.text = BuildingDatabase.DATA.get("komendant").get("name").get("rus")
 		admin.text = BuildingDatabase.DATA.get("admin").get("name").get("rus")
 		west_dormitory.text = BuildingDatabase.DATA.get("dormitory").get("name").get("rus")

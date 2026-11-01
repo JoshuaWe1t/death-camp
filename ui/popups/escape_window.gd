@@ -3,7 +3,6 @@ extends CanvasLayer
 @onready var info_label: Label = $Control/TextureRect/VBoxContainer/InfoLabel
 @onready var escape_button: TextureButton = $Control/TextureRect/VBoxContainer/HBoxContainer/EscapeButton
 @onready var cancel_button: TextureButton = $Control/TextureRect/VBoxContainer/HBoxContainer/CancelButton
-var lang = Global.lang
 
 func _ready() -> void:
 	# Подключаем сигналы кнопок
@@ -22,13 +21,13 @@ func _update_ui() -> void:
 	# Проверяем условие: ОД должно быть строго больше 2
 	if current_ap > 2:
 		escape_button.disabled = false
-		if lang == "rus": 
+		if Global.lang == "rus": 
 			info_label.text = "Организовать побег?\nЭто потратит все ваши ОД (Текущие ОД: %d)." % current_ap
 		else:
 			info_label.text = "Stage an escape?\nThis will consume all your AP (Current AP: %d)." % current_ap
 	else:
 		escape_button.disabled = true
-		if lang == "rus": 
+		if Global.lang == "rus": 
 			info_label.text = "Невозможно организовать побег.\nТребуется более 2 ОД (Текущие ОД: %d)." % current_ap
 		else:
 			info_label.text = "Cannot stage an escape.\nRequires more than 2 AP (Current AP: %d)." % current_ap

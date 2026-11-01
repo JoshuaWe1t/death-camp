@@ -15,16 +15,13 @@ var active_edicts = {}
 var supervisor_list_position: int = 30
 var unrestored_count: int
 
-var lang = Global.lang
-
 func _ready():
+	print("EdictManager is initialized")
 	load_edicts_data("res://core/utils/edicts_data.json")
 	
 	EventBus.day_started.connect(_on_day_started)
 	EventBus.building_restored.connect(_on_building_restored)
 	EventBus.research_completed.connect(_on_research_completed)
-	
-	call_deferred("_init_main_quest")
 
 
 func load_edicts_data(file_path: String):
@@ -112,7 +109,7 @@ func generate_random_edict() -> Dictionary:
 	var edict_name: String
 	var target_name: String
 	
-	if lang == "rus":
+	if Global.lang == "rus":
 		edict_name = selected_edict["name"]["rus"]
 		target_name = selected_target["name"]["rus"]
 	else:
@@ -255,9 +252,9 @@ func _init_main_quest() -> void:
 	
 	if unrestored_count == 0:
 		return
-	
-	var name_task = "Восстановить разрушенные здания" if lang == "rus" else "Restore the destroyed buildings"
-	
+
+	var name_task = "Восстановить разрушенные здания" if Global.lang == "rus" else "Restore the destroyed buildings"
+
 	var task = {
 		"instance_id": MAIN_QUEST_ID,
 		"id": "main_restore",
@@ -266,7 +263,6 @@ func _init_main_quest() -> void:
 		"current_quantity": 0,
 		"is_main_quest": true # Флаг, чтобы отличать от обычных указов
 	}
-	
 	active_edicts[MAIN_QUEST_ID] = task
 	# Сразу имитируем принятие задания, чтобы оно появилось в HUD
 	edict_accepted.emit(task)

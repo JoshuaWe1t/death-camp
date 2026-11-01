@@ -12,8 +12,6 @@ signal show_hint_start_game()
 var hint_tween: Tween
 var is_text_skipped: bool = false
 
-var lang = Global.lang
-
 # Текст, который мы хотим напечатать
 #var text_to_type = {
 	#"rus": """
@@ -55,7 +53,7 @@ func _ready():
 	
 	hint.modulate.a = 0.0 # Изначально делаем надпись прозрачной
 	# Инициализируем текст, но скрываем все символы
-	rich_text_label.text = text_to_type.get(lang)
+	rich_text_label.text = text_to_type.get(Global.lang)
 	rich_text_label.visible_characters = 0
 	
 	# Настраиваем и запускаем таймер
@@ -65,6 +63,7 @@ func _ready():
 
 
 func _on_timer_timeout():
+	hint.text = "Нажмите ЛКМ, чтобы показать весь текст" if Global.lang == "rus" else "Left-click to reveal full text"
 	# Добавляем один видимый символ
 	rich_text_label.visible_characters += 1
 	
@@ -122,4 +121,4 @@ func _on_timer_hint_timeout() -> void:
 
 
 func _on_show_hint_start_game() -> void:
-	hint.text = "Press [Space] to Start"
+	hint.text = "Нажмите [Space] чтобы начать" if Global.lang == "rus" else "Press [Space] to Start"

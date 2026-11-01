@@ -1,8 +1,6 @@
 extends Node
 
 var is_game_over: bool = false
-var lang: String = Global.lang
-
 
 func _ready() -> void:
 	# События победы

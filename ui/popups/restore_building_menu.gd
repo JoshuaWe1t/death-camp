@@ -17,7 +17,6 @@ var restore_time: int
 var restore_workers: int
 var restore_ap: int
 
-var lang: String = Global.lang
 
 func _ready() -> void:
 	hide()
@@ -46,7 +45,7 @@ func load_building_data(building_id: String) -> void:
 
 func _on_setup_and_show(building: Building) -> void:
 	target_building = building
-	if lang == "rus":
+	if Global.lang  == "rus":
 		text = target_building.building_name + "\n"
 		text += "[Статус: Требует восстановления]\n"
 		text += "Стоимость: " + str(target_building.restore_cost) + "$\n"

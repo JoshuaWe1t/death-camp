@@ -4,13 +4,12 @@ extends HBoxContainer
 @onready var role_label: RichTextLabel = $RoleLabel
 @onready var status_label: RichTextLabel = $StatusLabel
 
-var lang = Global.lang
 var player_name
 var user_name_first: String
 var user_name_second: String 
 
 func set_data(member: StaffMember) -> void:
-	player_name = Global.user_name.get(lang).first_name + " " +  Global.user_name.get(lang).last_name
+	player_name = Global.user_name.get(Global.lang ).first_name + " " +  Global.user_name.get(Global.lang ).last_name
 	var full_name = member.first_name + " " + member.last_name
 	
 	if member.is_player:
@@ -28,12 +27,12 @@ func set_data(member: StaffMember) -> void:
 	elif member.is_checked:
 		name_label.text = full_name
 		role_label.text = member.role
-		status_label.text = "Проверен" if lang == "rus" else "Checked"
+		status_label.text = "Проверен" if Global.lang  == "rus" else "Checked"
 		modulate = Color(0.6, 0.6, 0.6)
 	elif member.is_skipped:
 		name_label.text = full_name
 		role_label.text = member.role
-		status_label.text = "Пропущен" if lang == "rus" else "Skipped"
+		status_label.text = "Пропущен" if Global.lang  == "rus" else "Skipped"
 		modulate = Color(0.663, 0.607, 0.239, 1.0)
 	else:
 		name_label.text = full_name

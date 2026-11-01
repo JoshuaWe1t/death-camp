@@ -8,13 +8,12 @@ extends CanvasLayer
 @onready var cancel_button: TextureButton = $Control/TextureRect/CancelButton
 
 var current_selected_resource: String = ""
-var lang = Global.lang
 
 func _ready() -> void:
 	hide()
 	
-	title.text = "Меню производства" if lang == "rus" else "Manufacturing Menu"
-	description.text = "Выберите ресурс, ознакомтесь с описанием и нажмите 'Произвести' для начала производства" if lang == "rus" else "Select a resource, read the description, and press 'Produce' to start production"
+	title.text = "Меню производства" if Global.lang  == "rus" else "Manufacturing Menu"
+	description.text = "Выберите ресурс, ознакомтесь с описанием и нажмите 'Произвести' для начала производства" if Global.lang  == "rus" else "Select a resource, read the description, and press 'Produce' to start production"
 	EventBus.show_production_popup.connect(_on_show_popup)
 	EventBus.resource_stock_updated.connect(_on_stock_updated)
 	
@@ -37,7 +36,7 @@ func _update_ui() -> void:
 	var cfg = ResourceManager.PRODUCTION_CONFIG[current_selected_resource]
 	var in_stock = ResourceManager.get_resource_count(current_selected_resource)
 	
-	if lang == "rus":
+	if Global.lang  == "rus":
 		description.text = "Производство: %s\nПартия: от %d до %d ед.\nНа складе: %d ед.\nРасход: %d ОД" % [
 			cfg["name_rus"],
 			cfg["min_yield"],
@@ -84,4 +83,4 @@ func _on_close_button_pressed() -> void:
 
 func _on_cancel_button_pressed() -> void:
 	hide()
-	description.text = "Выберите ресурс, ознакомтесь с описанием и нажмите 'Произвести' для начала производства" if lang == "rus" else "Select a resource, read the description, and press 'Produce' to start production"
+	description.text = "Выберите ресурс, ознакомтесь с описанием и нажмите 'Произвести' для начала производства" if Global.lang  == "rus" else "Select a resource, read the description, and press 'Produce' to start production"

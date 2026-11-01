@@ -86,7 +86,6 @@ var steps: Array[Dictionary] = [
 
 var current_index: int = 0
 var is_tutorial_active: bool = false
-var lang = Global.lang
 
 
 static var has_played_on_start: bool = false
@@ -161,7 +160,7 @@ func update_ui():
 	highlight_frame.size = Vector2(step["width"], step["height"])
 	highlight_frame.position = Vector2(step["pos_x"], step["pos_y"])
 	
-	text_label.text = step["text"][lang]
+	text_label.text = step["text"][Global.lang]
 
 	# Если хотите, чтобы окно текста автоматически "прилипало" под рамку, раскомментируйте это:
 	text_box.position = Vector2(step["pos_x"], step["pos_y"] + step["height"] + 20)

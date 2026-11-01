@@ -8,8 +8,7 @@ extends CanvasLayer
 @onready var hint: Label = $Control/Hint
 
 var hint_tween: Tween
-var lang: String = Global.lang
-var commandant: String = "Nicola Costa"
+var commandant: String = "Leon Wolf"
 
 func _ready() -> void:
 	hide()
@@ -69,7 +68,8 @@ func _on_refused_button_pressed() -> void:
 
 
 func _on_show_mysterious_offer() -> void:
-	match lang:
+	commandant = Global.user_name.get(Global.lang).first_name + " " +  Global.user_name.get(Global.lang).last_name
+	match Global.lang :
 		"rus":
 			introduction.text = "Дорогой комендант,\n %s\n\nЯ поражен тому сколько ты сделал, чтобы пережить весь тот кошмар, что настиг твою семью." % [commandant]
 			main_part.text = "Я понимаю твое положение. Тебе страшно и ты понимаешь, что Супервайзер рано или поздно доберется до тебя и тогда судьба твоя не завидна"

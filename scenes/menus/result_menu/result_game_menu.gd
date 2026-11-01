@@ -10,12 +10,8 @@ signal show_hint_go_menu()
 @onready var timer_hint: Timer = $Control/TimerHint
 @onready var audio_stream_player: AudioStreamPlayer = $Control/AudioStreamPlayer
 
-
-
 var hint_tween: Tween
 var is_text_skipped: bool = false
-
-var lang = Global.lang
 
 # Текст, который мы хотим напечатать
 var text_to_type = {
@@ -48,7 +44,7 @@ var text_to_type = {
 
 func _ready():
 	hide()
-	hint.text = "Левый клик, чтобы показать весь текст" if lang == "rus" else "Left-click to reveal full text"
+	hint.text = "Левый клик, чтобы показать весь текст" if Global.lang  == "rus" else "Left-click to reveal full text"
 	show_hint_go_menu.connect(_on_show_hint_go_menu)
 	timer_hint.timeout.connect(_on_timer_hint)
 	
@@ -108,13 +104,13 @@ func _animate_hint() -> void:
 
 
 func _on_show_hint_go_menu() -> void:
-	hint.text = "Нажмите [Space] чтобы вернуться в меню" if lang == "rus" else "Press [Space] to go to Menu"
+	hint.text = "Нажмите [Space] чтобы вернуться в меню" if Global.lang  == "rus" else "Press [Space] to go to Menu"
 
 
 func _on_game_end(id: String) -> void:
 	show()
 	var cons = id
-	text_to_type = text_to_type.get(cons).get(lang)
+	text_to_type = text_to_type.get(cons).get(Global.lang )
 	# Инициализируем текст, но скрываем все символы
 	rich_text_label.text = text_to_type
 	rich_text_label.visible_characters = 0

@@ -11,7 +11,6 @@ extends CanvasLayer
 
 
 var current_research_id: String = "res_strength"
-var lang: String = Global.lang
 
 func _ready():
 	EventBus.show_research_popup.connect(_on_show_research_menu)
@@ -37,14 +36,14 @@ func setup_and_show(research_id: String) -> void:
 	current_research_id = research_id
 	var data = ResearchManager.research_db[research_id]
 	
-	if lang == "rus":
+	if Global.lang  == "rus":
 		# Отображаем описание ресурса: требуемое время, выгода, ОД
-		title.text = data["name"][lang] + "\n"
+		title.text = data["name"][Global.lang] + "\n"
 		description.text = "Тип: %s\nОписание: %s\nДлительность: %d дн.\nСтоимость: %d ОД\nВыгода: %d ус. ед." % [
 			data["type"], data["desc"]["rus"], data["duration"], data["ap_cost"], data["reward"]
 		]
 	else:
-		title.text = data["name"][lang] + "\n"
+		title.text = data["name"][Global.lang] + "\n"
 		description.text = "Type: %s\nDescription: %s\nDuration: %d d.\nCost: %d AP\nReward: %d credits" % [
 			data["type"], data["desc"]["eng"], data["duration"], data["ap_cost"], data["reward"]
 		]

@@ -27,8 +27,6 @@ var days_since_last_upkeep: int = 0
 var is_restoring: bool = false
 var days_left_to_restore: int = 0
 
-var lang = Global.lang
-
 func _ready() -> void:
 	load_building_data()
 	
@@ -45,8 +43,8 @@ func load_building_data() -> void:
 		push_error("Здание с ID " + building_id + " не найдено!")
 		return
 		
-	building_name = data["name"].get("eng") if lang == "eng" else data["name"].get("rus")
-	description = data["description"].get("eng") if lang == "eng" else data["description"].get("rus") 
+	building_name = data["name"].get("eng") if Global.lang == "eng" else data["name"].get("rus")
+	description = data["description"].get("eng") if Global.lang == "eng" else data["description"].get("rus") 
 	is_restored = data["is_restored"]
 	
 	restore_cost = data["restore_cost"]
@@ -61,7 +59,7 @@ func load_building_data() -> void:
 func update_tooltip() -> void:
 	var text = building_name + "\n\n"
 	text += description + '\n'
-	if lang == "rus":
+	if Global.lang == "rus":
 		if is_restoring:
 			text += "[Статус: В процессе восстановления]\n"
 			text += "Осталось дней: " + str(days_left_to_restore)

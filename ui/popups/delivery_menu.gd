@@ -6,7 +6,6 @@ extends CanvasLayer
 @onready var clothes_button: TextureButton = $Control/TextureRect/VBoxContainer/HBoxContainer/ClothesButton
 @onready var cancel_button: TextureButton = $Control/TextureRect/CancelButton
 
-var lang: String = Global.lang
 
 func _ready() -> void:
 	hide()
@@ -19,7 +18,7 @@ func _ready() -> void:
 
 
 func _on_show_dispatch_menu() -> void:
-	if lang == "rus":
+	if Global.lang == "rus":
 		title.text = "Станция отправки"
 		description.text = "Выберите ресурс для отправки\n\n"
 		description.text += "Мебели произведенно %d\n" % [ResourceManager.resource_stock.get("furniture")]

@@ -19,7 +19,6 @@ var fail_reasons_en: Array[String] = [
 	"Found guilty of withholding evidence"
 ]
 
-var lang = Global.lang
 
 func _ready() -> void:
 	EventBus.day_started.connect(_on_day_started)
@@ -71,7 +70,7 @@ func _process_daily_checks() -> void:
 		# Определяем исход проверки
 		if randf() < fail_chance:
 			target.is_neutralized = true
-			target.neutralization_reason = fail_reasons_ru.pick_random() if lang == "rus" else fail_reasons_en.pick_random()
+			target.neutralization_reason = fail_reasons_ru.pick_random() if Global.lang  == "rus" else fail_reasons_en.pick_random()
 			
 			StaffManager.transfer_staff_to_prisoner()
 	
