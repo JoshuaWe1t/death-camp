@@ -11,8 +11,6 @@ var souls_yield: int = 0
 var prisoners_cost: int = 0
 var ap_cost: int = 0
 
-var lang = Global.lang
-
 func _ready() -> void:
 	hide()
 	EventBus.show_utilization_menu.connect(_on_show_utilization_menu)
@@ -33,7 +31,7 @@ func _on_show_utilization_menu(building_id: String) -> void:
 			souls_yield = 15
 			prisoners_cost = 15
 			ap_cost = 1
-			if lang == "rus":
+			if Global.lang == "rus":
 				title.text = b_data["name"]["rus"] + " - Ресстрелять"
 			else:
 				title.text = b_data["name"]["eng"] + " - Execute"
@@ -41,7 +39,7 @@ func _on_show_utilization_menu(building_id: String) -> void:
 			souls_yield = 25
 			prisoners_cost = 25
 			ap_cost = 2
-			if lang == "rus":
+			if Global.lang == "rus":
 				title.text = b_data["name"]["rus"] + " - Сжечь"
 			else:
 				title.text = b_data["name"]["eng"] + " - Execute"
@@ -49,14 +47,14 @@ func _on_show_utilization_menu(building_id: String) -> void:
 			souls_yield = 40
 			prisoners_cost = 40
 			ap_cost = 2
-			if lang == "rus":
+			if Global.lang == "rus":
 				title.text = b_data["name"]["rus"] + " - Удушить"
 			else:
 				title.text = b_data["name"]["eng"] + " - Execute"
 		_:
 			return # Это здание не может утилизировать
 			
-	if lang == "rus":
+	if Global.lang == "rus":
 		description.text = "Вы собираетесь утилизировать %d заключенных.\nПолучено душ: %d\nТребуется ОД: %d" % [prisoners_cost, souls_yield, ap_cost]
 	else:
 		description.text = "You are about to dispose of %d prisoners.\nSouls gained: %d\nAP required: %d" % [prisoners_cost, souls_yield, ap_cost]

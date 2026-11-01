@@ -9,7 +9,6 @@ extends CanvasLayer
 var edict_object: Dictionary = {}
 var edict_id: String
 
-var lang = Global.lang
 
 func _ready() -> void:
 	hide()
@@ -23,7 +22,7 @@ func _ready() -> void:
 
 func _on_show_popup() -> void:
 	var text: String = ""
-	if lang == "rus":
+	if Global.lang  == "rus":
 		text = edict_object.get("full_name") + "\n\n"
 		text += "Награда: " + str(edict_object.get("reward")) + "\n"
 		text += "Штраф: " + str(edict_object.get("penalty")) + "\n"
