@@ -15,10 +15,12 @@ func _ready() -> void:
 	player_a.finished.connect(_on_track_finished)
 	player_b.finished.connect(_on_track_finished)
 
+
 # Запуск стандартного плейлиста
 func start_playlist() -> void:
 	if playlist.is_empty(): return
 	_crossfade_to_stream(playlist[current_track_index])
+
 
 # Переход к следующему треку (вызывается автоматически при окончании)
 func _on_track_finished() -> void:
@@ -27,11 +29,13 @@ func _on_track_finished() -> void:
 	current_track_index = (current_track_index + 1) % playlist.size()
 	_crossfade_to_stream(playlist[current_track_index])
 
+
 # Вызов конкретного трека по индексу из массива (например, из другого скрипта)
 func play_specific_track(index: int) -> void:
 	if index >= 0 and index < playlist.size():
 		current_track_index = index
 		_crossfade_to_stream(playlist[current_track_index])
+
 
 # Логика плавного перехода (кроссфейд)
 func _crossfade_to_stream(stream: AudioStream) -> void:
