@@ -116,10 +116,12 @@ func _on_credits_button() -> void:
 
 func _on_eng_button() -> void:
 	Global.lang = "eng"
+	StaffManager._generate_initial_staff()
 
 
 func _on_rus_button() -> void:
 	Global.lang = "rus"
+	StaffManager._generate_initial_staff()
 
 
 func _on_back_button() -> void:
