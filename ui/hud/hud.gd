@@ -15,9 +15,14 @@ extends CanvasLayer
 @onready var btn_spend = $UI/ActionContainer/VBoxContainer/SpendAPButton
 @onready var btn_end_day = $UI/ActionContainer/VBoxContainer/EndDayButton
 
-var lang = Global.lang
+@onready var staff_container: HBoxContainer = $UI/RightPanel/VBoxContainer/ResourcesHBox/StaffContainer
+@onready var prisoners_container: HBoxContainer = $UI/RightPanel/VBoxContainer/ResourcesHBox/PrisonersContainer
+@onready var souls_container: HBoxContainer = $UI/RightPanel/VBoxContainer/ResourcesHBox/SoulsContainer
+@onready var funds_container: HBoxContainer = $UI/RightPanel/VBoxContainer/ResourcesHBox/FundsContainer
+
 
 func _ready() -> void:
+	EdictManager._init_main_quest()
 	# Подписываемся на события цикла
 	EventBus.day_started.connect(_on_day_started)
 	EventBus.ap_changed.connect(_on_ap_changed)
@@ -41,6 +46,11 @@ func _ready() -> void:
 	
 	for task_id in EdictManager.active_edicts:
 		_on_edict_accepted(EdictManager.active_edicts[task_id])
+	
+	staff_container.tooltip_text = "Персонал" if Global.lang == "rus" else "Staff"
+	prisoners_container.tooltip_text = "Заключенные" if Global.lang == "rus" else "Prisoners"
+	souls_container.tooltip_text = "Души заключенных" if Global.lang == "rus" else "Prisoners' souls"
+	funds_container.tooltip_text = "Финансирование" if Global.lang == "rus" else "Funds"
 	
 	# Первичная отрисовка статических ресурсов
 	update_static_resources()
@@ -105,7 +115,7 @@ func _on_soul_quota_updated(collected: int, required: int) -> void:
 		tasks_vbox.add_child(label)
 		
 	# Обновляем текст (например: "Квота душ: (5/15)")
-	if lang == "rus":
+	if Global.lang  == "rus":
 		label.text = "Квота душ: (" + str(collected) + "/" + str(required) + ")"
 	else:
 		label.text = "Soul Quota: (" + str(collected) + "/" + str(required) + ")"
@@ -171,7 +181,7 @@ func _update_escape_task_ui(current: int, required: int) -> void:
 		tasks_vbox.add_child(label)
 		
 	# Обновляем текст
-	if lang == "rus":
+	if Global.lang  == "rus":
 		label.text = "Спасти невиновных (" + str(current) + "/" + str(required) + ")"
 	else:
 		label.text = "Save the innocent (" + str(current) + "/" + str(required) + ")"
