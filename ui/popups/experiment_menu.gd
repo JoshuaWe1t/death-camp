@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var resist_button: TextureButton = $Control/bg/VBoxContainer/HBoxContainer/ButtonsResearch/ResistButton
 @onready var combinatories_button: TextureButton = $Control/bg/VBoxContainer/HBoxContainer/ButtonsResearch/CombinatoriesButton
 
-@onready var titel: Label = $Control/bg/VBoxContainer/HBoxContainer/MarginContainer/DescriptionConatiner/Titel
+@onready var title: Label = $Control/bg/VBoxContainer/HBoxContainer/MarginContainer/DescriptionConatiner/Titel
 @onready var description: Label = $Control/bg/VBoxContainer/HBoxContainer/MarginContainer/DescriptionConatiner/Description
 @onready var execute_button: TextureButton = $Control/bg/MarginContainer/HBoxContainer2/ExecuteButton
 
@@ -22,7 +22,7 @@ func _ready():
 
 func _on_show_experiment_menu() -> void:
 	show()
-	titel.hide()
+	title.hide()
 	description.hide()
 
 
@@ -34,10 +34,17 @@ func setup_and_show(research_id: String) -> void:
 	var data = ResearchManager.research_db[research_id]
 	
 	# Отображаем описание ресурса: требуемое время, выгода, ОД
-	titel.text = data["name"] + "\n"
-	description.text = "Тип: %s\nОписание: %s\nДлительность: %d дн.\nСтоимость: %d ОД\nВыгода: %d ус. ед." % [
-		data["type"], data["desc"]["rus"], data["duration"], data["ap_cost"], data["reward"]
-	]
+	if Global.lang == "rus":
+		title.text =  data["name"]["rus"] + "\n"
+		description.text = "Тип: %s\nОписание: %s\nДлительность: %d дн.\nСтоимость: %d ОД\nВыгода: %d ус. ед." % [
+			data["type"], data["desc"]["rus"], data["duration"], data["ap_cost"], data["reward"]
+		]
+	else:
+		title.text = data["name"]["eng"] + "\n"
+		description.text = "Type: %s\nDescription: %s\nDuration: %d d.\nCost: %d AP\nReward: $%d" % [
+			data["type"].capitalize(), data["desc"]["eng"], data["duration"], data["ap_cost"], data["reward"]
+		]
+		
 	
 	# Блокируем кнопку, если не хватает ОД или исследование уже идет
 	if ActionPointsManager.current_action_points < data["ap_cost"] or ResearchManager.active_researches.has(research_id):
@@ -45,7 +52,7 @@ func setup_and_show(research_id: String) -> void:
 	else:
 		execute_button.disabled = false
 	
-	titel.show()
+	title.show()
 	description.show()
 
 
