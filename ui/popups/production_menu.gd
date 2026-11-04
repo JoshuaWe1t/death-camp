@@ -46,7 +46,7 @@ func _update_ui() -> void:
 		]
 	else:
 		description.text = "Production: %s\nBatch: %d to %d units\nIn Stock: %d units\nCost: %d AP" % [
-			cfg["name_rus"],
+			cfg["name_eng"],
 			cfg["min_yield"],
 			cfg["max_yield"],
 			in_stock,

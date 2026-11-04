@@ -16,6 +16,7 @@ var total_dispatched: Dictionary = {
 const PRODUCTION_CONFIG: Dictionary = {
 	"furniture": {
 		"name_rus": "Мебель",
+		"name_eng": "Furniture",
 		"min_yield": 5,
 		"max_yield": 15,
 		"ap_cost": 2,
@@ -23,6 +24,7 @@ const PRODUCTION_CONFIG: Dictionary = {
 	},
 	"clothes": {
 		"name_rus": "Одежда",
+		"name_eng": "Clothes",
 		"min_yield": 8,
 		"max_yield": 20,
 		"ap_cost": 2,
