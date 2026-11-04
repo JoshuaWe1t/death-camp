@@ -26,3 +26,5 @@ builds/
 # Uncomment if your project does not version PCK files as runtime dependencies.
 # *.pck
 _*
+
+docs/*.import
