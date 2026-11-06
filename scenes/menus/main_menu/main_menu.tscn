@@ -187,4 +187,4 @@ offset_top = -23.0
 offset_right = 40.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.5689727, 0.56897277, 0.5689727, 1)
-text = "ver. 0.1.1-demo"
+text = "ver. 0.1.2-demo"
