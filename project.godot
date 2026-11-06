@@ -30,6 +30,7 @@ SupervisorManager="*res://core/autoload/SupervisorManager.gd"
 ResourceManager="*res://core/autoload/ResourceManager.gd"
 WinLoseManager="*res://core/autoload/WinLoseManager.gd"
 MusicManager="*res://core/autoload/music_manager.tscn"
+TextureDatabase="*res://core/autoload/TextureDatabase.gd"
 
 [display]
 
