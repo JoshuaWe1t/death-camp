@@ -15,6 +15,11 @@ func _ready() -> void:
 	furniture_button.pressed.connect(_on_furniture_button_pressed)
 	clothes_button.pressed.connect(_on_clothes_button_pressed)
 	cancel_button.pressed.connect(_on_cancel_button_pressed)
+	
+	furniture_button.texture_normal = TextureDatabase.DATA.get("produce").get(Global.lang).get("furniture_button").get("normal")
+	clothes_button.texture_normal = TextureDatabase.DATA.get("produce").get(Global.lang).get("clothes_button").get("normal")
+	furniture_button.texture_pressed = TextureDatabase.DATA.get("produce").get(Global.lang).get("furniture_button").get("normal")
+	clothes_button.texture_pressed = TextureDatabase.DATA.get("produce").get(Global.lang).get("clothes_button").get("normal")
 
 
 func _on_show_dispatch_menu() -> void:

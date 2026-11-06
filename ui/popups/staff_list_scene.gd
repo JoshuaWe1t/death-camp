@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var row_scene: PackedScene 
 @onready var list_container: VBoxContainer = $Control/MarginContainer/TextureRect/MarginContainer/ScrollContainer/ListContainer
 @onready var close_button: TextureButton = $Control/CloseButton
+@onready var texture_rect: TextureRect = $Control/MarginContainer/TextureRect
 
 
 func _ready() -> void:
@@ -11,6 +12,8 @@ func _ready() -> void:
 	EventBus.show_staff_list.connect(_on_show_staff_list)
 	EventBus.staff_list_updated.connect(_populate_list)
 	close_button.pressed.connect(_on_close_button_pressed)
+	
+	texture_rect.texture = TextureDatabase.DATA.get("staff_list").get(Global.lang).get("texture")
 	
 	_populate_list()
 

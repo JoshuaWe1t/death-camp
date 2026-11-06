@@ -16,6 +16,11 @@ func _ready() -> void:
 	EventBus.show_utilization_menu.connect(_on_show_utilization_menu)
 	utilize_button.pressed.connect(_on_utilize_pressed)
 	cancel_button.pressed.connect(_on_close_button_pressed)
+	
+	utilize_button.texture_normal = TextureDatabase.DATA.get("utilize").get(Global.lang).get("utilize_button").get("normal")
+	cancel_button.texture_normal = TextureDatabase.DATA.get("utilize").get(Global.lang).get("cancel_button").get("normal")
+	utilize_button.texture_pressed = TextureDatabase.DATA.get("utilize").get(Global.lang).get("utilize_button").get("pressed")
+	cancel_button.texture_pressed = TextureDatabase.DATA.get("utilize").get(Global.lang).get("cancel_button").get("pressed")
 
 
 func _on_show_utilization_menu(building_id: String) -> void:

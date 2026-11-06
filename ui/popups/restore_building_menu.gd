@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var description: Label = $PopUp/TextureRect/VBoxContainer/Description
 @onready var admit_button: TextureButton = $PopUp/TextureRect/Buttons/AdmitButton
 @onready var cancel_button: TextureButton = $PopUp/TextureRect/Buttons/CancelButton
+@onready var texture_rect: TextureRect = $PopUp/TextureRect
 
 
 var target_building: Building = null
@@ -25,6 +26,12 @@ func _ready() -> void:
 	
 	admit_button.pressed.connect(_on_admit_button_pressed)
 	cancel_button.pressed.connect(_on_cancel_button_pressed)
+	
+	texture_rect.texture = TextureDatabase.DATA.get("decree").get(Global.lang).get("texture")
+	admit_button.texture_normal = TextureDatabase.DATA.get("decree").get(Global.lang).get("admit_button").get("normal")
+	cancel_button.texture_normal = TextureDatabase.DATA.get("decree").get(Global.lang).get("cancel_button").get("normal")
+	admit_button.texture_pressed = TextureDatabase.DATA.get("decree").get(Global.lang).get("admit_button").get("pressed")
+	cancel_button.texture_pressed = TextureDatabase.DATA.get("decree").get(Global.lang).get("cancel_button").get("pressed")
 
 
 # Подтягиваем данные из глобального словаря

@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var description: Label = $PopUp/TextureRect/VBoxContainer/Description
 @onready var admit_button: TextureButton = $PopUp/TextureRect/HBoxContainer/AdmitButton
 @onready var refuse_button: TextureButton = $PopUp/TextureRect/HBoxContainer/RefuseButton
+@onready var texture_rect: TextureRect = $PopUp/TextureRect
 
 
 var edict_object: Dictionary = {}
@@ -18,6 +19,12 @@ func _ready() -> void:
 	
 	admit_button.pressed.connect(_on_admit_button_pressed)
 	refuse_button.pressed.connect(_on_refuse_button_pressed)
+	
+	texture_rect.texture = TextureDatabase.DATA.get("decree").get(Global.lang).get("texture")
+	admit_button.texture_normal = TextureDatabase.DATA.get("decree").get(Global.lang).get("admit_button").get("normal")
+	refuse_button.texture_normal = TextureDatabase.DATA.get("decree").get(Global.lang).get("refuse_button").get("normal")
+	admit_button.texture_pressed = TextureDatabase.DATA.get("decree").get(Global.lang).get("admit_button").get("pressed")
+	refuse_button.texture_pressed = TextureDatabase.DATA.get("decree").get(Global.lang).get("refuse_button").get("pressed")
 
 
 func _on_show_popup() -> void:

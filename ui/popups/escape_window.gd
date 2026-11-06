@@ -11,6 +11,11 @@ func _ready() -> void:
 	
 	EventBus.show_escaped_popup.connect(_on_show_escaped_window)
 	
+	escape_button.texture_normal = TextureDatabase.DATA.get("escape").get(Global.lang).get("escape_button").get("normal")
+	cancel_button.texture_normal = TextureDatabase.DATA.get("escape").get(Global.lang).get("cancel_button").get("normal")
+	escape_button.texture_pressed = TextureDatabase.DATA.get("escape").get(Global.lang).get("escape_button").get("pressed")
+	cancel_button.texture_pressed = TextureDatabase.DATA.get("escape").get(Global.lang).get("cancel_button").get("pressed")
+	
 	_update_ui()
 
 

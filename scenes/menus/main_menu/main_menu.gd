@@ -87,6 +87,21 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	language.text = "Язык" if Global.lang == "rus" else "Volume"
 	volume.text = "Громкость" if Global.lang == "rus" else "Language"
+	
+	start_button.texture_normal = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("start_button").get("normal")
+	settings_button.texture_normal = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("settings_button").get("normal")
+	credits_button.texture_normal = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("credits_button").get("normal")
+	eng_button.texture_normal = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("eng_button").get("normal")
+	rus_button.texture_normal = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("rus_button").get("normal")
+	back_button.texture_normal = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("back_button").get("normal")
+	credit_back_button.texture_normal = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("back_button").get("normal")
+	start_button.texture_pressed = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("start_button").get("pressed")
+	settings_button.texture_pressed = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("settings_button").get("pressed")
+	credits_button.texture_pressed = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("credits_button").get("pressed")
+	eng_button.texture_pressed = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("eng_button").get("pressed")
+	rus_button.texture_pressed = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("rus_button").get("pressed")
+	back_button.texture_pressed = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("back_button").get("pressed")
+	credit_back_button.texture_pressed = TextureDatabase.DATA.get("main_menu").get(Global.lang).get("back_button").get("pressed")
 
 
 func _on_music_volume_slider_value_changed(value: float) -> void:
